@@ -18,7 +18,7 @@
 					<a>search</a>
 				</li>
 				
-				<!-- 로고 이미지 -->
+				<!-- 로고 이미지  -->
 				<div class="main-logo-img">
 					<img id="" src="${pageContext.request.contextPath }/img/logo_whi.png" alt="#">
 				</div>
