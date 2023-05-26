@@ -31,7 +31,7 @@
 					them by feeling
 				</div>
 				
-				<!-- 추천 테이블 이미지 -->
+				<!-- 추천 테이블 이미지 12개 -->
 				<div class="choose-img">
 					<img id="" src="${pageContext.request.contextPath }/img/happy.png" alt="#">
 					<img id="" src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
