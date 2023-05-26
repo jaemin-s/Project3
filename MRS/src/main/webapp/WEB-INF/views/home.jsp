@@ -90,7 +90,7 @@
 		} */
 
 		const $playBtn = document.getElementById('playBtn');
-		let vId = "0-q1KafFCLU";
+		let vId = "iR_UP6JnpdU";
 		$playBtn.addEventListener('click',function(){
 			console.log('클릭');
 			let state = player.getPlayerState();
@@ -120,8 +120,8 @@
 	      var player;
 	      function onYouTubeIframeAPIReady() {
 	        player = new YT.Player('player', {
-	          height: '100',
-	          width: '100',
+	          height: '500',
+	          width: '500',
 	          videoId: vId,
 	          events: {
 	            'onReady': onPlayerReady,
