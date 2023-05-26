@@ -13,7 +13,7 @@
 					<a>search</a>
 				</li>
 				
-				<!-- 로고 이미지  -->
+				<!-- 로고 이미지 -->
 				<div class="main-logo-img">
 					<img id="" src="${pageContext.request.contextPath }/img/logo_whi.png" alt="#">
 				</div>
@@ -26,7 +26,7 @@
 					them by feeling
 				</div>
 				
-				<!-- 추천 테이블 이미지 12개 -->
+				<!-- 추천 테이블 이미지 -->
 				<div class="choose-img">
 					<img id="" src="${pageContext.request.contextPath }/img/happy.png" alt="#">
 					<img id="" src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
