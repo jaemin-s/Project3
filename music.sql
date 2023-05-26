@@ -1,5 +1,7 @@
 use music;
 
+
+
 CREATE TABLE users (
 	user_id VARCHAR(30) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_pw VARCHAR(1000) NOT NULL,
@@ -31,6 +33,11 @@ CREATE TABLE reply (
     update_date DATETIME DEFAULT NULL
 );
 
-CREATE TABLE genre(
-	
+CREATE TABLE playlist(
+	mno INT PRIMARY KEY AUTO_INCREMENT,
+	music_name VARCHAR(100) NOT NULL,
+    singer VARCHAR(300) NOT NULL,
+    vidio_id VARCHAR(100) NOT NULL
 );
+
+
