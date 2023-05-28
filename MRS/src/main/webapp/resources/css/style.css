@@ -1,6 +1,4 @@
-
 /* 사이드 css */
-
 
 .side {
     width: 25%;
@@ -15,6 +13,7 @@
     margin: 10% auto;
 }
 
+/* 최상단 버튼들 시작 */
 .side .menu {
     margin-top: 20%;
     height: 25%;
@@ -34,6 +33,7 @@
    color: rgb(191, 23, 23);
 }
 
+/* 에어팟 이미지 */
 .side .imgDiv {
 	width: 50%;
 	position: relative;
@@ -47,7 +47,8 @@
 	width: 100%;
 }
  
-.player {
+ /* 음악 컨트롤러 */
+.controller-module {
    height: 190px;
    width: 430px;
    background-color: #1e2125;
@@ -57,11 +58,11 @@
    top: 120px;
    
  }
- .player ul {
+ .controller-module ul {
    display: flex;
  }
  
- .player h1 {
+ .controller-module h1 {
    font-family: "Open Sans", sans-serif;
    font-size: 13pt;
    font-weight: 600;
@@ -70,14 +71,14 @@
    cursor: default;
  }
  
- .player h4 {
+ .controller-module h4 {
    font-family: "Open Sans", sans-serif;
    font-size: 8pt;
    font-weight: 400;
    cursor: default;
  }
  
- .player h2 {
+ .controller-module h2 {
    font-family: "Open Sans", sans-serif;
    font-size: 13pt;
    font-weight: 300;
@@ -85,43 +86,43 @@
    cursor: default;
  }
 
- .cover {
+ .controller-cover {
    top: 0;
    left: 0;
  }
- .cover img {
+ .controller-cover img {
    height: 190px;
    width: 190px;
  }
  
- .info h1 {
+ .controller-info h1 {
    margin-top: 5%;
    
    margin-left: 15%;
  }
- .info h4 {
+ .controller-info h4 {
    margin-top: 5%;
    margin-left: 15%;
    line-height: 20px;
    color: #636367;
  }
- .info h2 {
+ .controller-info h2 {
    margin-top: 5%;
    margin-left: 15%;
  }
  
- .button-items {
+ .controller-button-items {
    margin-left: 15%;
    margin-top: 10%;
  }
  
- #slider {
+ #controller-slider {
    width: 80%;
    height: 1%;
    background: #151518;
    border-radius: 2px;
  }
- #slider div {
+ #controller-slider div {
    width: 4px;
    height: 4px;
    margin-top: 1px;
@@ -129,22 +130,22 @@
    border-radius: 2px;
  }
  
- #timer {
+ #controller-timer {
    color: #494b4e;
    font-size: 9pt;
    float: right;
    font-family: Arial, Sans-Serif;
  }
  
- .controls {
+ .controller-controls {
    margin-top: 20px;
  }
- .controls svg:nth-child(2) {
+ .controller-controls svg:nth-child(2) {
    margin-left: 5px;
    margin-right: 5px;
  }
  
- #play {
+ #controller-play {
    padding: 0 3px;
    width: 30px;
    height: 30px;
@@ -152,28 +153,28 @@
    y: 0px;
    enable-background: new 0 0 25 25;
  }
- #play g {
+ #controller-play g {
    stroke: #fefefe;
    stroke-width: 1;
    stroke-miterlimit: 10;
  }
- #play g path {
+ #controller-play g path {
    fill: #fefefe;
  }
  
- #play:hover {
+ #controller-play:hover {
    cursor: pointer;
  }
- #play:hover g {
+ #controller-play:hover g {
    stroke: #8f4da9;
    cursor: pointer;
  }
- #play:hover g path {
+ #controller-play:hover g path {
    fill: #9b59b6;
    cursor: pointer;
  }
  
- .step-backward {
+ .controller-step-backward {
    width: 18px;
    height: 18px;
    x: 0px;
@@ -181,11 +182,11 @@
    enable-background: new 0 0 25 25;
    margin-bottom: 5px;
  }
- .step-backward g polygon {
+ .controller-step-backward g polygon {
    fill: #fefefe;
  }
  
- .step-foreward {
+ .controller-step-foreward {
    width: 18px;
    height: 18px;
    x: 0px;
@@ -193,11 +194,11 @@
    enable-background: new 0 0 25 25;
    margin-bottom: 5px;
  }
- .step-foreward g polygon {
+ .controller-step-foreward g polygon {
    fill: #fefefe;
  }
  
- #pause {
+ #controller-pause {
    x: 0px;
    y: 0px;
    enable-background: new 0 0 25 25;
@@ -207,66 +208,49 @@
    margin-left: -38px;
    cursor: pointer;
  }
- #pause rect {
+ #controller-pause rect {
    fill: white;
  }
  
- #pause:hover rect {
+ #controller-pause:hover rect {
    fill: #8f4da9;
  }
  
- .step-backward g polygon:hover,
- .step-foreward g polygon:hover {
+ .controller-step-backward g polygon:hover,
+ .controller-step-foreward g polygon:hover {
    fill: #ef6dbc;
    cursor: pointer;
  }
  
- .social {
+ .controller-social {
    text-align: center;
- }
- 
- .twitter {
-   color: #bdbdbd;
-   font-family: sans-serif;
-   text-decoration: none;
- }
- .twitter:hover {
-   color: #ecf0f1;
- }
- 
- .github {
-   color: #bdbdbd;
-   font-family: sans-serif;
-   text-decoration: none;
- }
- .github:hover {
-   color: #ecf0f1;
  }
  
  p {
    color: #bdbdbd;
  }
  
- #skip {
+ #controller-skip {
    float: right;
    margin-top: 10px;
  }
- #skip p {
+ #controller-skip p {
    color: #2980b9;
  }
- #skip p:hover {
+ #controller-skip p:hover {
    color: #e74c3c;
    cursor: pointer;
  }
  
- .expend {
+ .controller-expend {
    padding: 0.5px;
    cursor: pointer;
  }
- .expend svg:hover g polygon {
+ .controller-expend svg:hover g polygon {
    fill: #ef6dbc;
  }
 
+/* 애니메이션 css */
     .staggering-grid-demo {
     width: 300px;
     position: absolute;
@@ -312,6 +296,7 @@ section.main .main-right {
   position:relative;
 }
 
+/* 검색 창 */
 section.main .main-right .search {
 	color: white;
 	font-size: 50px;
@@ -319,14 +304,19 @@ section.main .main-right .search {
 	margin-top: 100px;
 }
 
+/* 우측 로고 이미지 */
 section.main .main-right .main-logo-img {
 	width: 20%;
+    position: absolute;
+    left: 78%;
+    top: 80px;
 }
 
 section.main .main-right .main-logo-img img{
 	width: 100%;
 }
 
+/* them by feeling */
 section.main .main-right .choose-text{
 	font-size: 70px;
 	color: white;
@@ -334,7 +324,7 @@ section.main .main-right .choose-text{
 }
 
 
-
+/* 음악 더미 이미지 */
 section.main .main-right .choose-img {
     width: 100%;
     margin: 40px;
@@ -353,28 +343,3 @@ section.main .main-right .choose-img img:hover {
 	    border: 3px solid rgb(191, 23, 23);
     border-radius: 30px;
 }
-
-
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
