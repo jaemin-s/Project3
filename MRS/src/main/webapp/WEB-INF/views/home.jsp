@@ -28,7 +28,7 @@
 				
 				<!-- 추천 테이블 이미지 -->
 				<div class="choose-img">
-					<img id="" src="${pageContext.request.contextPath }/img/happy.png" alt="#">
+					<img id="happy-btn" src="${pageContext.request.contextPath }/img/happy.png" alt="#">
 					<img id="" src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
 					<img id="" src="${pageContext.request.contextPath }/img/mood_4_Sad.png" alt="#">
 					<img id="" src="${pageContext.request.contextPath }/img/mood_1_NowHot.png" alt="#">
@@ -51,7 +51,7 @@
 		</div>
 	 	
 	</section>
-    	<div id="player"></div> <!-- 1. Youtube iframe 들어갈 자리 -->
+    	
     <%-- <%@ include file="include/footer.jsp"%> --%>
 	<script>
 	
@@ -103,50 +103,17 @@
 
 		} */
 		
-		let vId = "iR_UP6JnpdU"; // videoId 
-		
-		
-		// 여기부터 iframe api, 속성값 빼고 건들지 말 것
-		// 2. This code loads the IFrame Player API code asynchronously.
-	      var tag = document.createElement('script');
-
-	      tag.src = "https://www.youtube.com/iframe_api";
-	      var firstScriptTag = document.getElementsByTagName('script')[0];
-	      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-	      // 3. This function creates an <iframe> (and YouTube player)
-	      //    after the API code downloads.
-	      var player;
-	      function onYouTubeIframeAPIReady() {
-	        player = new YT.Player('player', { //요청보낼 속성값 모은 객체
-	          height: '500',   
-	          width: '500', 
-	          videoId: vId, 
-	          events: {
-	            'onReady': onPlayerReady,
-	            'onStateChange': onPlayerStateChange
-	          }
-	        });
-	      }
-
-	      // 4. The API will call this function when the video player is ready.
-	      function onPlayerReady(event) {
-	        event.target.playVideo();
-	      }
-
-	      // 5. The API calls this function when the player's state changes.
-	      //    The function indicates that when playing a video (state=1),
-	      //    the player should play for six seconds and then stop.
-	      var done = false;
-	      function onPlayerStateChange(event) {
-	        if (event.data == YT.PlayerState.PLAYING && !done) {
-	          setTimeout(stopVideo, 6000);
-	          done = true;
-	        }
-	      }
-	      function stopVideo() {
-	        player.stopVideo();
-	      }
+		document.getElementById('happy-btn').addEventListener('click',function(){
+			let rn = Math.floor(Math.random()*2)+1;
+			console.log('rn: '+rn);
+			if(rn===1){
+				player.loadPlaylist(["v6_GwXU1lkg","Dbxzh078jr4","jeqdYqsrsA0"]);
+				player.setLoop(true);
+			}else{
+				player.loadPlaylist(["EiVmQZwJhsA","vecSVX1QYbQ","JFgv8bKfxEs"]);
+				player.setLoop(true);
+			}
+		})
 	      
 	      
  

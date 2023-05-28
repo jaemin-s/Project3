@@ -1,5 +1,14 @@
-/* »çÀÌµå css */
-
+/* ï¿½ï¿½ï¿½Ìµï¿½ css */
+#test-controller{
+	display:flex;
+	flex-direction : column;
+}
+#test-controller i{
+	font-size : 30px
+}
+#test-controller i:hover{
+	cursor : pointer;
+}
 .side {
     width: 25%;
     max-height: 100vh;
@@ -13,7 +22,7 @@
     margin: 10% auto;
 }
 
-/* ÃÖ»ó´Ü ¹öÆ°µé ½ÃÀÛ */
+/* ï¿½Ö»ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 .side .menu {
     margin-top: 20%;
     height: 25%;
@@ -33,7 +42,7 @@
    color: rgb(191, 23, 23);
 }
 
-/* ¿¡¾îÆÌ ÀÌ¹ÌÁö */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ */
 .side .imgDiv {
 	width: 50%;
 	position: relative;
@@ -47,7 +56,7 @@
 	width: 100%;
 }
  
- /* À½¾Ç ÄÁÆ®·Ñ·¯ */
+ /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ */
 .controller-module {
    height: 190px;
    width: 430px;
@@ -250,7 +259,7 @@
    fill: #ef6dbc;
  }
 
-/* ¾Ö´Ï¸ÞÀÌ¼Ç css */
+/* ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ css */
     .staggering-grid-demo {
     width: 300px;
     position: absolute;
@@ -280,7 +289,7 @@
  
  
  
- /* mainÈ­¸é css */
+ /* mainÈ­ï¿½ï¿½ css */
 
 section.main{
   width: 1700px;
@@ -296,7 +305,7 @@ section.main .main-right {
   position:relative;
 }
 
-/* °Ë»ö Ã¢ */
+/* ï¿½Ë»ï¿½ Ã¢ */
 section.main .main-right .search {
 	color: white;
 	font-size: 50px;
@@ -304,7 +313,7 @@ section.main .main-right .search {
 	margin-top: 100px;
 }
 
-/* ¿ìÃø ·Î°í ÀÌ¹ÌÁö */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ */
 section.main .main-right .main-logo-img {
 	width: 20%;
     position: absolute;
@@ -324,7 +333,7 @@ section.main .main-right .choose-text{
 }
 
 
-/* À½¾Ç ´õ¹Ì ÀÌ¹ÌÁö */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ */
 section.main .main-right .choose-img {
     width: 100%;
     margin: 40px;
