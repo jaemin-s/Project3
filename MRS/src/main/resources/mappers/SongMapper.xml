@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.music.mrs.ai.mapper.SongMapper">
+
+     <!-- 중복 체크를 위한 쿼리 -->
+    <!-- <select id="checkDuplicate" resultType="boolean">
+        SELECT COUNT(*) > 0
+        FROM songs
+        WHERE artist = #{artist}
+        AND title = #{title}
+        AND video_id = #{videoId}
+    </select> -->
+    
+    
+    <!-- 새로운 값 저장을 위한 쿼리 -->
+    <insert id="saveSong" parameterType="com.music.mrs.ai.command.SongVO">
+    INSERT INTO songs (title, artist, video_id)
+    VALUES (#{song.title}, #{song.artist}, #{song.videoId})
+	</insert>
+
+</mapper>
