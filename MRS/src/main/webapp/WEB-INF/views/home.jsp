@@ -49,10 +49,10 @@
 			</ul>
 			
 		</div>
-	 
+	 	
 	</section>
-    
-    <%@ include file="include/footer.jsp"%>
+    	<div id="player"></div> <!-- 1. Youtube iframe 들어갈 자리 -->
+    <%-- <%@ include file="include/footer.jsp"%> --%>
 	<script>
 	
 	//공공데이터 날씨
@@ -102,26 +102,11 @@
 				});
 
 		} */
-
-		const $playBtn = document.getElementById('playBtn');
-		let vId = "iR_UP6JnpdU";
-		$playBtn.addEventListener('click',function(){
-			console.log('클릭');
-			let state = player.getPlayerState();
-			console.log(state);
-			if(state == -1||state == 2){
-				player.playVideo();
-				console.log("재생");
-			}else if(state == 5){
-				console.log(player.getCurrentTime());
-				console.log(player.getDuration());
-				player.playVideo();
-			}else if(state == 1){
-				player.pauseVideo();
-				console.log("일시정지");
-			}
-		});
 		
+		let vId = "iR_UP6JnpdU"; // videoId 
+		
+		
+		// 여기부터 iframe api, 속성값 빼고 건들지 말 것
 		// 2. This code loads the IFrame Player API code asynchronously.
 	      var tag = document.createElement('script');
 
@@ -133,10 +118,10 @@
 	      //    after the API code downloads.
 	      var player;
 	      function onYouTubeIframeAPIReady() {
-	        player = new YT.Player('player', {
-	          height: '500',
-	          width: '500',
-	          videoId: vId,
+	        player = new YT.Player('player', { //요청보낼 속성값 모은 객체
+	          height: '500',   
+	          width: '500', 
+	          videoId: vId, 
 	          events: {
 	            'onReady': onPlayerReady,
 	            'onStateChange': onPlayerStateChange
@@ -162,5 +147,7 @@
 	      function stopVideo() {
 	        player.stopVideo();
 	      }
+	      
+	      
  
 	</script>

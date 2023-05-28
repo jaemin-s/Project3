@@ -216,4 +216,23 @@
       loop: true,
       autoplay: false
     });
+    
+    //iframe 조작
+    const $playBtn = document.getElementById('playBtn');
+	$playBtn.addEventListener('click',function(){
+		console.log('클릭');
+		let state = player.getPlayerState();
+		console.log(state);
+		if(state == -1||state == 2){
+			player.playVideo();
+			console.log("재생");
+		}else if(state == 5){
+			console.log(player.getCurrentTime());
+			console.log(player.getDuration());
+			player.playVideo();
+		}else if(state == 1){
+			player.pauseVideo();
+			console.log("일시정지");
+		}
+	}); 
   </script>
