@@ -60,9 +60,9 @@
 
 <script type="text/javascript">
 
-document.getElementById('happy-btn').addEventListener('click',function(){
-	location.href ="${pageContext.request.contextPath}/rcmd/spotifyTest";
-});
+	document.getElementById('happy-btn').addEventListener('click',function(){
+		location.href ="${pageContext.request.contextPath}/rcmd/spotifyTest";
+	});
 
 </script>
 
