@@ -39,7 +39,7 @@
 					<img id="" src="${pageContext.request.contextPath }/img/happy.png" alt="#">
 					<img id="" src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
 					<img id="" src="${pageContext.request.contextPath }/img/mood_4_Sad.png" alt="#">
-					<img id="" src="${pageContext.request.contextPath }/img/mood_1_NowHot.png" alt="#">
+					<img id="" src="${pageContext.request.contextPath }/img/mood_1_NowHot.png" alt="#" >
 					
 				</div>
 				
@@ -104,16 +104,8 @@
 		} */
 		
 		document.getElementById('happy-btn').addEventListener('click',function(){
-			let rn = Math.floor(Math.random()*2)+1;
-			console.log('rn: '+rn);
-			if(rn===1){
-				player.loadPlaylist(["v6_GwXU1lkg","Dbxzh078jr4","jeqdYqsrsA0"]);
-				player.setLoop(true);
-			}else{
-				player.loadPlaylist(["EiVmQZwJhsA","vecSVX1QYbQ","JFgv8bKfxEs"]);
-				player.setLoop(true);
-			}
-		})
+			location.href ="${pageContext.request.contextPath }/rcmd/spotifyTest";
+		});
 	      
 	      
  
