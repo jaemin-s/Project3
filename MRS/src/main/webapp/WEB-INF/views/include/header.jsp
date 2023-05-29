@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Rcmd Service</title>
 	
-	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/css/style.css" rel="stylesheet">
 
 </head>
 <body>
-	<header>
+	<header >
 		<h1>여기는 header</h1>
 	
 	</header>

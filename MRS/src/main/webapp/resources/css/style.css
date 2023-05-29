@@ -1,15 +1,354 @@
-header {
-    border: 4px solid tomato;
+/* ���̵� css */
+#test-controller{
+	display:flex;
+	flex-direction : column;
+}
+#test-controller i{
+	font-size : 30px
+}
+#test-controller i:hover{
+	cursor : pointer;
+}
+.side {
+    width: 25%;
+    max-height: 100vh;
+    background: rgb(247 247 247);
+    position: sticky;
+    top:0px;
 }
 
-section {
-    border: 4px solid greenyellow;
+.side > div {
+    width: 80%;
+    margin: 10% auto;
 }
 
-footer {
-    border: 4px solid skyblue
+/* �ֻ�� ��ư�� ���� */
+.side .menu {
+    margin-top: 20%;
+    height: 25%;
+    /* background: orange; */
 }
 
-table {
-	border: 1px solid black;
+.side .menu a {
+    display: flex;
+    height: 20%;
+    margin-left: 5%;
+    font-weight: bold;
+    font-size: 40px;
+    color: black;
+}
+
+.side .menu a:hover {
+   color: rgb(191, 23, 23);
+}
+
+/* ������ �̹��� */
+.side .imgDiv {
+	width: 50%;
+	position: relative;
+    bottom: -14%;
+    z-index: 2;
+    margin: 0 auto;
+	
+}
+
+.side img {
+	width: 100%;
+}
+ 
+ /* ���� ��Ʈ�ѷ� */
+.controller-module {
+   height: 190px;
+   width: 430px;
+   background-color: #1e2125;
+   border-radius: 30px;
+   overflow: hidden;
+   position: relative;
+   top: 120px;
+   
+ }
+ .controller-module ul {
+   display: flex;
+ }
+ 
+ .controller-module h1 {
+   font-family: "Open Sans", sans-serif;
+   font-size: 13pt;
+   font-weight: 600;
+   text-transform: uppercase;
+   color: white;
+   cursor: default;
+ }
+ 
+ .controller-module h4 {
+   font-family: "Open Sans", sans-serif;
+   font-size: 8pt;
+   font-weight: 400;
+   cursor: default;
+ }
+ 
+ .controller-module h2 {
+   font-family: "Open Sans", sans-serif;
+   font-size: 13pt;
+   font-weight: 300;
+   color: white;
+   cursor: default;
+ }
+
+ .controller-cover {
+   top: 0;
+   left: 0;
+ }
+ .controller-cover img {
+   height: 190px;
+   width: 190px;
+ }
+ 
+ .controller-info h1 {
+   margin-top: 5%;
+   
+   margin-left: 15%;
+ }
+ .controller-info h4 {
+   margin-top: 5%;
+   margin-left: 15%;
+   line-height: 20px;
+   color: #636367;
+ }
+ .controller-info h2 {
+   margin-top: 5%;
+   margin-left: 15%;
+ }
+ 
+ .controller-button-items {
+   margin-left: 15%;
+   margin-top: 10%;
+ }
+ 
+ #controller-slider {
+   width: 80%;
+   height: 1%;
+   background: #151518;
+   border-radius: 2px;
+ }
+ #controller-slider div {
+   width: 4px;
+   height: 4px;
+   margin-top: 1px;
+   background: #ef6dbc;
+   border-radius: 2px;
+ }
+ 
+ #controller-timer {
+   color: #494b4e;
+   font-size: 9pt;
+   float: right;
+   font-family: Arial, Sans-Serif;
+ }
+ 
+ .controller-controls {
+   margin-top: 20px;
+ }
+ .controller-controls svg:nth-child(2) {
+   margin-left: 5px;
+   margin-right: 5px;
+ }
+ 
+ #controller-play {
+   padding: 0 3px;
+   width: 30px;
+   height: 30px;
+   x: 0px;
+   y: 0px;
+   enable-background: new 0 0 25 25;
+ }
+ #controller-play g {
+   stroke: #fefefe;
+   stroke-width: 1;
+   stroke-miterlimit: 10;
+ }
+ #controller-play g path {
+   fill: #fefefe;
+ }
+ 
+ #controller-play:hover {
+   cursor: pointer;
+ }
+ #controller-play:hover g {
+   stroke: #8f4da9;
+   cursor: pointer;
+ }
+ #controller-play:hover g path {
+   fill: #9b59b6;
+   cursor: pointer;
+ }
+ 
+ .controller-step-backward {
+   width: 18px;
+   height: 18px;
+   x: 0px;
+   y: 0px;
+   enable-background: new 0 0 25 25;
+   margin-bottom: 5px;
+ }
+ .controller-step-backward g polygon {
+   fill: #fefefe;
+ }
+ 
+ .controller-step-foreward {
+   width: 18px;
+   height: 18px;
+   x: 0px;
+   y: 0px;
+   enable-background: new 0 0 25 25;
+   margin-bottom: 5px;
+ }
+ .controller-step-foreward g polygon {
+   fill: #fefefe;
+ }
+ 
+ #controller-pause {
+   x: 0px;
+   y: 0px;
+   enable-background: new 0 0 25 25;
+   width: 30px;
+   height: 30px;
+   position: absolute;
+   margin-left: -38px;
+   cursor: pointer;
+ }
+ #controller-pause rect {
+   fill: white;
+ }
+ 
+ #controller-pause:hover rect {
+   fill: #8f4da9;
+ }
+ 
+ .controller-step-backward g polygon:hover,
+ .controller-step-foreward g polygon:hover {
+   fill: #ef6dbc;
+   cursor: pointer;
+ }
+ 
+ .controller-social {
+   text-align: center;
+ }
+ 
+ p {
+   color: #bdbdbd;
+ }
+ 
+ #controller-skip {
+   float: right;
+   margin-top: 10px;
+ }
+ #controller-skip p {
+   color: #2980b9;
+ }
+ #controller-skip p:hover {
+   color: #e74c3c;
+   cursor: pointer;
+ }
+ 
+ .controller-expend {
+   padding: 0.5px;
+   cursor: pointer;
+ }
+ .controller-expend svg:hover g polygon {
+   fill: #ef6dbc;
+ }
+
+/* �ִϸ��̼� css */
+    .staggering-grid-demo {
+    width: 300px;
+    position: absolute;
+    top: 350px;
+      display: grid;
+      grid-template-columns: repeat(25, 12px);
+      grid-template-rows: repeat(25, 12px);
+      gap: 0.001px;
+      border-radius: 50%;
+    overflow: hidden;
+
+    }
+
+    .el {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /* mainȭ�� css */
+
+section.main{
+  width: 1700px;
+ margin: 0 auto;
+ display: flex;
+  /* background: skyblue; */
+}
+
+section.main .main-right {
+  width: 75%;
+  height: 3000px;
+  background: black;
+  position:relative;
+}
+
+/* �˻� â */
+section.main .main-right .search {
+	color: white;
+	font-size: 50px;
+	margin-left: 70px;
+	margin-top: 100px;
+}
+
+/* ���� �ΰ� �̹��� */
+section.main .main-right .main-logo-img {
+	width: 20%;
+    position: absolute;
+    left: 78%;
+    top: 80px;
+}
+
+section.main .main-right .main-logo-img img{
+	width: 100%;
+}
+
+/* them by feeling */
+section.main .main-right .choose-text{
+	font-size: 70px;
+	color: white;
+	margin-left: 70px;
+}
+
+
+/* ���� ���� �̹��� */
+section.main .main-right .choose-img {
+    width: 100%;
+    margin: 40px;
+}
+
+section.main .main-right .choose-img img {
+    display: inline-flex;
+	margin-left: 32px;
+    margin-bottom: 93px;
+    border: 3px solid white;
+    border-radius: 30px;
+    width: 19%;
+}
+
+section.main .main-right .choose-img img:hover {
+	    border: 3px solid rgb(191, 23, 23);
+    border-radius: 30px;
 }
