@@ -37,5 +37,6 @@
 			<img id="airImg"
 				src="${pageContext.request.contextPath }/img/airpods2.png" alt="#">
 		</div>
+	</div>
 </body>
 </html>
