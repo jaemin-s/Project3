@@ -52,30 +52,3 @@
 
             </div>
 
-
-<script>
-
-            //  클릭시 페이지 넘어가는것처럼 보이게 하기
-            var $mainBtn = document.querySelector(".mainBtn");
-            var $videoBtn = document.querySelector(".videoBtn");
-            var $mainPage = document.getElementById("main-right");
-            var $videoPage = document.getElementById("video-right");
-
-            $mainBtn.onclick = function() {
-                console.log("메인페이지 클릭");
-                console.log("메인: " + $mainPage.style.dispaly);
-                console.log($videoPage.style.dispaly);
-                $mainPage.style.display = "block";
-                $videoPage.style.display = "none";
-            }
-
-            $videoBtn.onclick = function() {
-                console.log("비디오페이지 클릭");
-                console.log("메인: " + $mainPage.style.dispaly);
-                console.log($videoPage.style.dispaly);
-                $mainPage.style.display = "none";
-                $videoPage.style.display = "block";
-            }
-         
-         
-        </script>
