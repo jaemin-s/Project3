@@ -29,13 +29,15 @@
 		<!-- 페이지 넘어갈 곳 -->
 		<div class="menu">
 			<!-- 로그아웃상태에선 로그인, 회원가입 넣기 -->
-			<c:if test="로그인 안되어있을 시">
-				<a href="#">log in</a> 
-				<a href="#">join</a>
+			<c:if test="${login == null}">
+				<div>
+					<img src="${pageContext.request.contextPath }/img/Spotify_Logo.png" alt="">
+					<a>log in</a>
+				</div>
 			</c:if>
 			<!-- 로그인 되어있으면 환영인사. -->
-			<c:if test="로그인 되어있을 시">
-				<h1>(회원닉네임)님</h1>
+			<c:if test="${login != null}">
+				<h1>닉네임 님</h1>
 				<h3>환영합니다.</h3>
 			</c:if>
 			
@@ -46,7 +48,7 @@
 		<!-- 에어팟 이미지 -->
 		<div class="imgDiv">
 			<img id="airImg"
-				src="${pageContext.request.contextPath }/img/airpods2.png" alt="#">
+				src="${pageContext.request.contextPath }/img/air.png" alt="#">
 		</div>
 	</div>
 </body>

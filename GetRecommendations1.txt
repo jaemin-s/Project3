@@ -1,0 +1,35 @@
+sad : 
+limit 10 
+market: KR
+seed_artists : 3MaRWfwKpbYnkYHC5gRKYo
+seed_genres: 슬픈
+seed_tracks: 7oT5JOWwxnwcZRI6NLzhWs
+
+happy
+limit 10 
+market: KR
+seed_artists : 5TnQc2N1iKlFjYD7CPGvFc
+seed_genres: 행복 신남
+seed_tracks: 0EhdXt3y460mTRsi97Pyk5
+
+rain
+limit 10 
+market: KR
+seed_artists : 5TnQc2N1iKlFjYD7CPGvFc
+seed_genres: 행복 신남
+seed_tracks: 0EhdXt3y460mTRsi97Pyk5
+
+잔잔한
+
+귀여움
+
+
+
+
+
+
+
+
+
+
+
