@@ -19,6 +19,7 @@ properties/
 .classpath
 .project
 .springBeans
+target/m2e-wtp/
 
 # External tool builders
 .externalToolBuilders/

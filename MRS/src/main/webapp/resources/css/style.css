@@ -1,19 +1,179 @@
-header {
-    border: 4px solid tomato;
+/* �궗�씠�뱶 css */
+
+/* �뒪�겕濡� �뾾�뒗 �럹�씠吏� �꽆�뼱媛�硫� �뒪�겕濡ㅻ컮 �겕湲곗젙�룄 �룧由щ뒗 �쁽�긽 �뾾�빊 */
+body {
+  overflow-y: scroll;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+
 }
 
-section {
-    border: 4px solid greenyellow;
+img, a {
+  -webkit-user-drag: none;
 }
 
-footer {
-    border: 4px solid skyblue
+
+.side {
+  width: 25%;
+  height: 100vh;
+  background: rgb(247 247 247);
+  position: sticky;
+  top:0px;
+  z-index: 10;
+  background-image: url("../img/animation.gif");
+  background-size: 260%;
+  background-position: -340px;
 }
 
-table {
-	border: 1px solid black;
+.side > div {
+  width: 80%;
+  margin: 10% auto;
 }
 
+/* 理쒖긽�떒 踰꾪듉�뱾 �떆�옉 */
+.side .menu {
+  margin-top: 20%;
+  height: 35%;
+  /* background: orange; */
+}
+
+.side .menu a {
+  width: 100%;
+  display: flex;
+  height: 20%;
+  margin: 0 50% 5% 0;
+  font-weight: bolder;
+  font-size: 40px;
+  text-decoration: none;
+  color: black;
+}
+
+.side .menu a:hover {
+  color: rgb(191, 23, 23);
+}
+
+/* �뿉�뼱�뙚 �씠誘몄� */
+.side .imgDiv {
+  width: 50%;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+
+}
+
+.side img {
+  width: 100%;
+}
+
+
+/* main�솕硫� css */
+
+section.main{
+width: 1700px;
+margin: 0 auto;
+display: flex;
+/* background: skyblue; */
+}
+
+section.main .main-right {
+width: 75%;
+background: black;
+position:relative;
+display: block;
+}
+
+/* 寃��깋 李� */
+section.main .main-right .search {
+color: white;
+font-size: 50px;
+margin-left: 70px;
+margin-top: 100px;
+}
+
+/* �슦痢� 濡쒓퀬 �씠誘몄� */
+section.main .main-right .main-logo-img {
+width: 20%;
+  position: absolute;
+  left: 78%;
+  top: 80px;
+}
+
+section.main .main-right .main-logo-img img{
+width: 100%;
+}
+
+/* them by feeling */
+section.main .main-right .choose-text{
+font-size: 70px;
+color: white;
+margin-left: 70px;
+margin-top: 60px;
+}
+
+
+/* �쓬�븙 �뜑誘� �씠誘몄� */
+section.main .main-right .choose-img {
+  width: 100%;
+  margin: 40px;
+}
+
+section.main .main-right .choose-img img {
+  display: inline-flex;
+  margin-left: 32px;
+  margin-bottom: 40px;
+  border: 3px solid white;
+  border-radius: 30px;
+  width: 19%;
+}
+
+section.main .main-right .choose-img img:hover {
+    border: 3px solid rgb(191, 23, 23);
+  border-radius: 30px;
+}
+
+/* 鍮꾨뵒�삤 �럹�씠吏� */
+
+section.main .video-right {
+  width: 75%;
+  background: black;
+  position:relative;
+  display: none;
+  color: white;
+  }
+  
+  section.main .video-right .detail-ng {
+  	display: flex;
+  	background: skyblue;
+  	    width: 1179px;
+    margin: 100px auto 0;
+  }
+  
+
+  section.main .video-right .co-pl {
+    display: flex;
+    width: 1179px;
+    margin: 100px auto 0;
+    background: yellow;
+  }
+
+  section.main .video-right .co-pl .comments {
+    background: #8f4da9;
+    width: 75%;
+  }
+
+  section.main .video-right .co-pl .comments .people {
+    margin: 10px 0;
+  }
+
+  
+  section.main .video-right .co-pl .playList {
+    background: orange;
+    width: 25%;
+    text-align: center;
+  }
+  
 .spotify-login-button {
   display: inline-block;
   background-color: #1DB954;
