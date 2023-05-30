@@ -1,11 +1,13 @@
 package com.music.mrs;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.music.mrs.rcmd.service.IRcmdService;
 
@@ -16,12 +18,10 @@ public class RcmdController {
 	@Autowired
 	private IRcmdService service;
 	
-	@GetMapping("/code")
-	public String getCode(String code, Model model) {
-		model.addAttribute("code",code);
-		System.out.println(code);
-		return "spotify";
+	@GetMapping("/spotifyTest")
+	private void spotifyTest(Model model, HttpSession session) {
+		String token = service.getToken();
+		session.setAttribute("spotifyToken", token);
 	}
 
 }
-//https://accounts.spotify.com/authorize?client_id=61195beb56f14da19d09a1b3b6216b90&redirect_uri=http://localhost:8181/mrs/rcmd/code&response_type=code
