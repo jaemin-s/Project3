@@ -21,6 +21,19 @@
             -->
 
 	<div class="video-right" id="video-right">
+		
+		<!-- 이미지, 상세설명 -->
+		<div class="detail-ng">
+			<!-- 이미지 -->
+			<div class="detail-cover">
+				<img alt="" src="${pageContext.request.contextPath }/img/밤편지2.jpg">
+			</div>
+			
+			<!-- 상세 설명 -->
+			<div class="detail-text">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu pharetra nisi, at consectetur dolor. Mauris consectetur ligula commodo felis finibus pellentesque. Proin id lectus sit amet mi euismod ultricies. Donec nec malesuada turpis. Donec pharetra purus erat. Vestibulum blandit dui in nisi vulputate aliquam. Cras vitae urna feugiat, fringilla lacus id, viverra justo. Etiam eget ligula velit.
+			</div>
+		</div>
 
 		<!-- 하단 댓글, playlist -->
 		<div class="co-pl">
@@ -42,6 +55,7 @@
 			<div class="playList">
 
 				<div>아이유 - 밤편지</div>
+
 
 			</div>
 

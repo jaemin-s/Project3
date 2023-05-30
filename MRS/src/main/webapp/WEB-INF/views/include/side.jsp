@@ -28,8 +28,19 @@
 
 		<!-- 페이지 넘어갈 곳 -->
 		<div class="menu">
-			<a href="#">log in</a> <a href="#">join</a> <a class="mainBtn"
-				href="#">main page</a> <a class="videoBtn" href="#">video page</a>
+			<!-- 로그아웃상태에선 로그인, 회원가입 넣기 -->
+			<c:if test="로그인 안되어있을 시">
+				<a href="#">log in</a> 
+				<a href="#">join</a>
+			</c:if>
+			<!-- 로그인 되어있으면 환영인사. -->
+			<c:if test="로그인 되어있을 시">
+				<h1>(회원닉네임)님</h1>
+				<h3>환영합니다.</h3>
+			</c:if>
+			
+			<a class="mainBtn" href="#">main page</a> 
+			<a class="videoBtn" href="#">video page</a>
 		</div>
 
 		<!-- 에어팟 이미지 -->

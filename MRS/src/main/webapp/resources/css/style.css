@@ -1,6 +1,6 @@
-/* 사이드 css */
+/* �궗�씠�뱶 css */
 
-/* 스크롤 없는 페이지 넘어가면 스크롤바 크기정도 쏠리는 현상 없앰 */
+/* �뒪�겕濡� �뾾�뒗 �럹�씠吏� �꽆�뼱媛�硫� �뒪�겕濡ㅻ컮 �겕湲곗젙�룄 �룧由щ뒗 �쁽�긽 �뾾�빊 */
 body {
   overflow-y: scroll;
   -webkit-user-select:none;
@@ -22,7 +22,7 @@ img, a {
   position: sticky;
   top:0px;
   z-index: 10;
-  background-image: url("../../resources/img/animation.gif");
+  background-image: url("../img/animation.gif");
   background-size: 260%;
   background-position: -340px;
 }
@@ -32,7 +32,7 @@ img, a {
   margin: 10% auto;
 }
 
-/* 최상단 버튼들 시작 */
+/* 理쒖긽�떒 踰꾪듉�뱾 �떆�옉 */
 .side .menu {
   margin-top: 20%;
   height: 35%;
@@ -54,7 +54,7 @@ img, a {
   color: rgb(191, 23, 23);
 }
 
-/* 에어팟 이미지 */
+/* �뿉�뼱�뙚 �씠誘몄� */
 .side .imgDiv {
   width: 50%;
   position: relative;
@@ -68,7 +68,7 @@ img, a {
 }
 
 
-/* main화면 css */
+/* main�솕硫� css */
 
 section.main{
 width: 1700px;
@@ -84,7 +84,7 @@ position:relative;
 display: block;
 }
 
-/* 검색 창 */
+/* 寃��깋 李� */
 section.main .main-right .search {
 color: white;
 font-size: 50px;
@@ -92,7 +92,7 @@ margin-left: 70px;
 margin-top: 100px;
 }
 
-/* 우측 로고 이미지 */
+/* �슦痢� 濡쒓퀬 �씠誘몄� */
 section.main .main-right .main-logo-img {
 width: 20%;
   position: absolute;
@@ -113,7 +113,7 @@ margin-top: 60px;
 }
 
 
-/* 음악 더미 이미지 */
+/* �쓬�븙 �뜑誘� �씠誘몄� */
 section.main .main-right .choose-img {
   width: 100%;
   margin: 40px;
@@ -133,7 +133,7 @@ section.main .main-right .choose-img img:hover {
   border-radius: 30px;
 }
 
-/* 비디오 페이지 */
+/* 鍮꾨뵒�삤 �럹�씠吏� */
 
 section.main .video-right {
   width: 75%;
@@ -142,6 +142,14 @@ section.main .video-right {
   display: none;
   color: white;
   }
+  
+  section.main .video-right .detail-ng {
+  	display: flex;
+  	background: skyblue;
+  	    width: 1179px;
+    margin: 100px auto 0;
+  }
+  
 
   section.main .video-right .co-pl {
     display: flex;
