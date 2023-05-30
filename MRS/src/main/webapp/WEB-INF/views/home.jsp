@@ -59,6 +59,7 @@
 	<span class="login-text">로그인</span>
 	</a>
 	<p>${message}</p>
+	<h3 id="test_text"></h3>
 
 <%@ include file="include/detail.jsp"%>
 </section>

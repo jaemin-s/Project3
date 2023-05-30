@@ -1,5 +1,7 @@
 package com.music.mrs;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,18 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.music.mrs.rcmd.service.IRcmdService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/rcmd")
+@Slf4j
 public class RcmdController {
 	
 	@Autowired
 	private IRcmdService service;
 	
 	@GetMapping("/code")
-	public String getCode(String code, Model model) {
+	public String getCode(String code, Model model, HttpSession session) {
 		model.addAttribute("code",code);
 		System.out.println(code);
-		return "rcmd/spotifyTest";
+		log.info("accessToken: {}",session.getAttribute("accessToken"));
+		return "/home";
+	}
+	
+	@GetMapping("/spotifyTest")
+	public void spotifyTest() {
 	}
 
 
