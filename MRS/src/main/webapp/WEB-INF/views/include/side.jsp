@@ -31,8 +31,12 @@
 			<!-- 로그아웃상태에선 로그인, 회원가입 넣기 -->
 			<c:if test="${login == null}">
 				<div>
-					<img src="${pageContext.request.contextPath }/img/Spotify_Logo.png" alt="">
-					<a>log in</a>
+					<a href="/mrs/login" class="spotify-login-button">
+						<img src="${pageContext.request.contextPath}/img/Spotify_Logo_RGB_Black.png" alt="Spotify Logo" class="spotify-logo"> 
+						<span class="login-text">로그인</span>
+					</a>
+					<p>${message}</p>
+					<h3 id="test_text"></h3>
 				</div>
 			</c:if>
 			<!-- 로그인 되어있으면 환영인사. -->
@@ -40,8 +44,8 @@
 				<h1>닉네임 님</h1>
 				<h3>환영합니다.</h3>
 			</c:if>
-			
-			<a class="mainBtn" href="#">main page</a> 
+
+			<a class="mainBtn" href="#">main page</a>
 			<a class="videoBtn" href="#">video page</a>
 		</div>
 
@@ -55,23 +59,20 @@
 </html>
 
 <script>
+	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
 
-// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
+	var $airImg = document.getElementById("airImg");
 
-var $airImg = document.getElementById("airImg");
+	airImg.onclick = function() {
 
- airImg.onclick = function() {
+		if (airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air.png") {
+			console.log('열렸따!');
+			airImg.setAttribute('src',
+					"${pageContext.request.contextPath}/img/air2.png");
+		} else if (airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air2.png") {
+			console.log('닫혔따!');
+			airImg.src = "${pageContext.request.contextPath}/img/air.png";
+		}
 
-	 if(airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air.png") {
-		 console.log('열렸따!');
-	        airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
-	 }
-	 else if(airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air2.png"){
-		 	console.log('닫혔따!');
-	        airImg.src = "${pageContext.request.contextPath}/img/air.png";
-	 }
-
-
- }
-
+	}
 </script>
