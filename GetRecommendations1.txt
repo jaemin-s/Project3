@@ -1,0 +1,97 @@
+sad : 
+limit 10 
+market: KR
+seed_artists : 3MaRWfwKpbYnkYHC5gRKYo
+seed_genres: 슬픈
+seed_tracks: 7oT5JOWwxnwcZRI6NLzhWs
+
+happy
+limit 10 
+market: KR
+seed_artists : 4rxWm4OrS8IRQ3YxDUwnJA
+seed_genres: 행복 신남&ballad
+seed_tracks: 0UnOf7i44YK0ULpkEGHe4R
+min_popularity 60
+
+
+상큼한 발랄한
+limit 10 
+market: KR
+seed_artists : 2019zR22qK2RBvCqtudBaI
+seed_genres: 상큼한&K-POP
+seed_tracks: 3NfgdU9mbIVhcJF3XvC0c9
+min_popularity 60
+
+화창한 날 
+limit 10 
+market: KR
+seed_artists : 3HqSLMAZ3g3d5poNaI7GOU
+seed_genres: K-POP&화창한
+seed_tracks: 5xrtzzzikpG3BLbo4q1Yul
+min_energy 0
+max_energy 1
+min_popularity 60
+
+
+잔잔한
+limit 10 
+market: KR
+seed_artists : 7c1HgFDe8ogy5NOZ1ANCJQ
+seed_genres: 잔잔한&발라드
+seed_tracks: 2YduGtSyKz5Mizcc9mTeFC
+min_popularity 60
+
+
+눈 오는 날
+
+
+흐린날
+limit 10 
+market: KR
+seed_artists : 50Zu2bK9y5UAtD0jcqk5VX
+seed_genres: 우울한&발라드
+seed_tracks: 5xX7oEKHN0H9VOjezo2ZaA
+min_energy x
+max_energy x
+min_popularity 60
+
+
+
+불러볼까
+limit 10 
+market: KR
+seed_artists : 3MaRWfwKpbYnkYHC5gRKYo
+seed_genres: 인기있는
+seed_tracks: 7oT5JOWwxnwcZRI6NLzhWs
+min_energy x
+max_energy x
+min_popularity x
+
+
+인기많은
+
+limit 10 
+market: KR
+seed_artists : 4SpbR6yFEvexJuaBpgAU5p
+seed_genres: 인기 있는&K-POP
+seed_tracks: 51vRumtqbkNW9wrKfESwfu
+min_energy x
+max_energy x
+min_popularity 60
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
