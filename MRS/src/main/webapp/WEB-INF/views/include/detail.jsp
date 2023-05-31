@@ -38,19 +38,41 @@
 		<!-- 하단 댓글, playlist -->
 		<div class="co-pl">
 
-			<div class="comments">
-				<!-- 댓글 1개 이걸 forEach-->
-				<div class="people">
-					<div>닉네임</div>
-					<div>내용</div>
-				</div>
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-9 write-wrap">
+                <form class="reply-wrap">
+                    <!--form-control은 부트스트랩의 클래스입니다-->
+                    <div class="reply-content">
+                        <textarea class="form-control" rows="3" id="reply"></textarea>
+                        <div class="reply-group">
 
-				<div class="people">
-					<div>닉네임</div>
-					<div>내용</div>
-				</div>
+                            <button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
+                        </div>
 
-			</div>
+                    </div>
+                </form>
+
+                <!--여기에 접근 반복-->
+                <div id="replyList">
+
+                   <!--  자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.  -->
+                    <div class='reply-wrap'>
+                        <div class='reply-content'>
+                            <div class='reply-group'>
+                                <strong class='left'>honggildong</strong>
+                                <small class='left'>2019/12/10</small>
+                                <a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a>
+                                <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
+                            </div>
+                            <p class='clearfix'>여기는 댓글영역</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 			<div class="playList">
 

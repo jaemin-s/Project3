@@ -54,12 +54,7 @@
 		</ul>
 
 	</div>
-		<a href="/mrs/login" class="spotify-login-button">
-	<img src="${pageContext.request.contextPath}/img/Spotify_Icon_RGB_Black.png" alt="Spotify Logo" class="spotify-logo">
-	<span class="login-text">로그인</span>
-	</a>
-	<p>${message}</p>
-	<h3 id="test_text"></h3>
+
 
 <%@ include file="include/detail.jsp"%>
 </section>
