@@ -4,34 +4,21 @@
 <html>
 <head>
     <title>Spotify Web Playback SDK Quick Start</title>
-    <script src="https://sdk.scdn.co/spotify-player.js"></script>
-	<script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
 </head>
 <body>
     <h1>Spotify Web Playback SDK Quick Start</h1>
     <button id="togglePlay">Toggle Play</button>
-    <div id="embed-iframe"></div>
-    <div class="episodes">
-	<button class="episode" data-spotify-id="spotify:track:4Dr2hJ3EnVh2Aaot6fRwDO">
-	  IU blueming
-	</button>
-	<button class="episode" data-spotify-id="spotify:playlist:37i9dQZF1DXdVcYTitfRUu">
-	  드라이빙
-	</button>
-	<button id="test-btn">
-	  test-btn
-	</button>
-	<h1 id="test-h"></h1>
+    <button id="status">status</button>
+    <button id="reconnect">reconnect</button>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
-
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = '${accessToken}';
-            console.log(token);
-            const player = new Spotify.Player({
+    let player;
+      window.onSpotifyWebPlaybackSDKReady = () => {
+            const token = `${accessToken}`;
+            player = new Spotify.Player({
                 name: 'Web Playback SDK Quick Start Player',
                 getOAuthToken: cb => { cb(token); },
-                volume: 0.5,
-                enableMediaSession : true
+                volume: 0.5
             });
 
             // Ready
@@ -57,41 +44,28 @@
             });
 
             document.getElementById('togglePlay').onclick = function() {
-            	console.log("click");
               player.togglePlay();
             };
+            document.getElementById('status').onclick = function() {
+            	player.getCurrentState().then(state => {
+            	  console.log(state);
+           		  if (!state) {
+           		    console.error('User is not playing music through the Web Playback SDK');
+           		    return;
+           		  }
 
+           		  var current_track = state.track_window.current_track;
+           		  var next_track = state.track_window.next_tracks[0];
+
+           		  console.log('Currently Playing', current_track);
+           		  console.log('Playing Next', next_track);
+           		});
+            }
+			document.getElementById('reconnect').onclick = function(){
+				player.connect();
+			}
             player.connect();
-            
-            const baseUrl = "https://api.spotify.com/"; 
-            
         }
-        
-        window.onSpotifyIframeApiReady = (IFrameAPI) => {
-        	  //
-       	};
-        	
-       	window.onSpotifyIframeApiReady = (IFrameAPI) => {
-            const element = document.getElementById('embed-iframe');
-            const options = {
-              width: '400',
-              height: '200',
-              uri: 'spotify:episode:7makk4oTQel546B0PZlDM5'
-            };
-            const callback = (EmbedController) => {
-              document.querySelectorAll('.episode').forEach(
-                episode => {
-                  episode.addEventListener('click', () => {
-                    EmbedController.loadUri(episode.dataset.spotifyId)
-                  });
-                })
-            };
-            IFrameAPI.createController(element, options, callback);
-          };
-          
-          document.querySelector('#test-btn').addEventListener('click',()=>{
-        	 document.querySelector('#test-h').textContent = `${accessToken}`; 
-          });
     </script>
 </body>
 </html>
