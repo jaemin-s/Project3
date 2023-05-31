@@ -18,9 +18,10 @@
 	<button class="episode" data-spotify-id="spotify:playlist:37i9dQZF1DXdVcYTitfRUu">
 	  드라이빙
 	</button>
-	<button class="episode" data-spotify-id="spotify:search:비오는%20날:tracks">
-	  비오는 날 검색
+	<button id="test-btn">
+	  test-btn
 	</button>
+	<h1 id="test-h"></h1>
     <script>
 
         window.onSpotifyWebPlaybackSDKReady = () => {
@@ -87,6 +88,10 @@
             };
             IFrameAPI.createController(element, options, callback);
           };
+          
+          document.querySelector('#test-btn').addEventListener('click',()=>{
+        	 document.querySelector('#test-h').textContent = `${accessToken}`; 
+          });
     </script>
 </body>
 </html>
