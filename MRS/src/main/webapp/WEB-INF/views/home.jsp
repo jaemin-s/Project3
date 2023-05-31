@@ -58,27 +58,3 @@
 <%@ include file="include/detail.jsp"%>
 </section>
 
-<script>
-
-	document.getElementById('happy-btn').addEventListener('click',function(){
-		location.href ="${pageContext.request.contextPath}/rcmd/spotifyTest";
-	});
-	
-
-	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
-
-	var $airImg = document.getElementById("airImg");
-
-	$airImg.onclick = function() {
-		console.log("에어팟 이미지 클릭");
-		if($airImg.getAttribute("src", "${pageContext.request.contextPath }/img/air2.png")) {
-			$airImg.src = "${pageContext.request.contextPath }/img/air.png";
-		} else {
-			$airImg.src = "${pageContext.request.contextPath }/img/air2.png";
-		}
-	}
-
-
-</script>
-
-
