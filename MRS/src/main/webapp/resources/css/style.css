@@ -203,11 +203,17 @@ section.main .video-right {
     padding: 20px 0;
   }
   
+---------------------
+  
  .flextoggle{
 	display : flex;
 	flex-wrap : wrap;
 	width: 50%;
 }
+section.main .main-right .choose-img.flextoggle img{
+	width: 38%;
+}
+
 
 .flex-box{
 	display : flex;
@@ -215,9 +221,18 @@ section.main .video-right {
 #result-list{
 	background : green;
 	text-align : center;
+	width : 50%;
+	height : 720px;
+	position: sticky;
+	top: 20px;
 }
+.hidden{
+	display : none !important; 
+}
+
 #result-list tbody tr td{
 	height : 40px;
 	background-position : center;
 	background-size : 100%;
 	background-repeat : no-repeat;
+	vertical-align : middle;

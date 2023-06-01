@@ -49,7 +49,7 @@
 							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"
 							alt="#">
 					</div>
-					<table id="result-list">
+					<table id="result-list" class="hidden">
 						<thead>
 							<tr>
 								<th>앨범 커버</th>
@@ -74,6 +74,7 @@
 	
 	document.getElementById('choose-imgs').addEventListener('click',e=>{
 		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
+		document.querySelector('#result-list').classList.toggle('hidden');
 		fetch('https://api.spotify.com/v1/recommendations?limit=10&min_popularity=80&market=KR&seed_artists=4gzpq5DPGxSnKTe4SA8HAU&seed_genres=pop&seed_tracks=75JFxkI2RXiU7L9VXzMkle',
 				{
 			headers : {"Authorization" : `Bearer ${accessToken}`}
@@ -82,12 +83,6 @@
 				console.log(data);
 				[...document.querySelector('#result-list tbody').children].forEach(child => child.remove());
 				[...data.tracks].forEach(track => {
-					console.log(track.album.images[0].url);
-					let trackUrl =  track.album.images[0].url;
-					console.log(track.artists[0].id);
-					console.log(track.name);
-					console.log(track.id);
-					console.log(track.artists[0].name);
 					document.querySelector('#result-list tbody').insertAdjacentHTML('beforeend',
 							`<tr>
 								<td style="background-image: url('`+track.album.images[0].url+`')"></td>
