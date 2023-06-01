@@ -65,6 +65,9 @@
 		</ul>
 
 	</div>
+	<button id="test-btn">아이디 받아오기</button>
+	<button id="test-btn2">재생해보기</button>
+	<button id="test-btn3">재생중인 트랙확인</button>
 
 
 <%@ include file="include/detail.jsp"%>
@@ -99,6 +102,38 @@
 					e.target.parentNode.querySelector('.result-image').dataset.url);
 			
 		}
+	})
+	let dId ='';
+	document.getElementById('test-btn').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/devices',{
+			headers : {"Authorization" : `Bearer ${accessToken}`}
+		}).then(res=>res.json())
+		.then(data => {
+			console.log(data);
+			console.log(data.devices[0].id);
+			dId = data.devices[0].id;
+		});
+	})
+	
+	document.getElementById('test-btn2').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player',{
+			method : "put",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"	
+			},
+			data :{"device_ids" : [""+dId]}
+		}).then(console.log('put 전송완료'+dId));
+	})
+	
+	document.getElementById('test-btn3').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/currently-playing',{
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"	
+			}
+		}).then(res=>res.json())
+		.then(data => console.log(data));
 	})
 
 </script>
