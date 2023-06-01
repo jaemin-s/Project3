@@ -203,5 +203,21 @@ section.main .video-right {
     padding: 20px 0;
   }
   
-
+ .flextoggle{
+	display : flex;
+	flex-wrap : wrap;
+	width: 50%;
 }
+
+.flex-box{
+	display : flex;
+}
+#result-list{
+	background : green;
+	text-align : center;
+}
+#result-list tbody tr td{
+	height : 40px;
+	background-position : center;
+	background-size : 100%;
+	background-repeat : no-repeat;
