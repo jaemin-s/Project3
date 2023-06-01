@@ -85,12 +85,20 @@
 				[...data.tracks].forEach(track => {
 					document.querySelector('#result-list tbody').insertAdjacentHTML('beforeend',
 							`<tr>
-								<td style="background-image: url('`+track.album.images[0].url+`')"></td>
-								<td data-artists-id="`+track.artists[0].id+`">`+track.name+`</td>
-								<td data-track-id="`+track.id+`">`+track.artists[0].name+`</td>
+								<td class="result-image" data-url="`+track.album.images[0].url+`" style="background-image: url('`+track.album.images[0].url+`')"></td>
+								<td class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</td>
+								<td class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</td>
 							 </tr>`);
 				});
 			});
+	})
+	document.getElementById('result-list').addEventListener('click',e=>{
+		if(e.target.classList.contains('result-title')){
+			console.log(e.target);
+			document.querySelector('.detail-cover img').setAttribute('src',
+					e.target.parentNode.querySelector('.result-image').dataset.url);
+			
+		}
 	})
 
 </script>

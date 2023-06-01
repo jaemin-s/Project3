@@ -238,3 +238,8 @@ section.main .main-right .choose-img.flextoggle img{
 	background-size : 100%;
 	background-repeat : no-repeat;
 	vertical-align : middle;
+}
+
+.result-title,.result-artists {
+	cursor : pointer;
+}
