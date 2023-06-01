@@ -221,10 +221,12 @@ section.main .main-right .choose-img.flextoggle img{
 #result-list{
 	background : green;
 	text-align : center;
-	width : 50%;
+	width : 45%;
 	height : 720px;
 	position: sticky;
 	top: 20px;
+	margin-right : 5%;
+	
 }
 .hidden{
 	display : none !important; 
