@@ -1,245 +1,321 @@
-/* �궗�씠�뱶 css */
-
-/* �뒪�겕濡� �뾾�뒗 �럹�씠吏� �꽆�뼱媛�硫� �뒪�겕濡ㅻ컮 �겕湲곗젙�룄 �룧由щ뒗 �쁽�긽 �뾾�빊 */
+/* 기본 */
 body {
-  overflow-y: scroll;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-
+	overflow-y: scroll;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 img, a {
-  -webkit-user-drag: none;
+	-webkit-user-drag: none;
 }
 
-
+/* 사이드 시작 */
 .side {
-  width: 25%;
-  height: 100vh;
-  background: rgb(247 247 247);
-  position: sticky;
-  top:0px;
-  z-index: 10;
-  background-image: url("../img/animation.gif");
-  background-size: 260%;
-  background-position: -340px;
+	width: 25%;
+	height: 100vh;
+	background: rgb(247, 247, 247);
+	position: sticky;
+	top: 0px;
+	z-index: 10;
+	background-image: url("../img/animation.gif");
+	background-size: 260%;
+	background-position: -340px;
 }
 
-.side > div {
-  width: 80%;
-  margin: 10% auto;
+.side>div {
+	width: 80%;
+	margin: 10% auto;
 }
 
-/* 理쒖긽�떒 踰꾪듉�뱾 �떆�옉 */
+/* 사이드 선택사항 */
 .side .menu {
-  margin-top: 20%;
-  height: 35%;
-  /* background: orange; */
+	margin-top: 20%;
+	height: 35%;
+	/* background: orange; */
 }
 
 .side .menu a {
-  width: 100%;
-  height: 20%;
-  text-decoration: none;
-  font-weight: bolder;
-  font-size: 40px;
-  color: black;
-  display: block;
+	width: 100%;
+	height: 20%;
+	text-decoration: none;
+	font-weight: bolder;
+	font-size: 40px;
+	color: black;
+	display: block;
 }
 
-.spotify-login-button{
-  text-align:center;
-  margin-bottom: 120px;
+.spotify-login-button {
+	text-align: center;
+	margin-bottom: 120px;
 }
 
 .login-text {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .side h1 {
-  width: 100%;
-  display: flex;
-  height: 20%;
-  margin: 0 50% 5% 0;
-  font-weight: bolder;
-  font-size: 40px;
-  text-decoration: none;
-  color: black;
+	width: 100%;
+	display: flex;
+	height: 20%;
+	margin: 0 50% 5% 0;
+	font-weight: bolder;
+	font-size: 40px;
+	text-decoration: none;
+	color: black;
 }
 
 .side h3 {
 	font-weight: bolder;
-  font-size: 40px;
-  margin-bottom: 70px;
+	font-size: 40px;
+	margin-bottom: 70px;
 }
 
 .side .menu a:hover {
-  color: rgb(191, 23, 23);
+	color: rgb(191, 23, 23);
 }
 
-/* �뿉�뼱�뙚 �씠誘몄� */
+/* 사이드 에어팟 이미지 */
 .side .imgDiv {
-  width: 50%;
-  position: relative;
-  z-index: 2;
-  margin: 0 auto;
-
+	width: 50%;
+	position: relative;
+	z-index: 2;
+	margin: 90px auto;
 }
 
 .side img {
-  width: 100%;
+	width: 100%;
 }
 
-
-/* main�솕硫� css */
-
-section.main{
-width: 1700px;
-margin: 0 auto;
-display: flex;
-/* background: skyblue; */
+/* 메인페이지 */
+section.main {
+	width: 1700px;
+	margin: 0 auto;
+	display: flex;
+	/* background: skyblue; */
 }
 
 section.main .main-right {
-width: 75%;
-background: black;
-position:relative;
-display: block;
+	width: 75%;
+	background: black;
+	position: relative;
+	display: block;
 }
 
-/* 寃��깋 李� */
+/* 메인페이지 검색창 */
 section.main .main-right .search {
-color: white;
-font-size: 50px;
-margin-left: 70px;
-margin-top: 100px;
+	color: white;
+	font-size: 50px;
+	margin-left: 86px;
+	margin-top: 100px;
 }
 
-/* �슦痢� 濡쒓퀬 �씠誘몄� */
+/* 메인페이지 로고 */
 section.main .main-right .main-logo-img {
-width: 20%;
-  position: absolute;
-  left: 78%;
-  top: 80px;
+	width: 20%;
+	position: absolute;
+	left: 78%;
+	top: 80px;
 }
 
-section.main .main-right .main-logo-img img{
-width: 100%;
+section.main .main-right .main-logo-img img {
+	width: 100%;
 }
 
 /* them by feeling */
-section.main .main-right .choose-text{
-font-size: 70px;
-color: white;
-margin-left: 70px;
-margin-top: 60px;
+section.main .main-right .choose-text {
+	font-size: 70px;
+	color: white;
+	margin-left: 86px;
+	margin-top: 60px;
 }
 
-
-/* �쓬�븙 �뜑誘� �씠誘몄� */
+/* 메인 페이지 */
 section.main .main-right .choose-img {
-  width: 100%;
-  margin: 40px;
+	width: 100%;
+	margin: 40px;
 }
 
 section.main .main-right .choose-img img {
-  display: inline-flex;
-  margin-left: 32px;
-  margin-bottom: 40px;
-  border: 3px solid white;
-  border-radius: 30px;
-  width: 19%;
+	display: inline-flex;
+	margin-left: 48px;
+	margin-bottom: 40px;
+	border: 3px solid white;
+	border-radius: 30px;
+	width: 19%;
 }
 
 section.main .main-right .choose-img img:hover {
-    border: 3px solid rgb(191, 23, 23);
-  border-radius: 30px;
+	border: 3px solid rgb(191, 23, 23);
+	border-radius: 30px;
 }
 
-/* 鍮꾨뵒�삤 �럹�씠吏� */
-
+/* 댓글 페이지 */
 section.main .video-right {
-  width: 75%;
-  background: black;
-  position:relative;
-  display: none;
-  color: white;
-  }
-  
-  section.main .video-right .detail-ng {
-  	display: flex;
-  	background: skyblue;
-  	    width: 1179px;
-    margin: 100px auto 0;
-  }
-  
-
-  section.main .video-right .co-pl {
-    display: flex;
-    width: 1179px;
-    margin: 100px auto 0;
-  }
-
-  section.main .video-right .co-pl .comments {
-    width: 70%;
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
-    margin-right: 5%;
-    padding: 20px 0;
+	width: 75%;
+	background: black;
+	position: relative;
+	display: none;
+	color: white;
 }
 
-  section.main .video-right .co-pl .comments .people {
-    margin: 10px 0;
-  }
+section.main .video-right .detail-ng {
+	width: 70%;
+	margin: 100px auto 0;
+}
 
-  
-  section.main .video-right .co-pl .playList {
-    width: 25%;
-    text-align: center;
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
-    padding: 20px 0;
-  }
-  
----------------------
-  
- .flextoggle{
-	display : flex;
-	flex-wrap : wrap;
+section.main .video-right .detail-ng .detail-cover {
+	box-sizing:border-box;
+	border: 3px solid white;
+	width: 500px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+section.main .video-right .detail-ng img {
+	width: 100%;
+}
+
+
+section.main .video-right .co-pl {
+	margin: 100px auto 0;
+}
+
+/* 댓글페이지 댓글영역 */
+
+.video-right .co-pl .video-comment {
+	
+}
+
+.video-right .co-pl .video-comment .write-wrap {
+	
+}
+
+
+
+
+
+
+
+
+
+/* 메인페이지에 있는 list */
+ 
+.flextoggle {
+	display: flex;
+	flex-wrap: wrap;
 	width: 50%;
 }
-section.main .main-right .choose-img.flextoggle img{
+
+section.main .main-right .choose-img.flextoggle img {
 	width: 38%;
 }
 
-
-.flex-box{
-	display : flex;
+.flex-box {
+	display: flex;
 }
-#result-list{
-	background : green;
-	text-align : center;
-	width : 45%;
-	height : 720px;
+
+.flex-box #result-list {
+	color: white;
+	text-align: center;
+	width: 65%;
+	height: 800px;
 	position: sticky;
 	top: 20px;
-	margin-right : 5%;
-	
-}
-.hidden{
-	display : none !important; 
+	margin-right: 7%;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
 }
 
-#result-list tbody tr td{
-	height : 40px;
-	background-position : center;
-	background-size : 100%;
-	background-repeat : no-repeat;
-	vertical-align : middle;
+.flex-box #result-list thead tr th{
+	padding: 20 0;
 }
 
-.result-title,.result-artists {
-	cursor : pointer;
+
+.flex-box .hidden {
+	display: none !important;
+}
+
+.flex-box #result-list tbody tr .result-image {
+	width: 20%;
+}
+
+.flex-box #result-list tbody tr .result-title,
+.flex-box #result-list tbody tr .result-artists {
+	width: 40%;
+}
+
+.flex-box #result-list tbody tr td {
+	height: 40px;
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	text-overflow: ellipsis;
+
+}
+
+.flex-box .result-title:hover {
+	color: rgb(191, 23, 23);
+}
+
+.flex-box .result-title, .result-artists {
+	cursor: pointer;
+}
+
+/* 댓글페이지에 있는 리스트 */
+
+section.main .video-right .playList {
+	width: 25%;
+	text-align: center;
+	padding: 20px 0;
+}
+
+.playList #result-list {
+	color: white;
+	text-align: center;
+	width: 100%;
+	height: 800px;
+	position: sticky;
+	top: 20px;
+	margin-right: 7%;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.playList #result-list thead tr th{
+	padding: 20 0;
+}
+
+
+.playList .hidden {
+	display: block !important;
+}
+
+.playList #result-list tbody tr .result-image {
+	width: 20%;
+}
+
+.playList #result-list tbody tr .result-title,
+.playList #result-list tbody tr .result-artists {
+	width: 40%;
+}
+
+.playList #result-list tbody tr td {
+	height: 40px;
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+	text-overflow: ellipsis;
+
+}
+
+.playList .result-title:hover {
+	color: rgb(191, 23, 23);
+}
+
+.playList .result-title, .result-artists {
+	cursor: pointer;
 }

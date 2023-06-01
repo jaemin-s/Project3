@@ -79,6 +79,8 @@ window.onload = function() {
 				display_name = data.display_name;
 				display_email = data.email;
 				document.querySelector('.menu>h1').textContent = display_name + ' 님';
+				document.querySelector('.menu>h1').name = display_name;
+				console.log(document.querySelector('.menu>h1').name);
 			});
 	console.log(display_name);
 }

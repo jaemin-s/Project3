@@ -24,41 +24,32 @@
 				<div class="flex-box">
 					<div id="choose-imgs" class="choose-img">
 						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
+							src="${pageContext.request.contextPath }/img/행복한.png" alt="#">
 						<img data-keyword="sad" 
-							src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
+							src="${pageContext.request.contextPath }/img/불러볼래.png" alt="#">
 						<img data-keyword="rain" 
-							src="${pageContext.request.contextPath }/img/mood_4_Sad.png" alt="#">
+							src="${pageContext.request.contextPath }/img/사랑스러운.png" alt="#">
 						<img data-keyword="love" 
-							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"	alt="#">
+							src="${pageContext.request.contextPath }/img/상큼한.png"	alt="#">
 						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
+							src="${pageContext.request.contextPath }/img/슬픈.png" alt="#">
 						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
+							src="${pageContext.request.contextPath }/img/여행갈래.png" alt="#">
 						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/mood_4_Sad.png" alt="#">
+							src="${pageContext.request.contextPath }/img/외로운.png" alt="#">
 						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"	alt="#">
+							src="${pageContext.request.contextPath }/img/운동할떄.png" alt="#">
 						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
+							src="${pageContext.request.contextPath }/img/인기있는.png" alt="#">
 						<img id=""
-							src="${pageContext.request.contextPath }/img/mood_2_Hip.png"
+							src="${pageContext.request.contextPath }/img/잔잔한.png"
 							alt="#"> <img id=""
-							src="${pageContext.request.contextPath }/img/mood_4_Sad.png"
+							src="${pageContext.request.contextPath }/img/파티.png"
 							alt="#"> <img id=""
-							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"
+							src="${pageContext.request.contextPath }/img/화창한.png"
 							alt="#">
 					</div>
-					<table id="result-list" class="hidden">
-						<thead>
-							<tr>
-								<th>앨범 커버</th>
-								<th>곡명</th>
-								<th>가수</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
+					<%@ include file="include/list.jsp"%>
 				</div>
 
 			</li>
@@ -72,6 +63,9 @@
 
 <script type="text/javascript">
 	
+	let title = '';
+	let artist = '';
+	
 	document.getElementById('choose-imgs').addEventListener('click',e=>{
 		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
 		document.querySelector('#result-list').classList.toggle('hidden');
@@ -82,6 +76,7 @@
 			.then(data => {
 				console.log(data);
 				[...document.querySelector('#result-list tbody').children].forEach(child => child.remove());
+				[...document.querySelector('.playList .result-list tbody').children].forEach(child => child.remove());
 				[...data.tracks].forEach(track => {
 					document.querySelector('#result-list tbody').insertAdjacentHTML('beforeend',
 							`<tr>
@@ -89,16 +84,31 @@
 								<td class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</td>
 								<td class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</td>
 							 </tr>`);
+					
+					document.querySelector('.playList .result-list tbody').insertAdjacentHTML('beforeend',
+							`<tr>
+								<td class="result-image" data-url="`+track.album.images[0].url+`" style="background-image: url('`+track.album.images[0].url+`')"></td>
+								<td class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</td>
+								<td class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</td>
+							 </tr>`);
+					
 				});
 			});
 	})
-	document.getElementById('result-list').addEventListener('click',e=>{
-		if(e.target.classList.contains('result-title')){
-			console.log(e.target);
-			document.querySelector('.detail-cover img').setAttribute('src',
-					e.target.parentNode.querySelector('.result-image').dataset.url);
-			
-		}
-	})
+	
+	document.querySelectorAll('.result-list').forEach(list => {
+	    list.addEventListener('click', e => {
+	        if (e.target.classList.contains('result-title')) {
+	            console.log(e.target);
+	            /* 지목 안되는중 */
+				console.log(e.target.textContent);
+				console.log(e.target.nextSibling.textContent);
+	            document.querySelector('.detail-cover img').setAttribute('src',
+	                e.target.parentNode.querySelector('.result-image').dataset.url);
+				document.querySelector('.teamTitle').setAttribute('textContent',
+						(e.target.textContent) + " - " + (e.target.nextSibling.textContent));
+	        }
+	    });
+	});
 
 </script>

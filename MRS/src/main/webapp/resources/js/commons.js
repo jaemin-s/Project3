@@ -78,7 +78,7 @@
                 console.log("메인: " + $mainPage.style.dispaly);
                 console.log($videoPage.style.dispaly);
                 $mainPage.style.display = "none";
-                $videoPage.style.display = "block";
+                $videoPage.style.display = "flex";
             }
 			
            
