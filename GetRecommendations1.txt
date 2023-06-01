@@ -44,6 +44,16 @@ min_popularity 60
 
 눈 오는 날
 
+limit 10 
+market: KR
+seed_artists : 4iHNK0tOyZPYnBU7nGAgpQ
+seed_genres: WINTER&SNOW&CALROL
+seed_tracks: 0bYg9bo50gSsH3LtXe2SQn
+min_energy x
+max_energy x
+min_popularity X
+
+
 
 흐린날
 limit 10 
