@@ -65,7 +65,19 @@ seed_genres: 인기있는
 seed_tracks: 7oT5JOWwxnwcZRI6NLzhWs
 min_energy x
 max_energy x
-min_popularity x
+min_popularity 45
+
+
+불러볼까(추천)
+limit 10 
+market: KR
+seed_artists : 57YbQhFBBDksLzX08lqVnw
+seed_genres: 겨울
+seed_tracks: 7vnec3moFU8rMbHFUq9Ue7
+min_energy x
+max_energy x
+min_popularity 40
+
 
 
 인기많은
