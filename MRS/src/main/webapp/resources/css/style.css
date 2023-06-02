@@ -250,3 +250,7 @@ section.main .main-right .choose-img.flextoggle img{
 .result-title,.result-artists {
 	cursor : pointer;
 }
+
+ul.play-lists p{
+	font-size : 2px;
+}

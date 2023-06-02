@@ -23,23 +23,23 @@
 				<div class="choose-text">them by feeling</div> <!-- 추천 테이블 이미지 -->
 				<div class="flex">
 					<div id="choose-imgs" class="choose-img">
-						<img data-keyword="happy" 
+						<img data-keyword="happy"
 							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
-						<img data-keyword="sad" 
-							src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
-						<img data-keyword="rain" 
-							src="${pageContext.request.contextPath }/img/mood_4_Sad.png" alt="#">
-						<img data-keyword="love" 
-							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"	alt="#">
-						<img data-keyword="happy" 
+						<img data-keyword="sad"
+							src="${pageContext.request.contextPath }/img/mood_2_Hip.png"
+							alt="#"> <img data-keyword="rain"
+							src="${pageContext.request.contextPath }/img/mood_4_Sad.png"
+							alt="#"> <img data-keyword="love"
+							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"
+							alt="#"> <img data-keyword="happy"
 							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
-						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/mood_2_Hip.png" alt="#">
-						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/mood_4_Sad.png" alt="#">
-						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"	alt="#">
-						<img data-keyword="happy" 
+						<img data-keyword="happy"
+							src="${pageContext.request.contextPath }/img/mood_2_Hip.png"
+							alt="#"> <img data-keyword="happy"
+							src="${pageContext.request.contextPath }/img/mood_4_Sad.png"
+							alt="#"> <img data-keyword="happy"
+							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"
+							alt="#"> <img data-keyword="happy"
 							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
 						<img id=""
 							src="${pageContext.request.contextPath }/img/mood_2_Hip.png"
@@ -73,19 +73,35 @@
 		</ul>
 
 	</div>
-	<button id="test-btn">아이디 받아오기</button>
-	<button id="test-btn2">재생해보기</button>
-	<button id="test-btn3">재생중인 트랙확인</button>
-	<button id="test-btn4">재생시작</button>
-	<button id="test-btn5">곡 추가</button>
-	<button id="test-btn51">곡 추가</button>
-	<button id="test-btn52">곡 추가</button>
-	<button id="test-btn53">곡 추가</button>
-	<button id="test-btn6">다음 곡</button>
-	<button id="togglePlay">Toggle Play</button>
+<!-- 	<section id="controller">
+		<div class="display">
+			<div class="flex">
+				<div class="image">
+					<img src="">
+				</div>
+				<div class="title"></div>
+				<div class="artists"></div>
+			</div>
+			<ul class="play-lists">
 
+			</ul>
+		</div>
+		<div class="btns">
+			<button id="test-btn" class="hidden">아이디 받아오기</button>
+			<button id="test-btn2">재생해보기</button>
+			<button id="test-btn3">재생중인 트랙확인</button>
+			<button id="test-btn31">재생중인 리스트확인</button>
+			<button id="test-btn5">곡 추가</button>
+			<button id="test-btn51">곡 추가</button>
+			<button id="test-btn52">곡 추가</button>
+			<button id="test-btn53">곡 추가</button>
+			<button id="previousTrack">이전 곡</button>
+			<button id="nextTrack">다음 곡</button>
+			<button id="togglePlay">Play</button>
+		</div>
+	</section> -->
 
-<%@ include file="include/detail.jsp"%>
+	<%@ include file="include/detail.jsp"%>
 </section>
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script type="text/javascript">
@@ -104,8 +120,8 @@
 					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
 							`<li class="flex">
 								<div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-								<div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-								<div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+								<div class="result-title" data-track-id="`+track.id+`">`+track.name+`</div>
+								<div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
 							 </li>`);
 				});
 			});
@@ -118,115 +134,5 @@
 			
 		}
 	})
-	let dId ='';
-	document.getElementById('test-btn').addEventListener('click',e=>{
-		fetch('https://api.spotify.com/v1/me/player/devices',{
-			headers : {"Authorization" : `Bearer ${accessToken}`}
-		}).then(res=>res.json())
-		.then(data => {
-			console.log(data);
-			console.log(data.devices[0].id);
-			dId = data.devices[0].id;
-		});
-	})
 	
-	document.getElementById('test-btn2').addEventListener('click',e=>{
-		fetch('https://api.spotify.com/v1/me/player',{
-			method : "put",
-			headers : {
-				"Authorization" : `Bearer ${accessToken}`,
-				"Content-Type" : "application/json"
-			},
-			body : JSON.stringify({"device_ids" : [dId]})
-		}).then(console.log('put 전송완료'+[dId]));
-	});
-	
-	 document.getElementById('test-btn3').addEventListener('click',e=>{
-		fetch('https://api.spotify.com/v1/me/player/currently-playing',{
-			headers : {
-				"Authorization" : `Bearer ${accessToken}`,
-			}
-		}).then(res=>console.log(res));
-		//.then(data => console.log(data));
-	})
-	
-	document.getElementById('test-btn4').addEventListener('click',e=>{
-		fetch('https://api.spotify.com/v1/me/player/play',{
-			method : "put",
-			headers : {
-				"Authorization" : `Bearer ${accessToken}`,
-				"Content-Type" : "application/json"
-			},
-			body : JSON.stringify({
-				"uris" : ["spotify:track:4Dr2hJ3EnVh2Aaot6fRwDO"]
-			})
-		}).then(console.log('put 전송완료'+[dId]));
-	});
-	 
-	 document.getElementById('test-btn5').addEventListener('click',e=>{
-			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4Dr2hJ3EnVh2Aaot6fRwDO',{
-				method : "post",
-				headers : {
-					"Authorization" : `Bearer ${accessToken}`,
-				}
-			}).then(console.log('post 전송완료'));
-		});
-	 document.getElementById('test-btn51').addEventListener('click',e=>{
-			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4IJsVXbSeGPUrgwpVoHmlg',{
-				method : "post",
-				headers : {
-					"Authorization" : `Bearer ${accessToken}`,
-				}
-			}).then(console.log('post 전송완료'));
-		});
-	 document.getElementById('test-btn52').addEventListener('click',e=>{
-			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:5aHwYjiSGgJAxy10mBMlDT',{
-				method : "post",
-				headers : {
-					"Authorization" : `Bearer ${accessToken}`,
-				}
-			}).then(console.log('post 전송완료'));
-		});
-	 document.getElementById('test-btn53').addEventListener('click',e=>{
-			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4Dr2hJ3EnVh2Aaot6fRwDO',{
-				method : "post",
-				headers : {
-					"Authorization" : `Bearer ${accessToken}`,
-				}
-			}).then(console.log('post 전송완료'));
-		});
-	 
-	 document.getElementById('test-btn6').addEventListener('click',e=>{
-			fetch('https://api.spotify.com/v1/me/player/next',{
-				method : "post",
-				headers : {
-					"Authorization" : `Bearer ${accessToken}`,
-				}
-			}).then(console.log('post 전송완료'));
-		});
-	 
-	window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = `${accessToken}`;
-            player = new Spotify.Player({
-                name: 'Web Playback SDK Quick Start Player',
-                getOAuthToken: cb => { cb(token); },
-                volume: 0.5
-            });
-
-            // Ready
-            player.addListener('ready', ({ device_id }) => {
-                console.log('Ready with Device ID', device_id);
-            });
-
-            // Not Ready
-            player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
-            });
-            
-            player.connect();
-            
-            document.getElementById('togglePlay').onclick = function() {
-            	  player.togglePlay();
-            	};
-	}
 </script>
