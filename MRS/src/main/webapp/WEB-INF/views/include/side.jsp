@@ -36,7 +36,6 @@
 						<img src="${pageContext.request.contextPath}/img/Spotify_Logo_RGB_Black.png" alt="Spotify Logo" class="spotify-logo"> 
 						<span class="login-text">로그인</span>
 					</a>
-					<p>${message} ${accessToken}</p>
 					<h3 id="test_text"></h3>
 				</div>
 			</c:if>
@@ -88,9 +87,13 @@ window.onload = function() {
 	
 	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
 
-	var $airImg = document.getElementById("airImg");
+	const $airImg = document.getElementById("airImg");
 
 	$airImg.onclick = function() {
+		if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
+        	alert('노래를 먼저 선택해주세요');
+			return;
+        }
 
 		if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air.png") {
 			console.log('열렸따!');
@@ -102,4 +105,8 @@ window.onload = function() {
 		}
 
 	}
+	
+	
+	
+	
 </script>

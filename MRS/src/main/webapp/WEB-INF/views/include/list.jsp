@@ -2,14 +2,11 @@
     pageEncoding="UTF-8"%>
 
     
-	    				<table id="result-list" class="hidden result-list">
-		    				
-							<thead>
-								<tr>
-									<th>앨범 커버</th>
-									<th>곡명</th>
-									<th>가수</th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>
+	    				<div id="result-list" class="hidden result-list">
+                        <div class="list-head flex">
+                            <div class="result-image">앨범 커버</div>
+                            <div class="result-title">곡명</div>
+                            <div class="result-artists">가수</div>
+                        </div>
+                        <ul class="list-body"></ul>
+                    </div>

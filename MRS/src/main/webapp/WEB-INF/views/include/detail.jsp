@@ -22,25 +22,31 @@
 
 	<div class="video-right" id="video-right">
 
-		<!-- 이미지 -->
+		<!-- 이미지, 댓글칸 -->
 		<div class="detail-ng">
 			<!-- 이미지 -->
 			<div class="detail-cover">
-				<img alt="" src="">
+				<img class="cover-img" alt="" src="">
 			</div>
 			<!-- 가수명, 팀명 -->
 			<div class="teamTitle">
 				
 			</div>
-				<!-- 댓글 -->
-				<div class="video-comment">
-					
-				</div>
+			
+			<!-- 댓글작성칸 -->
+			<div class="video-comment">
+					<textarea placeholder="댓글 추가..." spellcheck="false"></textarea>
+					<button class="commentbtn">등록</button>
+			</div>
+
+			<!-- 저장 댓글 보여주는 칸 -->
+			<div class="commentList">
+
+			</div>
 
 		</div>
 
-		<!-- 하단 댓글, playlist -->
-
+		<!-- playlist -->
 
 		<div class="playList">
 

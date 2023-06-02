@@ -64,19 +64,20 @@
             const $videoBtn = document.querySelector(".videoBtn");
             const $mainPage = document.getElementById("main-right");
             const $videoPage = document.getElementById("video-right");
+            const $videoImg = document.querySelector(".cover-img");
 
             $mainBtn.onclick = function() {
                 console.log("메인페이지 클릭");
-                console.log("메인: " + $mainPage.style.dispaly);
-                console.log($videoPage.style.dispaly);
                 $mainPage.style.display = "block";
                 $videoPage.style.display = "none";
             }
 
             $videoBtn.onclick = function() {
                 console.log("비디오페이지 클릭");
-                console.log("메인: " + $mainPage.style.dispaly);
-                console.log($videoPage.style.dispaly);
+                if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
+                	alert('노래를 먼저 선택해주세요');
+					return;
+                }
                 $mainPage.style.display = "none";
                 $videoPage.style.display = "flex";
             }
