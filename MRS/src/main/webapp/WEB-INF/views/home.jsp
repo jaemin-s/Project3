@@ -49,16 +49,7 @@
 							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"
 							alt="#">
 					</div>
-					<!-- <table id="result-list" class="hidden">
-						<thead>
-							<tr>
-								<th>앨범 커버</th>
-								<th>곡명</th>
-								<th>가수</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table> -->
+
 					<div id="result-list" class="hidden">
 						<div class="list-head flex">
 							<div class="result-image">앨범 커버</div>
@@ -73,33 +64,6 @@
 		</ul>
 
 	</div>
-<!-- 	<section id="controller">
-		<div class="display">
-			<div class="flex">
-				<div class="image">
-					<img src="">
-				</div>
-				<div class="title"></div>
-				<div class="artists"></div>
-			</div>
-			<ul class="play-lists">
-
-			</ul>
-		</div>
-		<div class="btns">
-			<button id="test-btn" class="hidden">아이디 받아오기</button>
-			<button id="test-btn2">재생해보기</button>
-			<button id="test-btn3">재생중인 트랙확인</button>
-			<button id="test-btn31">재생중인 리스트확인</button>
-			<button id="test-btn5">곡 추가</button>
-			<button id="test-btn51">곡 추가</button>
-			<button id="test-btn52">곡 추가</button>
-			<button id="test-btn53">곡 추가</button>
-			<button id="previousTrack">이전 곡</button>
-			<button id="nextTrack">다음 곡</button>
-			<button id="togglePlay">Play</button>
-		</div>
-	</section> -->
 
 	<%@ include file="include/detail.jsp"%>
 </section>
