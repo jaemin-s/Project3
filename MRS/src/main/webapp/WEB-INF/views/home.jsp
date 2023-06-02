@@ -21,7 +21,7 @@
 			<li class="choose">
 				<!-- 추천 테이블 -->
 				<div class="choose-text">them by feeling</div> <!-- 추천 테이블 이미지 -->
-				<div class="flex-box">
+				<div class="flex">
 					<div id="choose-imgs" class="choose-img">
 						<img data-keyword="happy" 
 							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
@@ -49,7 +49,7 @@
 							src="${pageContext.request.contextPath }/img/mood_1_NowHot.png"
 							alt="#">
 					</div>
-					<table id="result-list" class="hidden">
+					<!-- <table id="result-list" class="hidden">
 						<thead>
 							<tr>
 								<th>앨범 커버</th>
@@ -58,7 +58,15 @@
 							</tr>
 						</thead>
 						<tbody></tbody>
-					</table>
+					</table> -->
+					<div id="result-list" class="hidden">
+						<div class="list-head flex">
+							<div class="result-image">앨범 커버</div>
+							<div class="result-title">곡명</div>
+							<div class="result-artists">가수</div>
+						</div>
+						<ul class="list-body"></ul>
+					</div>
 				</div>
 
 			</li>
@@ -91,14 +99,14 @@
 			}).then(res => res.json())
 			.then(data => {
 				console.log(data);
-				[...document.querySelector('#result-list tbody').children].forEach(child => child.remove());
+				[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
 				[...data.tracks].forEach(track => {
-					document.querySelector('#result-list tbody').insertAdjacentHTML('beforeend',
-							`<tr>
-								<td class="result-image" data-url="`+track.album.images[0].url+`" style="background-image: url('`+track.album.images[0].url+`')"></td>
-								<td class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</td>
-								<td class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</td>
-							 </tr>`);
+					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
+							`<li class="flex">
+								<div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
+								<div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
+								<div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+							 </li>`);
 				});
 			});
 	})
