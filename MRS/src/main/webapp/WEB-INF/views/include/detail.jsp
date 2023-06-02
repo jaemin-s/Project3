@@ -88,36 +88,41 @@
 	</div>
 	
 <script>
-	window.onload = function() {
+	
+		
         document.getElementById('replyRegist').onclick = () => {
             
-            const playno = '${article.bno}'; //플레이 재생변화에 따른 곡 번호
+            /* const playno = '${article.bno}'; */ //플레이 재생변화에 따른 곡 번호
             const reply = document.getElementById('reply').value;
-
-        }
-
-        //요청에 관련된 정보 객체
+			if(reply===''){
+            alert('댓글 내용을 입력하세요!');
+            return;
+			}
+        
+      //요청에 관련된 정보 객체
         const reqObj = {
-                method: 'post',
+                method: 'POST',
                 headers: {
                     'Content-Type':'application/json'
                 },
                 body: JSON.stringify(
                     {
-                    'playno' : playno,
-                    'reply' : reply
+                    /* 'playno' : playno, */
+                    'replyContent' : reply
                 }
                 )
             };
 
-            fetch('${pageContext.request.contextPath}/reply/regist',reqObj)
+            fetch('${pageContext.request.contextPath}/regist',reqObj)
                 .then(res => res.text())
                     .then(data =>{
                             console.log('통신 성공!: ' + data);
-
+							
                     })
+        
+        }
 
 
-}   
+
 
 </script>	

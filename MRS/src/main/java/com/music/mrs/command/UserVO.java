@@ -6,6 +6,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+/*
+ *  CREATE TABLE user (
+	email VARCHAR(250) primary key,
+	display_name VARCHAR(250) NOT NULL    
+);
+ * 
+ */
+
+
 @Getter
 @Setter
 @ToString

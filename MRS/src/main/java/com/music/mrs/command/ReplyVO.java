@@ -25,8 +25,9 @@ public class ReplyVO {
    
    
    
-   private int reply_no;
-   private String reply_content;
+   
+   private String replyContent;
+   
    private LocalDateTime regDate;
    
    

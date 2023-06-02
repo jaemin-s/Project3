@@ -7,7 +7,7 @@
 
     <insert id="insert">
     
-        INSERT INTO users
+        INSERT IGNORE INTO user
         (display_name, email)
         VALUES
         (#{displayName}, #{email})
