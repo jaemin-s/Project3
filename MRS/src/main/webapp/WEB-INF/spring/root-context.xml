@@ -29,4 +29,5 @@
 	</bean>
 	
 	<mybatis-spring:scan base-package="com.music.mrs.rcmd.mapper"/>
+	<mybatis-spring:scan base-package="com.music.mrs.user.mapper"/>
 </beans>

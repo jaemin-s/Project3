@@ -103,8 +103,32 @@ window.onload = function() {
 				display_name = data.display_name;
 				display_email = data.email;
 				document.querySelector('.menu>h1').textContent = display_name + ' 님';
+				
+		if(display_name != null && display_email != null ){
+			
+			console.log('테스트 중' + display_name);
+			console.log('테스트 중' + display_email);
+			
+			const data = {
+					  display_name: display_name,
+					  display_email: display_email
+					};
+
+					const jsonData = JSON.stringify(data);
+
+					fetch('${pageContext.request.contextPath}/userinfo', {
+					  method: 'POST',
+					  headers: {
+					    'Content-Type': 'application/json'
+					  },
+					  body: jsonData
+					})
+			
+		}
+				
 			});
-	console.log(display_name);
+	/* console.log(display_name); */
+	
 }
 
 	

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,10 +57,10 @@
 
                 <!--여기에 접근 반복-->
                 <div id="replyList">
-
+				
                    <!--  자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.  -->
-                    <div class='reply-wrap'>
-                        <div class='reply-content'>
+                    <!-- <div class='reply-wrap'>
+                         <div class='reply-content'>
                             <div class='reply-group'>
                                 <strong class='left'>honggildong</strong>
                                 <small class='left'>2019/12/10</small>
@@ -66,8 +68,8 @@
                                 <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
                             </div>
                             <p class='clearfix'>여기는 댓글영역</p>
-                        </div>
-                    </div>
+                        </div> 
+                    </div> -->
 
                 </div>
             </div>
@@ -84,3 +86,38 @@
 		</div>
 
 	</div>
+	
+<script>
+	window.onload = function() {
+        document.getElementById('replyRegist').onclick = () => {
+            
+            const playno = '${article.bno}'; //플레이 재생변화에 따른 곡 번호
+            const reply = document.getElementById('reply').value;
+
+        }
+
+        //요청에 관련된 정보 객체
+        const reqObj = {
+                method: 'post',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                    'playno' : playno,
+                    'reply' : reply
+                }
+                )
+            };
+
+            fetch('${pageContext.request.contextPath}/reply/regist',reqObj)
+                .then(res => res.text())
+                    .then(data =>{
+                            console.log('통신 성공!: ' + data);
+
+                    })
+
+
+}   
+
+</script>	
