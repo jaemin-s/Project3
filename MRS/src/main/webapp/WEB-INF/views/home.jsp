@@ -55,16 +55,19 @@
 		</ul>
 
 	</div>
-	<button id="test-btn">아이디 받아오기</button>
-	<button id="test-btn2">재생해보기</button>
-	<button id="test-btn3">재생중인 트랙확인</button>
-	<button id="test-btn4">재생시작</button>
-	<button id="test-btn5">곡 추가</button>
-	<button id="test-btn51">곡 추가</button>
-	<button id="test-btn52">곡 추가</button>
-	<button id="test-btn53">곡 추가</button>
-	<button id="test-btn6">다음 곡</button>
-	<button id="togglePlay">Toggle Play</button>
+	
+	<div class="test-button">
+		<button id="test-btn">아이디 받아오기</button>
+		<button id="test-btn2">재생해보기</button>
+		<button id="test-btn3">재생중인 트랙확인</button>
+		<button id="test-btn4">재생시작</button>
+		<button id="test-btn5">곡 추가</button>
+		<button id="test-btn51">곡 추가</button>
+		<button id="test-btn52">곡 추가</button>
+		<button id="test-btn53">곡 추가</button>
+		<button id="test-btn6">다음 곡</button>
+		<button id="togglePlay">Toggle Play</button>
+	</div>
 
 
 <%@ include file="include/detail.jsp"%>

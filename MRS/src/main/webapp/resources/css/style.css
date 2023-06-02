@@ -352,3 +352,8 @@ section.main .video-right .playList {
 .playList .result-title:hover {
 	color: rgb(191, 23, 23);
 }
+
+.test-button {
+	position: absolute;
+	right: 10px;
+}

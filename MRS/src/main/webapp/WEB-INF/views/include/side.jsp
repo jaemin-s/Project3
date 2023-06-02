@@ -62,28 +62,42 @@
 <script>
 
 const $testCl = document.querySelector(".testCl");
+let tokenChe = 1;
 
 window.onload = function() {
-	let display_name = '';
-	let display_email = '';
-	/* 닉네임 받아와서 사용 */
-		fetch('https://api.spotify.com/v1/me',
-				{
-			headers : {"Authorization" : `Bearer ${accessToken}`}
-			}).then(res => res.json())
-			.then(data => {
-				console.log(data);
-				console.log(data.display_name);
-				console.log(data.email);
-				display_name = data.display_name;
-				display_email = data.email;
-				document.querySelector('.menu>h1').textContent = display_name + ' 님';
-				document.querySelector('.menu>h1').name = display_name;
-				console.log(document.querySelector('.menu>h1').name);
-			});
-	console.log(display_name);
+	let myAccessToken = `${accessToken}`;
+	if(myAccessToken != ``) {
+		let display_name = '';
+		let display_email = '';
+		/* 닉네임 받아와서 사용 */
+			fetch('https://api.spotify.com/v1/me', {headers : {"Authorization" : `Bearer ${accessToken}`}})
+				.then(res => res.json())
+				.then(data => {
+					console.log(data);
+					console.log(data.display_name);
+					console.log(data.email);
+					display_name = data.display_name;
+					display_email = data.email;
+					document.querySelector('.menu>h1').textContent = display_name + ' 님';
+					document.querySelector('.menu>h1').name = display_name;
+					console.log(document.querySelector('.menu>h1').name);
+					tokenChe =2;
+				});
+	}
 }
 
+	/* 로그인 안하고 다른거 눌렀을 시 */
+	const $main = document.querySelector(".main");
+	
+	$main.onclick = function(e) {
+		console.log(e.target.parentNode);
+		if(!e.target.parentNode.classList.contains('spotify-login-button')) {
+			if(tokenChe == 1) {
+				alert('로그인은 필수 입니다.');
+				return location.href="${pageContext.request.contextPath }/login";
+			}
+		}
+	}
 	
 	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
 
@@ -103,10 +117,14 @@ window.onload = function() {
 			console.log('닫혔따!');
 			$airImg.src = "${pageContext.request.contextPath}/img/air.png";
 		}
-
 	}
 	
-	
+	if(tokenChe == 2) {
+		const $logOut = document.querySelector(".logOut");
+		$logOut.onclick = function() {
+			tokenChe = 1;
+		}
+	}
 	
 	
 </script>
