@@ -17,7 +17,8 @@ public class ReplyController {
 	//댓글 등록
 	@PostMapping("/regist")
 	public String replyRegist(@RequestBody ReplyVO vo){
-		service.replyRegist(vo);
+		System.out.println("vo:"+vo);
+		//service.replyRegist(vo);
 		return "regSuccess";
 	}
 	

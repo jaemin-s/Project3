@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.music.mrs.command.UserVO;
 import com.music.mrs.user.service.IUserService;
@@ -13,7 +14,7 @@ import com.music.mrs.user.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller
+@RestController
 public class UserinfoController {
 
 	@Autowired
