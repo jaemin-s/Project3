@@ -3,8 +3,11 @@ package com.music.mrs.reply.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.music.mrs.command.ReplyVO;
 
+@Service
 public class ReplyService implements IReplyService {
 
 	@Override
