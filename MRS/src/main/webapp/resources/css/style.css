@@ -81,7 +81,7 @@ img, a {
 	width: 50%;
 	position: relative;
 	z-index: 2;
-	margin: 90px auto;
+	margin: 90px auto 0;
 }
 
 .side img {
@@ -362,4 +362,13 @@ section.main .video-right .playList {
 
 ul.play-lists p{
 	font-size : 2px;
+}
+
+#controller .image{ 
+	width : 50px;
+	height : 50px;
+}
+
+ul.play-lists li{
+	display : inline-block;
 }

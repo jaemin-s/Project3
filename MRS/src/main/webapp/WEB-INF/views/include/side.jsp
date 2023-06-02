@@ -59,7 +59,7 @@
 		<div class="display">
 			<div class="flex">
 				<div class="image">
-					<img src="${pageContext.request.contextPath }/img/air.png" style="display:none">
+					<img>
 				</div>
 				<div class="title"></div>
 				<div class="artists"></div>
