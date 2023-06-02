@@ -236,8 +236,11 @@ section.main .main-right .choose-img.flextoggle img {
 }
 
 .flex-box {
-	display: flex;
-	
+	display : flex;
+}
+
+.flex-box .hidden {
+	display: none !important;
 }
 
 .flex-box #result-list {
@@ -353,7 +356,10 @@ section.main .video-right .playList {
 	color: rgb(191, 23, 23);
 }
 
-.test-button {
-	position: absolute;
-	right: 10px;
+.result-title,.result-artists {
+	cursor : pointer;
+}
+
+ul.play-lists p{
+	font-size : 2px;
 }

@@ -82,7 +82,7 @@ public class SpotifyAuthController {
 	@GetMapping("/logOut")
 	public String logOut(HttpSession session) {
 		session.invalidate();
-		return "redirect: http://localhost/mrs/";
+		return "redirect: http://localhost:8181/mrs/";
 	}
 
 	@GetMapping("/callback")
