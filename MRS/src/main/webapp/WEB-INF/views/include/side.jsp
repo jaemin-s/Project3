@@ -108,7 +108,7 @@ let tokenChe = 1;
 					console.log(document.querySelector('.menu>h1').name);
 					tokenChe =2;
 				});
-	}
+		}
 	}
 	/* 로그인 안하고 다른거 눌렀을 시 */
 /* 	const $main = document.querySelector(".main");
@@ -149,6 +149,7 @@ let tokenChe = 1;
 		}
 
 	
+	//device 받아오기		
 	let dId ='';
 	document.getElementById('test-btn').addEventListener('click',e=>{
 		fetch('https://api.spotify.com/v1/me/player/devices',{
@@ -261,10 +262,14 @@ let tokenChe = 1;
            		//현재 곡 출력
            		document.querySelector('#controller .image img').src =
     				current_track.album.images[1].url;
+           		document.querySelector('img.cover-img').src = 
+    				current_track.album.images[0].url;
     			document.querySelector('#controller .title').textContent =
     				current_track.name;
     			document.querySelector('#controller .artists').textContent =
     				current_track.artists[0].name;
+    			document.querySelector('.teamTitle').textContent =
+    				current_track.name + " - " + current_track.artists[0].name;
     			
     			getList();
     			

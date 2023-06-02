@@ -143,30 +143,28 @@
 					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-                            <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+                            <div class="result-title" data-track-id="`+track.id+`">`+track.name+`</div>
+                            <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
                          </li>`);
 					
 					document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-                            <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+                            <div class="result-title" data-track-id="`+track.id+`">`+track.name+`</div>
+                            <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
                          </li>`);
 					
 				});
 			});
 
-	
-	document.querySelectorAll('.result-list').forEach(list => {
-	    list.addEventListener('click', e => {
-	        if (e.target.classList.contains('result-title')) {
-	            document.querySelector('.cover-img').setAttribute('src',
-	                e.target.parentNode.querySelector('.result-image').dataset.url);
-				document.querySelector('.teamTitle').textContent = (e.target.textContent) + " - " + (e.target.parentNode.querySelector('.result-artists').textContent);
-	        }
-	    });
+	});//이미지 클릭 끝
+	document.querySelector('ul.list-body').addEventListener('click',e=>{
+		console.log('결과 리스트 클릭');
+		console.log(e.target);
+		if(e.target.classList.contains('result-title')){
+			console.log('제목 클릭 확인');
+			console.log(e.target.dataset.trackId);
+		}
 	});
-	})
 	
 </script>
