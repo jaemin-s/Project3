@@ -55,11 +55,21 @@
 		</ul>
 
 	</div>
+	<button id="test-btn">아이디 받아오기</button>
+	<button id="test-btn2">재생해보기</button>
+	<button id="test-btn3">재생중인 트랙확인</button>
+	<button id="test-btn4">재생시작</button>
+	<button id="test-btn5">곡 추가</button>
+	<button id="test-btn51">곡 추가</button>
+	<button id="test-btn52">곡 추가</button>
+	<button id="test-btn53">곡 추가</button>
+	<button id="test-btn6">다음 곡</button>
+	<button id="togglePlay">Toggle Play</button>
 
 
 <%@ include file="include/detail.jsp"%>
 </section>
-
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script type="text/javascript">
 	
 	let title = '';
@@ -169,4 +179,116 @@
 	    });
 	});
 
+	
+	let dId ='';
+	document.getElementById('test-btn').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/devices',{
+			headers : {"Authorization" : `Bearer ${accessToken}`}
+		}).then(res=>res.json())
+		.then(data => {
+			console.log(data);
+			console.log(data.devices[0].id);
+			dId = data.devices[0].id;
+		});
+	})
+	
+	document.getElementById('test-btn2').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player',{
+			method : "put",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			},
+			body : JSON.stringify({"device_ids" : [dId]})
+		}).then(console.log('put 전송완료'+[dId]));
+	});
+	
+	 document.getElementById('test-btn3').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/currently-playing',{
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+			}
+		}).then(res=>console.log(res));
+		//.then(data => console.log(data));
+	})
+	
+	document.getElementById('test-btn4').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/play',{
+			method : "put",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			},
+			body : JSON.stringify({
+				"uris" : ["spotify:track:4Dr2hJ3EnVh2Aaot6fRwDO"]
+			})
+		}).then(console.log('put 전송완료'+[dId]));
+	});
+	 
+	 document.getElementById('test-btn5').addEventListener('click',e=>{
+			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4Dr2hJ3EnVh2Aaot6fRwDO',{
+				method : "post",
+				headers : {
+					"Authorization" : `Bearer ${accessToken}`,
+				}
+			}).then(console.log('post 전송완료'));
+		});
+	 document.getElementById('test-btn51').addEventListener('click',e=>{
+			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4IJsVXbSeGPUrgwpVoHmlg',{
+				method : "post",
+				headers : {
+					"Authorization" : `Bearer ${accessToken}`,
+				}
+			}).then(console.log('post 전송완료'));
+		});
+	 document.getElementById('test-btn52').addEventListener('click',e=>{
+			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:5aHwYjiSGgJAxy10mBMlDT',{
+				method : "post",
+				headers : {
+					"Authorization" : `Bearer ${accessToken}`,
+				}
+			}).then(console.log('post 전송완료'));
+		});
+	 document.getElementById('test-btn53').addEventListener('click',e=>{
+			fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4Dr2hJ3EnVh2Aaot6fRwDO',{
+				method : "post",
+				headers : {
+					"Authorization" : `Bearer ${accessToken}`,
+				}
+			}).then(console.log('post 전송완료'));
+		});
+	 
+	 document.getElementById('test-btn6').addEventListener('click',e=>{
+			fetch('https://api.spotify.com/v1/me/player/next',{
+				method : "post",
+				headers : {
+					"Authorization" : `Bearer ${accessToken}`,
+				}
+			}).then(console.log('post 전송완료'));
+		});
+	 
+	window.onSpotifyWebPlaybackSDKReady = () => {
+            const token = `${accessToken}`;
+            player = new Spotify.Player({
+                name: 'Web Playback SDK Quick Start Player',
+                getOAuthToken: cb => { cb(token); },
+                volume: 0.5
+            });
+
+            // Ready
+            player.addListener('ready', ({ device_id }) => {
+                console.log('Ready with Device ID', device_id);
+            });
+
+            // Not Ready
+            player.addListener('not_ready', ({ device_id }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
+            
+            player.connect();
+            
+            document.getElementById('togglePlay').onclick = function() {
+            	  player.togglePlay();
+            	};
+	}
 </script>
