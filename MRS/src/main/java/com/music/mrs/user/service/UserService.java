@@ -13,9 +13,9 @@ public class UserService implements IUserService {
     private IUserMapper mapper;
 	
 	@Override
-	public void insert(UserVO data) {
+	public void userinfo(UserVO data) {
 		
-		mapper.insert(data);
+		mapper.userinfo(data);
 	}
 
 }

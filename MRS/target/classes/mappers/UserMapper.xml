@@ -5,9 +5,9 @@
 
 <mapper namespace="com.music.mrs.user.mapper.IUserMapper">
 
-    <insert id="insert">
+    <insert id="userinfo">
     
-        INSERT INTO users
+        INSERT INTO user
         (display_name, email)
         VALUES
         (#{displayName}, #{email})
