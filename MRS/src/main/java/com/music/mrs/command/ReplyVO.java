@@ -26,6 +26,7 @@ public class ReplyVO {
    
    
    private int replyNo;
+   private int userNo;
    private String replyContent;
    private LocalDateTime regDate;
    

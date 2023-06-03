@@ -11,12 +11,13 @@ import lombok.ToString;
 @ToString
 public class UserVO {
 	
+	private int userNo;
+	
 	@JsonProperty("display_name")
 	private String displayName;
 	
 	@JsonProperty("display_email")
 	private String email;
 	
-	public UserVO( ) {	}
 	
 }

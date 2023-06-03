@@ -8,9 +8,9 @@
 <insert id="replyInsert">
 
 	INSERT INTO reply
-		(reply_content, regDate)
+		(user_no, reply_content, regDate)
 	VALUES
-		(#{replyContent},#{regDate})
+		(#{userNo}, #{replyContent}, #{regDate})
 
 </insert>
 
@@ -18,8 +18,8 @@
 
 	SELECT 
 		r.replyContent , u.display_name , r.regDate
-	FROM reply r JOIN user u
-	ON r.user_no = {user_no} = u.user_no = {user_no}
+	FROM reply r, user u
+	WHERE r.user_no = {user_no} = u.user_no = {user_no}
 
 </select>
 

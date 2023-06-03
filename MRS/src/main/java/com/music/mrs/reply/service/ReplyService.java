@@ -14,14 +14,14 @@ public class ReplyService implements IReplyService {
 
 	@Autowired
 	private IReplyMapper mapper;
+	
 	@Override
 	public void replyRegist(ReplyVO vo) {
 
 	}
 
 	@Override
-	public List<ReplyVO> getList(Map<String, Object> data) {
-		// TODO Auto-generated method stub
+	public List<ReplyVO> replyList(Map<String, Object> data) {
 		return null;
 	}
 

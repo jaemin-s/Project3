@@ -11,7 +11,7 @@ public interface IReplyMapper {
     void replyRegist(ReplyVO vo);
     
     // 목록 요청
-    List<ReplyVO> getList(Map<String, Object> data);
+    List<ReplyVO> replyList(Map<String, Object> data);
     
     // 댓글 수정
     void update(ReplyVO vo);
