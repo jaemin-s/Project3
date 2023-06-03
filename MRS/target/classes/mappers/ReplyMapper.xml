@@ -7,7 +7,34 @@
 
 <insert id="replyInsert">
 
+	INSERT INTO reply
+		(reply_content, regDate)
+	VALUES
+		(#{replyContent},#{regDate})
 
 </insert>
 
+<select id="replyList" resultType="reply">
+
+	SELECT r.replyContent = #{replyContent}, 
+		u.display_name = #{displayName}, r.regDate = #{regDate} 
+	FROM reply r JOIN user u
+	ON r.user_no = {user_no} = u.user_no = {user_no}
+
+</select>
+
+<update id="update">
+
+	UPDATE reply
+	SET replyContent = #{replyContent}
+	WHERE replyNo = #{replyNo}
+
+</update>
+
+<delete id="delete">
+
+	DELETE FROM reply
+	WHERE replyNo =  #{replyNO}
+
+</delete>
 </mapper>
