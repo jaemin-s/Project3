@@ -90,7 +90,7 @@
 	        	
 	        }else if(e.target.dataset.keyword === "solo"){ 
 	        	// 외로운
-	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=4dB2XmMpzPxsMRnt62TbF5&seed_genres=ballad&seed_tracks=10if3nqm7OS7qrV45v9GOg"
+	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=2dhnFfsPxve8lzhwfXVFpS&seed_genres=ballad&%EC%9A%B0%EC%9A%B8%ED%95%9C,%EC%8A%AC%ED%94%94&seed_tracks=0nZrRonidvVoHPNT6WEfhQ"
 	        	
 	        }else if(e.target.dataset.keyword === "calmness"){ 
 	        	// 잔잔한
@@ -158,12 +158,37 @@
 			});
 
 	});//이미지 클릭 끝
+	
+	
 	document.querySelector('ul.list-body').addEventListener('click',e=>{
 		console.log('결과 리스트 클릭');
 		console.log(e.target);
 		if(e.target.classList.contains('result-title')){
 			console.log('제목 클릭 확인');
 			console.log(e.target.dataset.trackId);
+			console.log(["spotify:track:"+e.target.dataset.trackId]);
+			let targetId = e.target.dataset.trackId;
+			console.log(`${accessToken}`);
+			
+			//
+			fetch('https://api.spotify.com/v1/me/player/play',{
+			method : "put",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			},
+			body : JSON.stringify({
+				"uris" : ["spotify:track:"+targetId],
+				"position_ms" : 0
+			})
+		}).then();
+			
+			fetch('https://api.spotify.com/v1/me/player/play',{
+				method : "PUT",
+				headers : {
+					"Authorization" : `Bearer ${accessToken}`,
+				}
+			}).then(res => console.log(res));
 		}
 	});
 	

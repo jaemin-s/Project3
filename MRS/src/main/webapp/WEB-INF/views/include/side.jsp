@@ -77,6 +77,13 @@
 			<button id="previousTrack">이전 곡</button>
 			<button id="nextTrack">다음 곡</button>
 			<button id="togglePlay">Play</button>
+			<button id="test-btn99">99</button>
+			<button id="test-btn98">98</button>
+			<button id="test-btn97">97</button>
+			<button id="test-btn96">96</button>
+			<button id="test-btn95">95</button>
+			<button id="test-btn94">94</button>
+			<button id="test-btn93">93</button>
 		</div>
 	</section>
 	</div>
@@ -124,7 +131,89 @@ let tokenChe = 1;
 	} */
 	
 	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
-
+	
+	
+	//다음 곡으로 추가
+	document.getElementById('test-btn99').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:19V8IRXP5XdFs1SVL58ZSA',{
+			method : "post",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			},
+			
+			
+		}).then(res=>document.getElementById('nextTrack').click());
+	});
+	
+	//다른곡 재생
+	document.getElementById('test-btn98').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/play',{
+			method : "put",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			},
+			body : JSON.stringify({
+				"uris" : ["spotify:track:1Vd8qFWC07LB8UvNHyIlzg"],
+				"position_ms" : 0
+			})
+		}).then();
+	});
+	//반복재생 모드
+	document.getElementById('test-btn97').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/repeat?state=off',{
+			method : "put",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			}
+		}).then();
+	});
+	
+	document.getElementById('test-btn96').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/player/next',{
+			method : "post",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			}
+		}).then();
+	});
+	
+	//사용자으 ㅣ트랙 저장(좋아요 누른 노래)
+	document.getElementById('test-btn95').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/tracks?ids=19V8IRXP5XdFs1SVL58ZSA',{
+			method : "put",
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			}
+		}).then();
+	});
+	
+	//사용자으 ㅣ트랙 확인(좋아요 누른 노래)
+	document.getElementById('test-btn94').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/me/tracks',{
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			}
+		}).then(res => res.json())
+		.then(data => console.log(data));
+	});
+	
+	document.getElementById('test-btn93').addEventListener('click',e=>{
+		fetch('https://api.spotify.com/v1/recommendations?market=KR&seed_artists=4Kxlr1PRlDKEB0ekOCyHgX&seed_tracks=1L4d2lafz1odpIMe8va21X&min_popularity=40',{
+			headers : {
+				"Authorization" : `Bearer ${accessToken}`,
+				"Content-Type" : "application/json"
+			}
+		}).then(res => res.json())
+		.then(data => console.log(data));
+	});
+	
+	
 	const $airImg = document.getElementById("airImg");
 
 	$airImg.onclick = function() {
@@ -162,6 +251,7 @@ let tokenChe = 1;
 		});
 	})
 	
+	//재생해보기
 	document.getElementById('test-btn2').addEventListener('click',e=>{
 		fetch('https://api.spotify.com/v1/me/player',{
 			method : "put",
@@ -214,7 +304,7 @@ let tokenChe = 1;
 	window.onSpotifyWebPlaybackSDKReady = () => {
             const token = `${accessToken}`;
             player = new Spotify.Player({
-                name: 'Web Playback SDK Quick Start Player',
+                name: 'Sim Player',
                 getOAuthToken: cb => { cb(token); },
                 volume: 0.5
             });
