@@ -72,15 +72,15 @@
                 $videoPage.style.display = "none";
             }
 
-            $videoBtn.onclick = function() {
-                console.log("비디오페이지 클릭");
-                if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
-                	alert('노래를 먼저 선택해주세요');
-					return;
-                }
-                $mainPage.style.display = "none";
+             $videoBtn.onclick = function() {
+             	console.log("비디오페이지 클릭");
+            //  if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
+            //  alert('노래를 먼저 선택해주세요');
+			// 	return;
+            //     }
+				$mainPage.style.display = "none";
                 $videoPage.style.display = "flex";
-            }
+             }
 			
            
 	      

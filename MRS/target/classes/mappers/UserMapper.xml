@@ -14,4 +14,8 @@
         
     </insert>
 
+	<select id="users" resultType="user">
+		SELECT * FROM user
+		WHERE user_no = #{userNo}
+	</select>
 </mapper>

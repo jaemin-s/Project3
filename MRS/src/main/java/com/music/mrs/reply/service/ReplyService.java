@@ -17,7 +17,7 @@ public class ReplyService implements IReplyService {
 	
 	@Override
 	public void replyRegist(ReplyVO vo) {
-
+		mapper.replyRegist(vo);
 	}
 
 	@Override

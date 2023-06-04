@@ -152,10 +152,10 @@ let tokenChe = 1;
 	const $airImg = document.getElementById("airImg");
 
 	$airImg.onclick = function() {
-		if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
+		/*if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
         	alert('노래를 먼저 선택해주세요');
 			return;
-        }
+        }*/
 
 		if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air.png") {
 			console.log('열렸따!');

@@ -23,8 +23,16 @@ public class ReplyController {
 	// 댓글 등록
 	@PostMapping("/replyRegist")
 	public String replyRegist(@RequestBody ReplyVO vo){
-		System.out.println("vo:"+vo);
-		return "regSuccess";
+		UserVO uvo = new UserVO();
+		service.replyRegist(vo);
+				
+		if(vo.getReplyId().equals(uvo.getDisplayName())) {
+			System.out.println("vo:"+vo);
+			return "regSuccess";
+			
+		} else {
+			return "regBad";
+		}
 	}
 	
 	// 목록
@@ -41,7 +49,7 @@ public class ReplyController {
 		
 		rvo.setReplyNo(replyNo);
 		
-		if(rvo.getUserNo() == uvo.getUserNo()) {
+		if(rvo.getUserId() == uvo.getUserNo()) {
 			service.update(rvo);
 			return null;
 		} else {			
@@ -56,7 +64,7 @@ public class ReplyController {
 		
 		rvo.setReplyNo(replyNo);
 		
-		if(rvo.getUserNo() == uvo.getUserNo()) {
+		if(rvo.getUserId() == uvo.getUserNo()) {
 			service.delete(replyNo);
 			return null;
 		} else {			

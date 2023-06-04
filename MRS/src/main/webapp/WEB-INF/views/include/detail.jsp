@@ -37,7 +37,8 @@
 			
 			<!-- 댓글작성칸 -->
 			<div class="video-comment">
-					<textarea placeholder="댓글 추가..." spellcheck="false"></textarea>
+					<textarea placeholder="댓글 추가..." spellcheck="false" id="replyContent"></textarea>
+					<input type="text" class="form-control" id="replyId" placeholder="이름">
 					<button id="replyRegist" class="commentbtn">등록</button>
 			</div>
 
@@ -74,7 +75,7 @@
                 	})
   
             }; 
-
+	
             fetch(`${pageContext.request.contextPath}/regist`,reqObj)
                 .then(res => res.text())
                    .then(data =>{
@@ -82,4 +83,27 @@
 
                     });
         } */
+        
+        document.getElementById('replyRegist').onclick = function(){
+        	const replyContent = document.getElementById('replyContent').value;
+            const replyId = document.getElementById('replyId').value;
+            
+        const reply = {
+                method: 'post',
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify({
+                    'replyContent' : replyContent,
+                    'replyId' : replyId,
+                })
+            };
+        fetch('${pageContext.request.contextPath}/reply/replyRegist', reply)
+        .then(res => res.text())
+        .then(data => {
+            console.log('통신 성공!: ' + data);
+            document.getElementById('replyContent').value = '';
+            getList(1, true);
+        });
+        }
 </script>	

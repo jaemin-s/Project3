@@ -18,4 +18,9 @@ public class UserService implements IUserService {
 		mapper.userinfo(data);
 	}
 
+	@Override
+	public UserVO users(int userNo) {
+		return mapper.users(userNo);
+	}
+
 }

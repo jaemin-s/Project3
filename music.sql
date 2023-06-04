@@ -1,43 +1,29 @@
 use music;
 
+DROP TABLE user;
 
-
-CREATE TABLE users (
-	user_id VARCHAR(30) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    user_pw VARCHAR(1000) NOT NULL,
-    user_name VARCHAR(100) NOT NULL,
-    user_email1 VARCHAR(100) NOT NULL,
-    user_email2 VARCHAR(100) NOT NULL,
-    user_phone int
+CREATE TABLE user (
+	user_id INT PRIMARY KEY AUTO_INCREMENT,
+    display_name VARCHAR(250) NOT NULL,
+    email VARCHAR(250) NOT NULL unique
 );
 
-CREATE TABLE board (
-	bno INT PRIMARY KEY AUTO_INCREMENT,
-    writer VARCHAR(30) NOT NULL,
-    title VARCHAR(100) NOT NULL,
-    content VARCHAR(3000),
-    reg_date DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+SELECT * FROM user;
+
+SELECT * FROM reply;
+
+DROP TABLE reply;
 
 CREATE TABLE reply (
-	rno INT PRIMARY KEY AUTO_INCREMENT,
-    bno INT,
+	reply_no INT PRIMARY KEY AUTO_INCREMENT,
+    -- user_id INT,
+--     
+--     FOREIGN KEY (user_id) 
+--     REFERENCES user(user_id)
+--     ON DELETE CASCADE,
     
-    FOREIGN KEY (bno) 
-    REFERENCES freeboard(bno)
-    ON DELETE CASCADE,
-    
-    reply_id VARCHAR(30) NOT NULL,
+    reply_id VARCHAR(250) NOT NULL,
     reply_content VARCHAR(3000) NOT NULL,
-    reply_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    update_date DATETIME DEFAULT NULL
+    reg_date DATETIME DEFAULT CURRENT_TIMESTAMP
+    
 );
-
-CREATE TABLE playlist(
-	mno INT PRIMARY KEY AUTO_INCREMENT,
-	music_name VARCHAR(100) NOT NULL,
-    singer VARCHAR(300) NOT NULL,
-    vidio_id VARCHAR(100) NOT NULL
-);
-
-

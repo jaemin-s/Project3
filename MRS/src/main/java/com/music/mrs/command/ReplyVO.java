@@ -2,6 +2,8 @@ package com.music.mrs.command;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /*
 CREATE TABLE reply (
     rno INT PRIMARY KEY AUTO_INCREMENT,
@@ -26,8 +28,9 @@ public class ReplyVO {
    
    
    private int replyNo;
-   private int userNo;
+   private int userId;
    private String replyContent;
+   private String replyId;
    private LocalDateTime regDate;
    
    

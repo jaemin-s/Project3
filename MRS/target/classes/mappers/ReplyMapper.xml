@@ -3,25 +3,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.music.mrs.user.mapper.IReplyMapper">
+<mapper namespace="com.music.mrs.reply.mapper.IReplyMapper">
 
-<insert id="replyInsert">
+<insert id="replyRegist">
 
 	INSERT INTO reply
-		(user_no, reply_content, regDate)
+		( reply_content, reply_id)
 	VALUES
-		(#{userNo}, #{replyContent}, #{regDate})
+		( #{replyContent}, #{replyId})
 
 </insert>
 
-<select id="replyList" resultType="reply">
 
-	SELECT 
-		r.replyContent , u.display_name , r.regDate
-	FROM reply r, user u
-	WHERE r.user_no = {user_no} = u.user_no = {user_no}
-
-</select>
 
 <update id="update">
 
