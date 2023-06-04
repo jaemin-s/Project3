@@ -23,8 +23,9 @@ import lombok.ToString;
 @ToString
 public class ReplyVO {
    
+   private int rno;
    
-   
+   private String rdisplayName;
    
    private String replyContent;
    

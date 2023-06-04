@@ -7,11 +7,18 @@
 
     <insert id="insert">
     
-        INSERT IGNORE INTO user
+        INSERT IGNORE INTO users
         (display_name, email)
         VALUES
         (#{displayName}, #{email})
-        
     </insert>
+    
+    <select id="usersIdCall" resultType="int">
+    
+    	SELECT users_id FROM users
+    	WHERE email = #{email}
+    
+    
+    </select>
 
 </mapper>

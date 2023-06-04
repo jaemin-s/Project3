@@ -5,13 +5,42 @@
 
 <mapper namespace="com.music.mrs.reply.mapper.IReplyMapper">
 
-	<insert id="replyRegist">
+	<insert id="replyRegist" parameterType="map">
 
-		INSERT INTO reply (remail, reply_content)
-		SELECT u.email, #{replyContent}
-		FROM user u
-		WHERE u.email = #{email};
+		 INSERT INTO reply (rmno,urno, rdisplay_name, reply_content, reg_date)
+    VALUES (#{rmno},#{uservo.usersId}, #{uservo.displayName}, #{vo.replyContent}, NOW())
 
 	</insert>
+
+	<select id="getList" resultType="reply">
+		SELECT * FROM reply
+		WHERE rmno = #{rmno}
+		ORDER BY rno DESC
+		LIMIT #{paging.pageStart}, #{paging.cpp}
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM reply
+		WHERE rmno = #{rmno}
+	</select>
+	
+	<select id="getrno" resultType="reply">
+		SELECT * FROM reply
+		WHERE rno = #{rno}
+	</select>
+	
+	<update id="update">
+		UPDATE reply SET
+		reply_content = #{replyContent}, rdisplay_name=#{rdisplayName}
+		WHERE rno = #{rno}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM reply
+		WHERE rno = #{rno}
+	
+	</delete>
+	
 
 </mapper>

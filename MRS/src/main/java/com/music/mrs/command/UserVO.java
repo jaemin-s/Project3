@@ -20,10 +20,12 @@ import lombok.ToString;
 @ToString
 public class UserVO {
 	
+	private int usersId;
+	
 	@JsonProperty("display_name")
 	private String displayName;
 	
-	@JsonProperty("display_email")
+	@JsonProperty("email")
 	private String email;
 	
 	public UserVO( ) {	}

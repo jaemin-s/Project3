@@ -31,4 +31,5 @@
 	<mybatis-spring:scan base-package="com.music.mrs.rcmd.mapper"/>
 	<mybatis-spring:scan base-package="com.music.mrs.user.mapper"/>
 	<mybatis-spring:scan base-package="com.music.mrs.reply.mapper"/>
+	<mybatis-spring:scan base-package="com.music.mrs.plus.mapper"/>
 </beans>
