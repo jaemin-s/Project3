@@ -28,7 +28,7 @@ public class ReplyService implements IReplyService {
 	
 		PageVO vo = new PageVO();
 		vo.setPageNum(pageNum); //화면에서 전달된 페이지 번호
-		vo.setCpp(100); //댓글은 한 화면에 5개씩.
+		vo.setCpp(10); //댓글은 한 화면에 5개씩.
 		
 		Map<String, Object> data = new HashMap<>();
 		data.put("paging", vo); //페이지 쿼리를 위한 pageNum과 cpp
