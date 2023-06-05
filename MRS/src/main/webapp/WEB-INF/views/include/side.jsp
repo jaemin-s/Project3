@@ -177,6 +177,7 @@ const $testCl = document.querySelector(".testCl");
 	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
 
 	const $airImg = document.getElementById("airImg");
+	const $sideBack = document.querySelector(".side-back");
 	/* 에어팟 이미지 클릭 시 */
 	$airImg.onclick = function() {
 		/* 노래선택 안하면 선택해달라고 부탁하기 */
@@ -191,6 +192,9 @@ const $testCl = document.querySelector(".testCl");
 			$airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
 	        $contPlay.style.display = "none";
 	        $contPause.style.display = "block";
+	        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation2.gif")';
+	        $sideBack.style.backgroundSize = "260%";
+	        $sideBack.style.backgroundPosition = "-340px";
 		} 
 		/* 노래 멈춤 */
 		else if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air2.png") {
@@ -198,6 +202,7 @@ const $testCl = document.querySelector(".testCl");
 			$airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air.png");
 	        $contPlay.style.display = "block";
 	        $contPause.style.display = "none";
+	        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation3.png")';
 		}
 	}
 	
@@ -214,12 +219,16 @@ const $testCl = document.querySelector(".testCl");
         $contPlay.style.display = "none";
         $contPause.style.display = "block";
         $airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
+        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation2.gif")';
+        $sideBack.style.backgroundSize = "260%";
+        $sideBack.style.backgroundPosition = "-340px";
     }
 	
     $contPause.onclick = function() {
         $contPlay.style.display = "block";
         $contPause.style.display = "none";
         $airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air.png");
+        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation3.png")';
     }
 	
     /* 의열 작성 마감 */

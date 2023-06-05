@@ -40,7 +40,7 @@
 			</div>
 
 			<!-- 저장 댓글 보여주는 칸 -->
-			<c:forEach var="i" begin="1" end="10">
+			<c:forEach var="i" begin="1" end="50">
 				<div class='reply-content'>
 					<div class='reply-group'>
 						<strong>honggildong</strong> <small>2019/12/10</small>
@@ -64,11 +64,31 @@
 	                </div>
 	                <ul class="comments-body"></ul>
 	        </div>
+			<a id="top-btn" class="top-btn">top</a>
 	   </div>
+
 
 	</div>
 
 	<script>
-
+	var backToTop = () => {
+		  // Scroll | button show/hide
+		  window.addEventListener('scroll', () => {
+		    if (document.querySelector('.main').scrollTop > 500) {
+		    	console.log("스크롤");
+		      document.getElementById('top-btn').style.display = "block";
+		    } else {
+		      document.getElementById('top-btn').style.display = "none";
+		    }
+		  });
+		  // back to top
+		  document.getElementById('top-btn').addEventListener('click', () => {
+		    window.scrollTo({
+		      top: 0,
+		      left: 0,
+		      behavior: 'smooth'
+		    });
+		  })
+	};
 
 </script>

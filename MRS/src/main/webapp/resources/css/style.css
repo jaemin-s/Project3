@@ -549,3 +549,22 @@ ul.play-lists p {
 ul.play-lists li {
 	display: inline-block;
 }
+
+.top-btn {
+	width: 120px;
+	height: 120px;
+	color: black;
+	background: white;
+	text-align:center;
+	line-height: 107px;
+	font-weight: 800;
+	font-size: 60;
+	border-radius: 50%;
+	position: fixed;
+	bottom: 50px;
+	opacity: 0.7;
+}
+
+.top-btn:hover {
+	opacity: 1;
+}
