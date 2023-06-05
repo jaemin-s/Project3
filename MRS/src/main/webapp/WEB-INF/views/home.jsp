@@ -9,8 +9,11 @@
 
 		<ul>
 			<!-- 검색 기능  -->
-			<li class="search"><a>search</a></li>
+			<h1>Search</h1>
+    		<input type="text" id="searchQuery" placeholder="Enter search query">
+    		<button onclick="search()">Search</button>
 
+    		<ul id="searchResults"></ul>
 			<!-- 로고 이미지 -->
 			<div class="main-logo-img">
 				<img id=""
@@ -166,5 +169,34 @@
 			console.log(e.target.dataset.trackId);
 		}
 	});
+	
+	function search() {
+	    var query = document.getElementById("searchQuery").value;
+	    var url = "https://api.spotify.com/v1/search?type=track&q=" + query;
+	    
+	    console.log('search 클릭');
+
+	    var xhr = new XMLHttpRequest();
+	    xhr.open("GET", url);
+	    xhr.setRequestHeader("Authorization", "Bearer " + ${accessToken});
+	    console.log(${accessToken});
+	    xhr.onload = function () {
+	        if (xhr.status === 200) {
+	            var response = JSON.parse(xhr.responseText);
+	            var tracks = response.tracks.items;
+	            var resultsList = document.getElementById("searchResults");
+	            resultsList.innerHTML = "";
+
+	            tracks.forEach(function (track) {
+	                var li = document.createElement("li");
+	                li.textContent = track.name;
+	                resultsList.appendChild(li);
+	            });
+	        } else {
+	            alert("Spotify에서 검색하는 동안 오류가 발생했습니다.");
+	        }
+	    };
+	    xhr.send();
+	}
 	
 </script>

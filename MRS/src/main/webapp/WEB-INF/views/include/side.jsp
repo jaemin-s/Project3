@@ -127,9 +127,17 @@ let tokenChe = 1;
 								    'Content-Type': 'application/json'
 								  },
 								  body: jsonData
-								})
+								});
 						
 					}
+					
+					// home.jsp에서 데이터 사용
+		            if (window.location.pathname.includes("home.jsp")) {
+		                document.querySelector('.menu>h1').textContent = display_name + ' 님';
+		                document.querySelector('.menu>h1').name = display_name;
+		                console.log(document.querySelector('.menu>h1').name);
+		                tokenChe = 2;
+		            }
 					
 				});
 		//}
