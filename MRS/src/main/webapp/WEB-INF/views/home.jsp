@@ -48,7 +48,14 @@
 						<img class="weather" data-keyword="weather" 
 							src="${pageContext.request.contextPath }/img/화창한.png" alt="#">
 					</div>
-					<%@ include file="include/list.jsp"%>
+					<div id="result-list" class="hidden result-list">
+		                <div class="list-head flex">
+		                    <div class="result-image">앨범 커버</div>
+		                    <div class="result-title">곡명</div>
+		                    <div class="result-artists">가수</div>
+		                </div>
+		                <ul class="list-body"></ul>
+		            </div>
 				</div>
 
 			</li>
@@ -135,61 +142,34 @@
 			.then(data => {
 				console.log(data);
 				[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
-				[...document.querySelector('.playList .result-list .list-body').children].forEach(child => child.remove());
 				[...data.tracks].forEach(track => {
 					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
                             <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
                             <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
-                         </li>`);
-					
-					document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
-							 `<li class="flex">
-                            <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
-                            <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
-                         </li>`);
-					
+                         </li>`);		
 				});
 			});
 
 	});//이미지 클릭 끝
-	
-	/* 노래 선택 시 컨트롤러, 댓글페이지에 제목, 가수명 넣어주기 */
-	document.querySelectorAll('.result-list').forEach(list => {
-	    list.addEventListener('click', e => {
-	        if (e.target.classList.contains('result-title')) {
-	            document.querySelector('.cover-img').setAttribute('src',
-	                e.target.parentNode.querySelector('.result-image').dataset.url);
-				document.querySelector('.teamTitle').textContent = (e.target.parentNode.querySelector('.result-artists').textContent) + " - " + (e.target.textContent);
-				document.querySelector('.song-title').textContent = (e.target.textContent);
-				document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
-	        }
-	    });
-	});
 	    
 	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{
 		console.log('결과 리스트 클릭');
-		console.log(e.target);
 		if(e.target.classList.contains('result-title')){
-			console.log('제목 클릭 확인');
-			console.log(e.target.dataset.trackId);
-			console.log(e.target.dataset.trackUri);
 			let targetId = e.target.dataset.trackId;
 			let uris = [e.target.dataset.trackUri];
-			//
+		
 			recommendations(e.target.nextElementSibling.dataset.artistsId,e.target.dataset.trackId)
 			.then(trackList => {
-				console.log(trackList);
-				for (let i = 0; i<9; i++){
+				for (let i = 0; i<19; i++){
 					if(trackList.length<i) break;
 					uris.push(trackList[i].uri);
 				}
 				console.log(uris);
 				startResumePlayback(uris);
-			});		
+			})
 		}
 	});
 	

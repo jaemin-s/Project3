@@ -168,7 +168,7 @@ const $testCl = document.querySelector(".testCl");
 		console.log(e.target);
 		if(!e.target.parentNode.classList.contains('spotify-login-button')) {
 				alert('로그인은 필수 입니다.');
-				return location.href="${pageContext.request.contextPath }/login";
+				return location.href="${pageContext.request.contextPath}/login";
 			}
 		}
 	}
@@ -183,22 +183,6 @@ const $testCl = document.querySelector(".testCl");
         	alert('노래를 먼저 선택해주세요');
 			return;
         }
-
-		/* 노래 재생 시 */
-		if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air.png") {
-			console.log('열렸따!');
-			$airImg.setAttribute('src',
-					"${pageContext.request.contextPath}/img/air2.png");
-	        $contPlay.style.display = "none";
-	        $contPause.style.display = "block";
-		} 
-		/* 노래 멈춤 */
-		else if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air2.png") {
-			console.log('닫혔따!');
-			$airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air.png");
-	        $contPlay.style.display = "block";
-	        $contPause.style.display = "none";
-		}
 	}
 	
 
@@ -211,25 +195,31 @@ const $testCl = document.querySelector(".testCl");
         	alert('노래를 먼저 선택해주세요');
 			return;
         }
-        $contPlay.style.display = "none";
-        $contPause.style.display = "block";
-        $airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
     }
-    /* 노래 멈춤 */
-    $contPause.onclick = function() {
-        $contPlay.style.display = "block";
-        $contPause.style.display = "none";
-        $airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air.png");
-	}
-
+	
     /* 의열 작성 마감 */
     
+    //다음 버튼 클릭
 	document.getElementById('nextTrack').addEventListener('click',e=>{
 		skipToNext();
-
-	})
+	});
+    //이전 버튼 클릭
 	document.getElementById('previousTrack').addEventListener('click',e=>{
 		skipToPrevious();
-	})
+	});
+    
+    $contPlay.addEventListener('click',e=>{
+        player.togglePlay();
+    });
+
+    $contPause.addEventListener('click',e=>{
+    	player.togglePlay();
+    });
+    
+
+    
+
+    
+
 
 </script>

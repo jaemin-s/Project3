@@ -45,36 +45,18 @@
 
 		<!-- playlist -->
 
-		<div class="playList">
-			<%@ include file="list.jsp"%>
-		</div>
+		<div id="playlist" class="hidden result-list">
+                <div class="list-head flex-box">
+                    <div class="result-image">앨범 커버</div>
+                    <div class="result-title">곡명</div>
+                    <div class="result-artists">가수</div>
+                </div>
+                <ul class="list-body"></ul>
+            </div>
 
 	</div>
 
 	<script>
-/*         document.getElementById('replyRegist').onclick = () => {
-            const reply = document.getElementById('reply').value;
-            console.log(`${pageContext.request.contextPath}`);
-            console.log("reply:"+reply);
 
-        //요청에 관련된 정보 객체
-        const reqObj = {
-                method: 'post',
-                headers: {
-                    'Content-Type':'application/json'
-                },
-                body:
-                    JSON.stringify({
-                    'reply-content' : reply
-                	})
-  
-            }; 
 
-            fetch(`${pageContext.request.contextPath}/regist`,reqObj)
-                .then(res => res.text())
-                   .then(data =>{
-                           console.log('통신 성공!: ' + data);
-
-                    });
-        } */
 </script>

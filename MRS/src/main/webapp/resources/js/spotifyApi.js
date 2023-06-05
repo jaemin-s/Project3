@@ -150,14 +150,13 @@ function togglePlaybackShuffle(){
 }
 
 //player/queue
-function getTheUsersQueue(){
-    fetch('https://api.spotify.com/v1/me/player/queue',{
+async function getTheUsersQueue(){
+    const res = await fetch('https://api.spotify.com/v1/me/player/queue',{
         headers : header
-    }).then(res => res.json())
-    .then(data => {
+    });
+    const data = await res.json();
         console.log(data);
         return data;
-    });
 }
 
 //search
@@ -196,7 +195,6 @@ async function recommendations(seedArtists,seedTracks){
     return trackList;
 }
 
-
 //SDK준비
 window.onSpotifyWebPlaybackSDKReady = () => {
     const token = accessToken;
@@ -214,44 +212,68 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     // Not Ready
     player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline', device_id);    
+        console.log('Device ID ha   s gone offline', device_id);    
     });
     
     player.connect();
-    player.activateElement();       
-    
-     //재생 상태 변경 감지
-       player.addListener('player_state_changed', ({
-             position,
-             duration,
-             paused,
-             track_window: { current_track }
+    player.activateElement();        
+    player.play();
 
-           }) => {
-             console.log('paused?',paused);
-             console.log('Currently Playing', current_track);
-             console.log('Position in Song', position);
-             console.log('Duration of Song', duration);
-           //현재 곡 출력
-           document.querySelector('#controller .image img').src =
-            current_track.album.images[1].url;
-           document.querySelector('img.cover-img').src = 
-            current_track.album.images[0].url;
-        document.querySelector('#controller .title').textContent =
-            current_track.name;
-        document.querySelector('#controller .artists').textContent =
-            current_track.artists[0].name;
+    //재생 상태 변경 감지
+    player.addListener('player_state_changed', ({
+        position,
+        duration,
+        paused,
+        track_window: { current_track }
+
+    }) => {
+
+        //재생목록 디테일에 출력
+        getTheUsersQueue().then(data =>{
+            console.log("queue 가져오기");
+			console.log(data);
+            console.log(data.currently_playing.album.images[0].url);
+            console.log(document.querySelector('#playlist ul.list-body'));
+            [...document.querySelector('#playlist ul.list-body').children].forEach(child =>child.remove());
+            document.querySelector('#playlist ul.list-body').insertAdjacentHTML('beforeend',`
+            <li class="flex">
+                <div class="result-image" data-url="`+data.currently_playing.album.images[0].url+`"><img src="`+data.currently_playing.album.images[0].url+`"></img></div>
+                <div class="result-title" data-track-id="`+data.currently_playing.id+`" data-track-uri="`+data.currently_playing.uri+`">`+data.currently_playing.name+`</div>
+                <div class="result-artists" data-artists-id="`+data.currently_playing.artists[0].id+`">`+data.currently_playing.artists[0].name+`</div>
+            </li>
+            `);
+            [...data.queue].forEach(track=>{
+                document.querySelector('#playlist ul.list-body').insertAdjacentHTML('beforeend',`
+            <li class="flex">
+                <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
+                <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
+                <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
+            </li>
+            `);
+            })
+            
+		 });
+
+        //컨트롤러 및 디테일 페이지 정보 넣기
+        console.log(current_track);
+        document.querySelector('.cover-img').setAttribute('src',current_track.album.images[0].url);
+        document.querySelector('.singer-name').textContent = current_track.artists[0].name;
+        document.querySelector('.song-title').textContent = current_track.name;
         document.querySelector('.teamTitle').textContent =
-            current_track.name + " - " + current_track.artists[0].name;
-        
-        //재생버튼 변경
-        if(paused){ //정지중이면
-            document.getElementById('togglePlay').textContent = 'Play';
-        }else { //재생중이면
-            document.getElementById('togglePlay').textContent = 'Pause';
-        }
-      });//end player.addListener('player_state_changed'
-    
+        current_track.artists[0].name+" - "+current_track.name;
+
+    //재생버튼 변경
+    if(paused){ //정지중이면
+        $contPlay.style.display = "block";
+        $contPause.style.display = "none";
+        $airImg.setAttribute('src', "./img/air.png");
+    }else { //재생중이면
+        $contPlay.style.display = "none";
+        $contPause.style.display = "block";
+        $airImg.setAttribute('src', "./img/air2.png");
+    }
+    });//end player.addListener('player_state_changed'
+
 }//end window.onSpotifyWebPlaybackSDKReady
 
 

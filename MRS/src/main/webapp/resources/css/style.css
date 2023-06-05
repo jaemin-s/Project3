@@ -396,7 +396,7 @@ section.main .main-right .choose-img.flextoggle img {
 	display: none !important;
 }
 
-.flex-box #result-list {
+.flex-box #result-list,#playlist {
 	color: white;
 	text-align: center;
 	width: 65%;
@@ -408,31 +408,35 @@ section.main .main-right .choose-img.flextoggle img {
 	border-bottom: 1px solid white;
 }
 
-.flex-box #result-list .list-body li, .flex-box #result-list .list-head
+.flex-box #result-list .list-body li, .flex-box #result-list .list-head,
+#playlist li
 	{
 	display: flex;
 	margin: 20 0;
 }
 
-.flex-box #result-list .list-head {
+.flex-box #result-list .list-head, #playlist .list-head {
 	font-size: 14px;
 }
 
-.flex-box #result-list .result-image {
+.flex-box #result-list .result-image, #playlist .result-image {
 	width: 14%;
 }
 
-.flex-box #result-list .list-body .result-image {
+.flex-box #result-list .list-body .result-image,
+#playlist .list-body .result-image {
 	box-sizing: border-box;
 	border: 1px solid white;
 }
 
-.flex-box #result-list .result-image img {
+.flex-box #result-list .result-image img,
+#playlist .result-image img {
 	width: 100%;
 	height: 100%;
 }
 
-.flex-box #result-list .result-title, .flex-box #result-list .result-artists
+.flex-box #result-list .result-title, .flex-box #result-list .result-artists,
+#playlist .result-title, #playlist .result-artists
 	{
 	width: 43%;
 }
@@ -441,7 +445,7 @@ section.main .main-right .choose-img.flextoggle img {
 	display: none !important;
 }
 
-.flex-box .result-title:hover {
+.flex-box .list-body .result-title:hover {
 	color: rgb(191, 23, 23);
 }
 
