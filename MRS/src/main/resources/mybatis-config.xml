@@ -16,6 +16,8 @@
 	<typeAliases>
 		<typeAlias type="com.music.mrs.command.RcmdVO" alias="rcmd"/>
 		<typeAlias type="com.music.mrs.command.WeatherVO" alias="weather"/>
+		<typeAlias type="com.music.mrs.command.UserVO" alias="user"/>
+		<typeAlias type="com.music.mrs.command.ReplyVO" alias="reply"/>
 	</typeAliases>
 	
 </configuration>

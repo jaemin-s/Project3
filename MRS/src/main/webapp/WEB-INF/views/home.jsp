@@ -8,10 +8,6 @@
 </head>
 <body>
 
-	<h1>기상청 날씨 API</h1>
-	<h2>종로 날씨</h2>
-	<p class="result"></p>
-
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -59,7 +55,7 @@
 							src="${pageContext.request.contextPath }/img/잔잔한.png" alt="#"> 
 						<img data-keyword="party" 
 							src="${pageContext.request.contextPath }/img/파티.png" alt="#"> 
-						<img data-keyword="weather" 
+						<img class="weather" data-keyword="sunny" 
 							src="${pageContext.request.contextPath }/img/화창한.png" alt="#">
 					</div>
 					<%@ include file="include/list.jsp"%>
@@ -151,41 +147,41 @@
 			}
 
 		})
-		
-		fetch( MyUrl , {headers : {"Authorization" : `Bearer ${accessToken}`}
-			}).then(res => res.json())
-			.then(data => {
-				console.log(data);
-				[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
-				[...document.querySelector('.playList .result-list .list-body').children].forEach(child => child.remove());
-				[...data.tracks].forEach(track => {
-					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
-							 `<li class="flex">
-                            <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-                            <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
-                         </li>`);
+		// MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=80&market=KR&seed_artists=4iHNK0tOyZPYnBU7nGAgpQ&seed_genres=WINTER&SNOW&CALROL&seed_tracks=0bYg9bo50gSsH3LtXe2SQn";
+		// fetch( MyUrl , {headers : {Authorization : `Bearer ${accessToken}`}
+		// 	}).then(res => res.json())
+		// 	.then(data => {
+		// 		console.log(data);
+		// 		[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
+		// 		[...document.querySelector('.playList .result-list .list-body').children].forEach(child => child.remove());
+		// 		[...data.tracks].forEach(track => {
+		// 			document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
+		// 					 `<li class="flex">
+        //                     <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
+        //                     <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
+        //                     <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+        //                  </li>`);
 					
-					document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
-							 `<li class="flex">
-                            <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-                            <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
-                         </li>`);
+		// 			document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
+		// 					 `<li class="flex">
+        //                     <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
+        //                     <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
+        //                     <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+        //                  </li>`);
 					
-				});
-			});
+		// 		});
+		// 	});
 
 	
-	document.querySelectorAll('.result-list').forEach(list => {
-	    list.addEventListener('click', e => {
-	        if (e.target.classList.contains('result-title')) {
-	            document.querySelector('.cover-img').setAttribute('src',
-	                e.target.parentNode.querySelector('.result-image').dataset.url);
-				document.querySelector('.teamTitle').textContent = (e.target.textContent) + " - " + (e.target.parentNode.querySelector('.result-artists').textContent);
-	        }
-	    });
-	});
+	// document.querySelectorAll('.result-list').forEach(list => {
+	//     list.addEventListener('click', e => {
+	//         if (e.target.classList.contains('result-title')) {
+	//             document.querySelector('.cover-img').setAttribute('src',
+	//                 e.target.parentNode.querySelector('.result-image').dataset.url);
+	// 			document.querySelector('.teamTitle').textContent = (e.target.textContent) + " - " + (e.target.parentNode.querySelector('.result-artists').textContent);
+	//         }
+	//     });
+	// });
 
 
 	let sky,pty; //하늘상태, 강수형태
@@ -195,21 +191,21 @@
 			
 			const rsRow = [...document.querySelectorAll('#resultRow *')];
 
+
 			//현재 날짜를 받아오는 함수
-			const getCurrentDateTime = () =>  {
-				const now = new Date();
+			//const getCurrentDateTime = () =>  {
+				const now = new Date();	
 				const year = now.getFullYear();
 				let month = now.getMonth() + 1;
 				let day = now.getDate();
 				let hour = now.getHours();
 				let minute = now.getMinutes();
 
-			}
+			//}
 
 			//월과 일이 한 자리 수인 경우 앞에 0을 추가합니다.
 			if(month < 10) {
 				month = '0' + month;
-
 			}
 			if(day < 10) {
 				day = '0' + day;
@@ -217,21 +213,21 @@
 			if(minute < 10) {
 				minute = '0' + minute;
 			}
-
-			return { currentDate: year + month + day, currentTime: hour + minute };
-		};
+			let currentDate = year + month + day;
+			let currentTime = hour +""+ minute;
+			console.log(currentTime);
 
 			// let date = new date();
-			const { currentDate, currentTime} = getCurrentDateTime(); // 현재 날짜와 시간
-			let key = 'g4G7rydHK7S6Nlfpzy/7pdkQrtYexqJA3K/YEzlsVbzhB00JsplN4/1JcIi/1GVcGFNDehAgvKYqsHky7QDp4w==';
+			// 현재 날짜와 시간
+			let key = 'g4G7rydHK7S6Nlfpzy%2F7pdkQrtYexqJA3K%2FYEzlsVbzhB00JsplN4%2F1JcIi%2F1GVcGFNDehAgvKYqsHky7QDp4w%3D%3D';
 			let nX = '59';
 			let nY = '126';
 			
-			 
 			
-			let url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst?serviceKey=${key}&pageNo=1&numOfRows=1000&dataType=JSON&base_date=${currentDate}&base_time=${currentTime}&nx=${nX}&ny=${nY}`;
+			let url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst`;
   			let queryParams = `?serviceKey=${key}&pageNo=1&numOfRows=25&dataType=JSON&base_date=${currentDate}&base_time=${currentTime}&nx=${nX}&ny=${nY}`;
-			
+			console.log(url);
+			console.log(queryParams);
 					fetch(url+queryParams).then(res => res.json())
 				.then(data => {
 					console.log(data);
@@ -248,13 +244,17 @@
 					console.log(rs[24].fcstValue); //하늘 형태
 					temper=rs[24].fcstValue;
 
-					rsRow[0].textContent=currentDate;
-					rsRow[1].textContent=currentTime;
-					rsRow[2].textContent=sky;
-					rsRow[3].textContent=pty;
-					rsRow[4].textContent=temper;
+					if(rsRow.length >= 5) {
 
-					console.log(rs);
+						rsRow[0].textContent=currentDate;
+						console.log(currentDate);
+						rsRow[1].textContent=currentTime;
+						rsRow[2].textContent=sky;
+						rsRow[3].textContent=pty;
+						rsRow[4].textContent=temper;
+					}
+
+					
 					
 					// 음악 재생 로직 추가
 					playMusic(sky,pty);
@@ -263,18 +263,40 @@
 
 		function playMusic(sky, pty) {   
 			let MyUrl = "";
-
+			console.log(document.querySelector(".weather").src);
 			if (pty === "1" || pty === "2" || pty === "5" || pty === "6") {
-			document.querySelector(".weather").datasetKeyword = "rain";
+			document.querySelector(".weather").dataset.keyword = "rain";
+			document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/rain.png"
 			} else if(sky === "1"){
-			document.querySelector(".weather").datasetKeyword = "sunny";
+			document.querySelector(".weather").dataset.keyword = "sunny";
+			document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/sunny.png"
 			} else if(sky === "3" || sky === "4"){
-				document.querySelector(".weather").datasetKeyword = "cloudy";
+				document.querySelector(".weather").dataset.keyword = "cloudy";
+				document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/cloudy.png"
 			}else if(pty === "3"){
-				document.querySelector(".weather").datasetKeyword = "snow";
+				document.querySelector(".weather").dataset.keyword = "snow";
+				document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/snow.png"
 			}
 
 			console.log(sky);
+			console.log(pty);
+			
+			
+			 // MyUrl 변수를 기반으로 음악을 재생하는 로직 작성
+  
+			 const playButton = document.querySelector('#play-button');
+
+			 if (playButton) {
+					playButton.addEventListener('click', () => {
+					const audio = new Audio(MyUrl);
+					audio.play();
+					});
+				} else {
+					console.log('x');
+				}
+			}
+
+
 
 		//  function playMusic(sky, pty) {
 		// 	let pty = rs[6].fcstValue; // 강수 형태
@@ -297,9 +319,12 @@
 	      
 	      
 		}
+	
 
 	
 </script>
+
+
 
 
 </body>
