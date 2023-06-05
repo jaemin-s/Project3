@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!-- 메인 화면 -->
@@ -84,7 +74,6 @@
 	document.getElementById('choose-imgs').addEventListener('click',e=>{
 		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
 		document.querySelector('#result-list').classList.toggle('hidden');
-	
 		
 		 let MyUrl = "";
 	        if(e.target.dataset.keyword === "happy"){ 
@@ -108,7 +97,7 @@
 	        	
 	        }else if(e.target.dataset.keyword === "solo"){ 
 	        	// 외로운
-	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=4dB2XmMpzPxsMRnt62TbF5&seed_genres=ballad&seed_tracks=10if3nqm7OS7qrV45v9GOg"
+	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=4dB2XmMpzPxsMRnt62TbF5&seed_genres=ballad&seed_tracks=10if3nqm7OS7qrV45v9GOg";
 	        	
 	        }else if(e.target.dataset.keyword === "calmness"){ 
 	        	// 잔잔한
@@ -130,9 +119,7 @@
 	        	// 여행 가자
 	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=2el9LgZHLeQnXHABBkgb7M&seed_genres=trip&seed_tracks=4L1MHK27ifT30Ndicpr7js";
 	        	
-	        }else if(e.target.dataset.keyword === "weather"){ // 날씨 (화창, 흐림, 비, 눈)
-	        	//창 이동 후 나타나게?? 
-	        	if(e.target.dataset.keyword === "sunny") {
+	        }else if(e.target.dataset.keyword === "sunny") {
 	        	// 화창한 날
 	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=3HqSLMAZ3g3d5poNaI7GOU&seed_genres=K-POP%26%ED%99%94%EC%B0%BD%ED%95%9C&seed_tracks=5xrtzzzikpG3BLbo4q1Yul&min_energy=0&max_energy=1";
 	        		        		
@@ -146,59 +133,52 @@
 	        		        		
 	        } else if (e.target.dataset.keyword === "snow") {
 	        	// 눈 오는 날		
-	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=80&market=KR&seed_artists=4iHNK0tOyZPYnBU7nGAgpQ&seed_genres=WINTER&SNOW&CALROL&seed_tracks=0bYg9bo50gSsH3LtXe2SQn"
-	        		
-	        	
-	        	} 
+	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=80&market=KR&seed_artists=4iHNK0tOyZPYnBU7nGAgpQ&seed_genres=WINTER&SNOW&CALROL&seed_tracks=0bYg9bo50gSsH3LtXe2SQn";
+	        }
 
-			}
+		
+		fetch( MyUrl , {headers : {"Authorization" : `Bearer ${accessToken}`}
+			}).then(res => res.json())
+			.then(data => {
+				console.log(data);
+				[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
+				[...data.tracks].forEach(track => {
+					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
+							 `<li class="flex">
+                            <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
+                            <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
+                            <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
+                         </li>`);		
+				});
+			});
 
-		})
-		// MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=80&market=KR&seed_artists=4iHNK0tOyZPYnBU7nGAgpQ&seed_genres=WINTER&SNOW&CALROL&seed_tracks=0bYg9bo50gSsH3LtXe2SQn";
-		// fetch( MyUrl , {headers : {Authorization : `Bearer ${accessToken}`}
-		// 	}).then(res => res.json())
-		// 	.then(data => {
-		// 		console.log(data);
-		// 		[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
-		// 		[...document.querySelector('.playList .result-list .list-body').children].forEach(child => child.remove());
-		// 		[...data.tracks].forEach(track => {
-		// 			document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
-		// 					 `<li class="flex">
-        //                     <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-        //                     <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-        //                     <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
-        //                  </li>`);
-					
-		// 			document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
-		// 					 `<li class="flex">
-        //                     <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-        //                     <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-        //                     <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
-        //                  </li>`);
-					
-		// 		});
-		// 	});
-
+	});//이미지 클릭 끝
+	    
+	//검색 결과 선택시 
+	document.querySelector('ul.list-body').addEventListener('click',e=>{
+		console.log('결과 리스트 클릭');
+		if(e.target.classList.contains('result-title')){
+			let targetId = e.target.dataset.trackId;
+			let uris = [e.target.dataset.trackUri];
+		
+			recommendations(e.target.nextElementSibling.dataset.artistsId,e.target.dataset.trackId)
+			.then(trackList => {
+				for (let i = 0; i<19; i++){
+					if(trackList.length<i) break;
+					uris.push(trackList[i].uri);
+				}
+				console.log(uris);
+				startResumePlayback(uris);
+			})
+		}
+	});
 	
-	// document.querySelectorAll('.result-list').forEach(list => {
-	//     list.addEventListener('click', e => {
-	//         if (e.target.classList.contains('result-title')) {
-	//             document.querySelector('.cover-img').setAttribute('src',
-	//                 e.target.parentNode.querySelector('.result-image').dataset.url);
-	// 			document.querySelector('.teamTitle').textContent = (e.target.textContent) + " - " + (e.target.parentNode.querySelector('.result-artists').textContent);
-	//         }
-	//     });
-	// });
-
-
-	let sky,pty; //하늘상태, 강수형태
+let sky,pty; //하늘상태, 강수형태
 	
 	//공공데이터 날씨
 		 window.onload = () => {
 			
 			const rsRow = [...document.querySelectorAll('#resultRow *')];
-
-
 			//현재 날짜를 받아오는 함수
 			//const getCurrentDateTime = () =>  {
 				const now = new Date();	
@@ -207,9 +187,7 @@
 				let day = now.getDate();
 				let hour = now.getHours();
 				let minute = now.getMinutes();
-
 			//}
-
 			//월과 일이 한 자리 수인 경우 앞에 0을 추가합니다.
 			if(month < 10) {
 				month = '0' + month;
@@ -223,7 +201,6 @@
 			let currentDate = year + month + day;
 			let currentTime = hour +""+ minute;
 			console.log(currentTime);
-
 			// let date = new date();
 			// 현재 날짜와 시간
 			let key = 'g4G7rydHK7S6Nlfpzy%2F7pdkQrtYexqJA3K%2FYEzlsVbzhB00JsplN4%2F1JcIi%2F1GVcGFNDehAgvKYqsHky7QDp4w%3D%3D';
@@ -232,85 +209,76 @@
 			
 			
 			let url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst`;
-  			let queryParams = `?serviceKey=${key}&pageNo=1&numOfRows=25&dataType=JSON&base_date=${currentDate}&base_time=${currentTime}&nx=${nX}&ny=${nY}`;
+  			let queryParams = `?serviceKey=`+key+`&pageNo=1&numOfRows=25&dataType=JSON&base_date=`+currentDate+`&base_time=1900&nx=`+nX+`&ny=`+nY;
 			console.log(url);
 			console.log(queryParams);
 					fetch(url+queryParams).then(res => res.json())
 				.then(data => {
 					console.log(data);
-					console.log(data.response);
-					console.log(data.response.body);
-					console.log(data.response.body.items);
-					console.log(data.response.body.items.item);
 					let rs = data.response.body.items.item;
 					
 					console.log(rs[6].fcstValue); //강수 형태
 					pty=rs[6].fcstValue; //강수 형태
 					console.log(rs[18].fcstValue); //하늘 형태
 					sky=rs[18].fcstValue;
-					console.log(rs[24].fcstValue); //하늘 형태
-					temper=rs[24].fcstValue;
-
 					if(rsRow.length >= 5) {
-
 						rsRow[0].textContent=currentDate;
 						console.log(currentDate);
 						rsRow[1].textContent=currentTime;
 						rsRow[2].textContent=sky;
 						rsRow[3].textContent=pty;
-						rsRow[4].textContent=temper;
 					}
-
-					
 					
 					// 음악 재생 로직 추가
 					playMusic(sky,pty);
 				});
-
-
-		function playMusic(sky, pty) {   
-			let MyUrl = "";
-			console.log(document.querySelector(".weather").src);
-			if (pty === "1" || pty === "2" || pty === "5" || pty === "6") {
-			document.querySelector(".weather").dataset.keyword = "rain";
-			document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/rain.png"
-			} else if(sky === "1"){
-			document.querySelector(".weather").dataset.keyword = "sunny";
-			document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/sunny.png"
-			} else if(sky === "3" || sky === "4"){
-				document.querySelector(".weather").dataset.keyword = "cloudy";
-				document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/cloudy.png"
-			}else if(pty === "3"){
-				document.querySelector(".weather").dataset.keyword = "snow";
-				document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/snow.png"
-			}
-
-			console.log(sky);
-			console.log(pty);
-			
-			
-			 // MyUrl 변수를 기반으로 음악을 재생하는 로직 작성
-  
-			 const playButton = document.querySelector('#play-button');
-
-			 if (playButton) {
-					playButton.addEventListener('click', () => {
-					const audio = new Audio(MyUrl);
-					audio.play();
-					});
-				} else {
-					console.log('x');
-				}
-				console.log(uris);
-				startResumePlayback(uris);
-			}
-		}
-
+					
+					function playMusic(sky, pty) {   
+						let MyUrl = "";
+						console.log(document.querySelector(".weather").src);
+						if (pty === "1" || pty === "2" || pty === "5" || pty === "6") {
+							document.querySelector(".weather").dataset.keyword = "rain";
+							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/rain.png"
+						} else if(sky === "1"){
+							document.querySelector(".weather").dataset.keyword = "sunny";
+							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/sunny.png"
+						} else if(sky === "3" || sky === "4"){
+							document.querySelector(".weather").dataset.keyword = "cloudy";
+							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/cloudy.png"
+						}else if(pty === "3"){
+							document.querySelector(".weather").dataset.keyword = "snow";
+							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/snow.png"
+						}
+						console.log(sky);
+						console.log(pty);
+						
+						
+						 // MyUrl 변수를 기반으로 음악을 재생하는 로직 작성
+			  
+						/*  const playButton = document.querySelector('#play-button');
+						 if (playButton) {
+								playButton.addEventListener('click', () => {
+								const audio = new Audio(MyUrl);
+								audio.play();
+								});
+							} else {
+								console.log('x');
+							} */
+					}
+				if(${accessToken != null}) {
+					console.log("닉넴 받아옴")
+					/* 닉네임 받아와서 사용 */
+						fetch('https://api.spotify.com/v1/me', {headers : {"Authorization" : `Bearer ${accessToken}`}})
+							.then(res => res.json())
+							.then(data => {
+								console.log(data);
+								display_name = data.display_name;
+								display_email = data.email;
+								document.querySelector('.menu>h1').textContent = display_name + ' 님';
+								document.querySelector('.menu>h1').name = display_name;
+								tokenChe =2;
+							});
+					}
+		 }
 	
 </script>
-
-
-
-
-</body>
-</html>

@@ -140,26 +140,6 @@
 /* 의열 작성 시작 */
 const $testCl = document.querySelector(".testCl");
 
-	window.onload = function() {
-	let myAccessToken = `${accessToken}`;
-	if(${accessToken != null}) {
-		console.log("닉넴 받아옴")
-		/* 닉네임 받아와서 사용 */
-			fetch('https://api.spotify.com/v1/me', {headers : {"Authorization" : `Bearer ${accessToken}`}})
-				.then(res => res.json())
-				.then(data => {
-					console.log(data);
-					console.log(data.display_name);
-					console.log(data.email);
-					display_name = data.display_name;
-					display_email = data.email;
-					document.querySelector('.menu>h1').textContent = display_name + ' 님';
-					document.querySelector('.menu>h1').name = display_name;
-					console.log(document.querySelector('.menu>h1').name);
-					tokenChe =2;
-				});
-		}
-	}
 	/* 로그인 안하고 다른거 눌렀을 시 */
 	const $main = document.querySelector(".main");
 	
