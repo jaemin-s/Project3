@@ -458,20 +458,20 @@ section.main .main-right .choose-img.flextoggle img {
 	margin: 20 0;
 }
 
-.flex-box #result-list .list-head{
+.flex-box #result-list .list-head {
 	font-size: 14px;
 }
 
-.flex-box #result-list .result-image{
+.flex-box #result-list .result-image {
 	width: 14%;
 }
 
-.flex-box #result-list .list-body .result-image{
+.flex-box #result-list .list-body .result-image {
 	box-sizing: border-box;
 	border: 1px solid white;
 }
 
-.flex-box #result-list .result-image img{
+.flex-box #result-list .result-image img {
 	width: 100%;
 	height: 100%;
 }
@@ -500,14 +500,13 @@ section.main .video-right .playList {
 	color: white;
 	text-align: center;
 	width: 90%;
-	height: 95vh;
 	position: sticky;
 	top: 20px;
 	border-top: 1px solid white;
 	border-bottom: 1px solid white;
 }
 
-.playList #comments .comments-body li, .playList #comments-list .comments-head
+.playList #comments-list .comments-body li, .playList #comments-list .comments-head
 	{
 	display: flex;
 	margin: 26 0;
@@ -528,7 +527,6 @@ section.main .video-right .playList {
 
 .playList #comments-list .comments-image img {
 	width: 100%;
-	height: 100%;
 }
 
 .playList #comments-list .comments-title, .playList #rcomments-list .comments-artists

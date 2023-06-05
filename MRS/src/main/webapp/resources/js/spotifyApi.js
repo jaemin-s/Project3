@@ -236,7 +236,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             console.log(document.querySelector('.playlist ul.comments-body'));
             [...document.querySelector('.playlist ul.comments-body').children].forEach(child =>child.remove());
             document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
-            <li class="flex">
+            <li>
                 <div class="comments-image" data-url="`+data.currently_playing.album.images[0].url+`"><img src="`+data.currently_playing.album.images[0].url+`"></img></div>
                 <div class="comments-title" data-track-id="`+data.currently_playing.id+`" data-track-uri="`+data.currently_playing.uri+`">`+data.currently_playing.name+`</div>
                 <div class="comments-artists" data-artists-id="`+data.currently_playing.artists[0].id+`">`+data.currently_playing.artists[0].name+`</div>
@@ -244,7 +244,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             `);
             [...data.queue].forEach(track=>{
                 document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
-            <li class="flex">
+            <li>
                 <div class="comments-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
                 <div class="comments-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
                 <div class="comments-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>

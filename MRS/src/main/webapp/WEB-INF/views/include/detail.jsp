@@ -55,7 +55,7 @@
 
 		<!-- playlist -->
 	
-		<div class="playlist">
+		<div class="playList">
 			<div id="comments-list" class="comments-list">
 	                <div class="comments-head flex-box">
 	                    <div class="comments-image">앨범 커버</div>
