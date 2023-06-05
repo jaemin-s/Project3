@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -31,20 +31,15 @@
 				<img class="cover-img" alt="" src="">
 			</div>
 			<!-- 가수명, 팀명 -->
-			<div class="teamTitle">
-				
-			</div>
-			
+			<div class="teamTitle"></div>
+
 			<!-- 댓글작성칸 -->
 			<div class="video-comment">
-					<textarea placeholder="댓글 추가..." spellcheck="false"></textarea>
-					<button id="replyRegist" class="commentbtn">등록</button>
+				<textarea placeholder="댓글 추가..." spellcheck="false"></textarea>
+				<button id="replyRegist" class="commentbtn">등록</button>
 			</div>
 
 			<!-- 저장 댓글 보여주는 칸 -->
-			<div class="commentList">
-
-			</div>
 
 		</div>
 
@@ -55,8 +50,8 @@
 		</div>
 
 	</div>
-	
-<script>
+
+	<script>
 /*         document.getElementById('replyRegist').onclick = () => {
             const reply = document.getElementById('reply').value;
             console.log(`${pageContext.request.contextPath}`);
@@ -82,4 +77,4 @@
 
                     });
         } */
-</script>	
+</script>
