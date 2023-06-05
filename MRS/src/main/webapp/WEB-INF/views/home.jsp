@@ -67,7 +67,9 @@
 	document.getElementById('choose-imgs').addEventListener('click',e=>{
 		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
 		document.querySelector('#result-list').classList.toggle('hidden');
-		
+		if(document.querySelector('#result-list').classList.contains('hidden')) {
+			return;
+		}
 		 let MyUrl = "";
 	        if(e.target.dataset.keyword === "happy"){ 
 	        	// 행복
@@ -135,7 +137,6 @@
 			.then(data => {
 				console.log(data);
 				[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
-				[...document.querySelector('.playList .result-list .list-body').children].forEach(child => child.remove());
 				[...data.tracks].forEach(track => {
 					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
@@ -143,22 +144,13 @@
                             <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
                             <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
                          </li>`);
-					
-					document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
-							 `<li class="flex">
-                            <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
-                            <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
-                         </li>`);
-					
 				});
 			});
 
 	});//이미지 클릭 끝
 	
 	/* 노래 선택 시 컨트롤러, 댓글페이지에 제목, 가수명 넣어주기 */
-	document.querySelectorAll('.result-list').forEach(list => {
-	    list.addEventListener('click', e => {
+	document.getElementById('result-list').addEventListener('click', e => {
 	        if (e.target.classList.contains('result-title')) {
 	            document.querySelector('.cover-img').setAttribute('src',
 	                e.target.parentNode.querySelector('.result-image').dataset.url);
@@ -167,7 +159,6 @@
 				document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
 	        }
 	    });
-	});
 	    
 	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{

@@ -25,10 +25,12 @@
 </head>
 
 <body>
-
+	
 	<!-- 왼쪽 고정 menu, controller -->
 	<div class="side">
-
+		
+		<ul class="side-back"></ul>
+		
 		<!-- 페이지 넘어갈 곳 -->
 		<div class="menu">
 			<!-- 로그아웃상태에선 로그인, 회원가입 넣기 -->
@@ -49,8 +51,8 @@
 				<a href="/mrs/logOut" class="logOut">log out</a>
 			</c:if>
 
-			<a class="mainBtn" href="#">main page</a> <a class="videoBtn"
-				href="#">video page</a>
+			<a class="mainBtn" href="#">Main Page</a> <a class="videoBtn"
+				href="#">Play List</a>
 		</div>
 
 		<!-- 에어팟 이미지 -->
@@ -156,7 +158,6 @@ const $testCl = document.querySelector(".testCl");
 					document.querySelector('.menu>h1').textContent = display_name + ' 님';
 					document.querySelector('.menu>h1').name = display_name;
 					console.log(document.querySelector('.menu>h1').name);
-					tokenChe =2;
 				});
 		}
 	}
@@ -187,8 +188,7 @@ const $testCl = document.querySelector(".testCl");
 		/* 노래 재생 시 */
 		if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air.png") {
 			console.log('열렸따!');
-			$airImg.setAttribute('src',
-					"${pageContext.request.contextPath}/img/air2.png");
+			$airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
 	        $contPlay.style.display = "none";
 	        $contPause.style.display = "block";
 		} 
@@ -214,6 +214,7 @@ const $testCl = document.querySelector(".testCl");
         $contPlay.style.display = "none";
         $contPause.style.display = "block";
         $airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
+
     }
     /* 노래 멈춤 */
     $contPause.onclick = function() {

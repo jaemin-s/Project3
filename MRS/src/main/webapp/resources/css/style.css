@@ -15,11 +15,18 @@ img, a {
 .side {
 	width: 25%;
 	height: 100vh;
-	background: rgb(247, 247, 247);
 	position: sticky;
 	top: 0px;
 	z-index: 10;
-	background-image: url("../img/animation.gif");
+}
+
+.side-back {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0px;
+	z-index: 10;
+	background-image: url("../img/animation3.png");
 	background-size: 260%;
 	background-position: -340px;
 }
@@ -377,6 +384,42 @@ section.main .video-right .detail-ng .teamTitle {
 	opacity: 1;
 }
 
+/* 댓글 보여주는 칸 */
+.reply-content {
+	color: white;
+	background-color: #ffffff1c;
+	margin: 10px 82px;
+}
+
+.reply-content>* {
+	padding: 10px;
+}
+
+.reply-content strong {
+	font-weight: 800;
+}
+
+.reply-content small {
+	margin-left: 10px;
+}
+
+.reply-content a {
+	width: 50px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 15px;
+	color: white;
+	text-decoration: none;
+	font-weight: 700;
+	float: right;
+	margin-right: 8px;
+}
+
+.reply-content a:hover {
+	background: #ffffff99;
+}
+
 /* 메인페이지에 있는 list */
 .flextoggle {
 	display: flex;
@@ -452,55 +495,51 @@ section.main .video-right .playList {
 	padding: 20px 0;
 }
 
-.playList #result-list {
+.playList #comments-list {
 	color: white;
 	text-align: center;
 	width: 90%;
-	height: 100%;
+	height: 95vh;
 	position: sticky;
 	top: 20px;
 	border-top: 1px solid white;
 	border-bottom: 1px solid white;
 }
 
-.playList #result-list .list-body li, .playList #result-list .list-head
+.playList #comments .comments-body li, .playList #comments-list .comments-head
 	{
 	display: flex;
 	margin: 26 0;
 }
 
-.playList #result-list .list-head {
+.playList #comments-list .comments-head {
 	font-size: 20px;
 }
 
-.playList #result-list .result-image {
+.playList #comments-list .comments-image {
 	width: 14%;
 }
 
-.playList #result-list .list-body .result-image {
+.playList #comments-list .comments-body .comments-image {
 	box-sizing: border-box;
 	border: 1px solid white;
 }
 
-.playList #result-list .result-image img {
+.playList #comments-list .comments-image img {
 	width: 100%;
 	height: 100%;
 }
 
-.playList #result-list .result-title, .playList #result-list .result-artists
+.playList #comments-list .comments-title, .playList #rcomments-list .comments-artists
 	{
 	width: 40%;
 }
 
-.playList .hidden {
-	display: block !important;
-}
-
-.playList .result-title:hover {
+.playList .comments-title:hover {
 	color: rgb(191, 23, 23);
 }
 
-.result-title, .result-artists {
+.comments-title, .comments-artists {
 	cursor: pointer;
 }
 

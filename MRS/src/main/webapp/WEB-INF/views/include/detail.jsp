@@ -40,13 +40,23 @@
 			</div>
 
 			<!-- 저장 댓글 보여주는 칸 -->
-
+			<c:forEach var="i" begin="1" end="10">
+				<div class='reply-content'>
+					<div class='reply-group'>
+						<strong>honggildong</strong> <small>2019/12/10</small>
+						<a href='#' class='right reply-update'><span
+							class='glyphicon glyphicon-pencil'></span>수정</a> 
+						<a href='#' class='right reply-delete'><span class='glyphicon glyphicon-remove'></span>삭제</a>
+					</div>
+					<p class='clearfix'>여기는 댓글영역</p>
+				</div>
+			</c:forEach>
 		</div>
 
 		<!-- playlist -->
 
 		<div class="playList">
-			<%@ include file="list.jsp"%>
+			<%@ include file="comments.jsp"%>
 		</div>
 
 	</div>
