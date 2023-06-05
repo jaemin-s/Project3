@@ -143,14 +143,14 @@
 					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-track-id="`+track.id+`">`+track.name+`</div>
+                            <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
                             <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
                          </li>`);
 					
 					document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-track-id="`+track.id+`">`+track.name+`</div>
+                            <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
                             <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
                          </li>`);
 					
@@ -159,36 +159,29 @@
 
 	});//이미지 클릭 끝
 	
-	
+	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{
 		console.log('결과 리스트 클릭');
 		console.log(e.target);
 		if(e.target.classList.contains('result-title')){
 			console.log('제목 클릭 확인');
 			console.log(e.target.dataset.trackId);
-			console.log(["spotify:track:"+e.target.dataset.trackId]);
+			console.log(e.target.dataset.trackUri);
 			let targetId = e.target.dataset.trackId;
-			console.log(`${accessToken}`);
-			
+			let uris = [e.target.dataset.trackUri];
 			//
-			fetch('https://api.spotify.com/v1/me/player/play',{
-			method : "put",
-			headers : {
-				"Authorization" : `Bearer ${accessToken}`,
-				"Content-Type" : "application/json"
-			},
-			body : JSON.stringify({
-				"uris" : ["spotify:track:"+targetId],
-				"position_ms" : 0
-			})
-		}).then();
-			
-			fetch('https://api.spotify.com/v1/me/player/play',{
-				method : "PUT",
-				headers : {
-					"Authorization" : `Bearer ${accessToken}`,
+			recommendations(e.target.nextElementSibling.dataset.artistsId,e.target.dataset.trackId)
+			.then(trackList => {
+				console.log(trackList);
+				for (let i = 0; i<9; i++){
+					if(trackList.length<i) break;
+					uris.push(trackList[i].uri);
 				}
-			}).then(res => console.log(res));
+				console.log(uris);
+				startResumePlayback(uris);
+			});
+			
+			
 		}
 	});
 	
