@@ -140,21 +140,23 @@
 					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-                            <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+                            <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
+                            <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
                          </li>`);
 					
 					document.querySelector('.playList .result-list .list-body').insertAdjacentHTML('beforeend',
 							 `<li class="flex">
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
-                            <div class="result-title" data-artists-id="`+track.artists[0].id+`">`+track.name+`</div>
-                            <div class="result-artists" data-track-id="`+track.id+`">`+track.artists[0].name+`</div>
+                            <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
+                            <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
                          </li>`);
 					
 				});
 			});
 
+	});//이미지 클릭 끝
 	
+	/* 노래 선택 시 컨트롤러, 댓글페이지에 제목, 가수명 넣어주기 */
 	document.querySelectorAll('.result-list').forEach(list => {
 	    list.addEventListener('click', e => {
 	        if (e.target.classList.contains('result-title')) {
@@ -166,6 +168,29 @@
 	        }
 	    });
 	});
-	})
+	    
+	//검색 결과 선택시 
+	document.querySelector('ul.list-body').addEventListener('click',e=>{
+		console.log('결과 리스트 클릭');
+		console.log(e.target);
+		if(e.target.classList.contains('result-title')){
+			console.log('제목 클릭 확인');
+			console.log(e.target.dataset.trackId);
+			console.log(e.target.dataset.trackUri);
+			let targetId = e.target.dataset.trackId;
+			let uris = [e.target.dataset.trackUri];
+			//
+			recommendations(e.target.nextElementSibling.dataset.artistsId,e.target.dataset.trackId)
+			.then(trackList => {
+				console.log(trackList);
+				for (let i = 0; i<9; i++){
+					if(trackList.length<i) break;
+					uris.push(trackList[i].uri);
+				}
+				console.log(uris);
+				startResumePlayback(uris);
+			});		
+		}
+	});
 	
 </script>

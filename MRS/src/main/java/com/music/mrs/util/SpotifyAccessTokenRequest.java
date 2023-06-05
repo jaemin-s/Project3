@@ -56,7 +56,7 @@ public class SpotifyAccessTokenRequest {
         // 사용자 인증을 위한 인증 코드를 얻기 위해 로그인 URL을 생성합니다.
         AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
                 .state("x4xkmn9pu3j6ukrs8n")
-                .scope("user-read-private,user-read-email")
+                .scope("user-read-private,user-read-email,user-modify-playback-state,app-remote-control")
                 .show_dialog(true)
                 .build();
 
