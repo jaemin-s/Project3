@@ -78,14 +78,169 @@ img, a {
 
 /* 사이드 에어팟 이미지 */
 .side .imgDiv {
-	width: 50%;
+	width: 170px;
+	height: 150px;
 	position: relative;
 	z-index: 2;
-	margin: 90px auto 0;
+	margin: 90px auto 30px;
 }
 
 .side img {
 	width: 100%;
+}
+
+/* 사이드에 있는 컨트롤러 */
+.controller-module {
+	width: 90%;
+	height: 210px;
+	margin: 0 auto;
+	background-color: #1e2125;
+	border-radius: 30px;
+}
+
+.controller-module ul {
+	margin: 0 10%;
+}
+
+.controller-module h1 {
+	font-family: "Open Sans", sans-serif;
+	font-size: 13pt;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: white;
+	cursor: default;
+	padding-top: 15px;
+}
+
+.controller-module h2 {
+	height: 50px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 13pt;
+	font-weight: 300;
+	color: white;
+	cursor: default;
+	padding-bottom: 10px;
+}
+
+#controller-slider {
+	width: 85%;
+	height: 1%;
+	background: #151518;
+	border-radius: 2px;
+}
+
+#controller-slider div {
+	width: 4px;
+	height: 4px;
+	margin-top: 1px;
+	background: #ef6dbc;
+	border-radius: 2px;
+}
+
+#controller-timer {
+	color: #494b4e;
+	font-size: 9pt;
+	font-family: Arial, Sans-Serif;
+	padding-top: 10px;
+}
+
+.controller-controls {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+#controller-play {
+	width: 30px;
+	height: 30px;
+	enable-background: new 0 0 25 25;
+}
+
+#controller-play g {
+	stroke: #fefefe;
+	stroke-width: 1;
+	stroke-miterlimit: 10;
+}
+
+#controller-play g path {
+	fill: #fefefe;
+}
+
+#controller-play:hover {
+	cursor: pointer;
+}
+
+#controller-play:hover g {
+	stroke: rgb(191, 23, 23);
+	cursor: pointer;
+}
+
+#controller-play:hover g path {
+	fill: rgb(191, 23, 23);
+	cursor: pointer;
+}
+
+.controller-step-backward {
+	width: 18px;
+	height: 18px;
+	enable-background: new 0 0 25 25;
+}
+
+.controller-step-backward g polygon {
+	fill: #fefefe;
+}
+
+.controller-step-foreward {
+	width: 18px;
+	height: 18px;
+	enable-background: new 0 0 25 25;
+}
+
+.controller-step-foreward g polygon {
+	fill: #fefefe;
+}
+
+#controller-pause {
+	enable-background: new 0 0 25 25;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	display: none;
+}
+
+#controller-pause rect {
+	fill: white;
+}
+
+#controller-pause:hover rect {
+	fill: rgb(191, 23, 23);
+}
+
+.controller-step-backward g polygon:hover, .controller-step-foreward g polygon:hover
+	{
+	fill: rgb(191, 23, 23);
+	cursor: pointer;
+}
+
+p {
+	color: #bdbdbd;
+}
+
+#controller-skip p {
+	color: #2980b9;
+}
+
+#controller-skip p:hover {
+	color: #e74c3c;
+	cursor: pointer;
+}
+
+.controller-expend {
+	cursor: pointer;
+}
+
+.controller-expend svg:hover g polygon {
+	fill: rgb(191, 23, 23);
 }
 
 /* 메인페이지 */
@@ -166,7 +321,7 @@ section.main .video-right .detail-ng {
 }
 
 section.main .video-right .detail-ng .detail-cover {
-	box-sizing:border-box;
+	box-sizing: border-box;
 	border: 3px solid white;
 	width: 500px;
 	height: 500px;
@@ -188,14 +343,13 @@ section.main .video-right .detail-ng .teamTitle {
 }
 
 /* 댓글페이지 댓글작성영역 */
-
 .video-right .video-comment {
 	width: 80%;
 	margin: 0 auto;
 	display: flex;
 }
 
-.video-right .video-comment textarea{
+.video-right .video-comment textarea {
 	width: 80%;
 	height: 40px;
 	resize: none;
@@ -224,7 +378,6 @@ section.main .video-right .detail-ng .teamTitle {
 }
 
 /* 메인페이지에 있는 list */
- 
 .flextoggle {
 	display: flex;
 	flex-wrap: wrap;
@@ -236,14 +389,14 @@ section.main .main-right .choose-img.flextoggle img {
 }
 
 .flex-box {
-	display : flex;
+	display: flex;
 }
 
 .flex-box .hidden {
 	display: none !important;
 }
 
-.flex-box #result-list {
+.flex-box #result-list,#playlist {
 	color: white;
 	text-align: center;
 	width: 65%;
@@ -255,49 +408,48 @@ section.main .main-right .choose-img.flextoggle img {
 	border-bottom: 1px solid white;
 }
 
-.flex-box #result-list .list-body li,
-.flex-box #result-list .list-head {
+.flex-box #result-list .list-body li, .flex-box #result-list .list-head,
+#playlist li
+	{
 	display: flex;
 	margin: 20 0;
 }
 
-.flex-box #result-list .list-head {
+.flex-box #result-list .list-head, #playlist .list-head {
 	font-size: 14px;
 }
 
-.flex-box #result-list .result-image {
+.flex-box #result-list .result-image, #playlist .result-image {
 	width: 14%;
-
 }
 
-.flex-box #result-list .list-body .result-image {
-	box-sizing:border-box;
+.flex-box #result-list .list-body .result-image,
+#playlist .list-body .result-image {
+	box-sizing: border-box;
 	border: 1px solid white;
 }
 
-.flex-box #result-list .result-image img {
+.flex-box #result-list .result-image img,
+#playlist .result-image img {
 	width: 100%;
 	height: 100%;
 }
 
-.flex-box #result-list .result-title,
-.flex-box #result-list .result-artists {
+.flex-box #result-list .result-title, .flex-box #result-list .result-artists,
+#playlist .result-title, #playlist .result-artists
+	{
 	width: 43%;
 }
-
-
 
 .flex-box .hidden {
 	display: none !important;
 }
 
-
-.flex-box .result-title:hover {
+.flex-box .list-body .result-title:hover {
 	color: rgb(191, 23, 23);
 }
 
 /* 댓글페이지에 있는 리스트 */
-
 section.main .video-right .playList {
 	width: 35%;
 	text-align: center;
@@ -315,8 +467,8 @@ section.main .video-right .playList {
 	border-bottom: 1px solid white;
 }
 
-.playList #result-list .list-body li,
-.playList #result-list .list-head {
+.playList #result-list .list-body li, .playList #result-list .list-head
+	{
 	display: flex;
 	margin: 26 0;
 }
@@ -327,11 +479,10 @@ section.main .video-right .playList {
 
 .playList #result-list .result-image {
 	width: 14%;
-
 }
 
 .playList #result-list .list-body .result-image {
-	box-sizing:border-box;
+	box-sizing: border-box;
 	border: 1px solid white;
 }
 
@@ -340,35 +491,27 @@ section.main .video-right .playList {
 	height: 100%;
 }
 
-.playList #result-list .result-title,
-.playList #result-list .result-artists {
+.playList #result-list .result-title, .playList #result-list .result-artists
+	{
 	width: 40%;
 }
-
-
 
 .playList .hidden {
 	display: block !important;
 }
 
-
 .playList .result-title:hover {
 	color: rgb(191, 23, 23);
 }
 
-.result-title,.result-artists {
-	cursor : pointer;
+.result-title, .result-artists {
+	cursor: pointer;
 }
 
-ul.play-lists p{
-	font-size : 2px;
+ul.play-lists p {
+	font-size: 2px;
 }
 
-#controller .image{ 
-	width : 50px;
-	height : 50px;
-}
-
-ul.play-lists li{
-	display : inline-block;
+ul.play-lists li {
+	display: inline-block;
 }

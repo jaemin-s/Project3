@@ -64,7 +64,8 @@ public class SpotifyAuthController {
 						+ "app-remote-control,streaming,"
 						+ "user-read-private,user-read-email,"
 						+ "playlist-read-private,playlist-read-collaborative,"
-						+ "playlist-modify-private,playlist-modify-public,user-read-playback-position")
+						+ "playlist-modify-private,playlist-modify-public,user-read-playback-position,"
+						+ "user-library-modify,user-library-read")
 				.show_dialog(true)
 				.state("some-state-value")
 				.build();
@@ -82,7 +83,7 @@ public class SpotifyAuthController {
 	@GetMapping("/logOut")
 	public String logOut(HttpSession session) {
 		session.invalidate();
-		return "redirect: http://localhost:8181/mrs/";
+		return "redirect: http://localhost/mrs/";
 	}
 
 	@GetMapping("/callback")

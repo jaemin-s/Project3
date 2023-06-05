@@ -47,17 +47,6 @@
 
 		} */
 		
-		/* document.getElementById('happy-btn').addEventListener('click',function(){
-			let rn = Math.floor(Math.random()*2)+1;
-			console.log('rn: '+rn);
-			if(rn===1){
-				player.loadPlaylist(["v6_GwXU1lkg","Dbxzh078jr4","jeqdYqsrsA0"]);
-				player.setLoop(true);
-			}else{
-				player.loadPlaylist(["EiVmQZwJhsA","vecSVX1QYbQ","JFgv8bKfxEs"]);
-				player.setLoop(true);
-			}
-		}) */
 	      
 	      //  클릭시 페이지 넘어가는것처럼 보이게 하기
             const $mainBtn = document.querySelector(".mainBtn");
