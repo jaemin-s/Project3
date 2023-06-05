@@ -217,7 +217,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     
     player.connect();
     player.activateElement();        
-    player.play();
 
     //재생 상태 변경 감지
     player.addListener('player_state_changed', ({
