@@ -48,7 +48,14 @@
 						<img class="weather" data-keyword="weather" 
 							src="${pageContext.request.contextPath }/img/화창한.png" alt="#">
 					</div>
-					<%@ include file="include/list.jsp"%>
+					<div id="result-list" class="hidden result-list">
+		                <div class="list-head flex">
+		                    <div class="result-image">앨범 커버</div>
+		                    <div class="result-title">곡명</div>
+		                    <div class="result-artists">가수</div>
+		                </div>
+		                <ul class="list-body"></ul>
+		            </div>
 				</div>
 
 			</li>
@@ -159,28 +166,34 @@
 				document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
 	        }
 	    });
+	
+	/* play list page */
+	document.getElementById('comments-list').addEventListener('click', e => {
+        if (e.target.classList.contains('comments-title')) {
+            document.querySelector('.cover-img').setAttribute('src',
+                e.target.parentNode.querySelector('.comments-image').dataset.url);
+			document.querySelector('.teamTitle').textContent = (e.target.parentNode.querySelector('.result-artists').textContent) + " - " + (e.target.textContent);
+			document.querySelector('.song-title').textContent = (e.target.textContent);
+			document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
+        }
+    });
 	    
 	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{
 		console.log('결과 리스트 클릭');
-		console.log(e.target);
 		if(e.target.classList.contains('result-title')){
-			console.log('제목 클릭 확인');
-			console.log(e.target.dataset.trackId);
-			console.log(e.target.dataset.trackUri);
 			let targetId = e.target.dataset.trackId;
 			let uris = [e.target.dataset.trackUri];
-			//
+		
 			recommendations(e.target.nextElementSibling.dataset.artistsId,e.target.dataset.trackId)
 			.then(trackList => {
-				console.log(trackList);
-				for (let i = 0; i<9; i++){
+				for (let i = 0; i<19; i++){
 					if(trackList.length<i) break;
 					uris.push(trackList[i].uri);
 				}
 				console.log(uris);
 				startResumePlayback(uris);
-			});		
+			})
 		}
 	});
 	

@@ -25,10 +25,11 @@ img, a {
 	height: 100vh;
 	position: absolute;
 	top: 0px;
-	z-index: 10;
+	z-index: -1;
 	background-image: url("../img/animation3.png");
 	background-size: 260%;
 	background-position: -340px;
+	opacity: 0.7;
 }
 
 .side>div {
@@ -457,20 +458,20 @@ section.main .main-right .choose-img.flextoggle img {
 	margin: 20 0;
 }
 
-.flex-box #result-list .list-head {
+.flex-box #result-list .list-head{
 	font-size: 14px;
 }
 
-.flex-box #result-list .result-image {
+.flex-box #result-list .result-image{
 	width: 14%;
 }
 
-.flex-box #result-list .list-body .result-image {
+.flex-box #result-list .list-body .result-image{
 	box-sizing: border-box;
 	border: 1px solid white;
 }
 
-.flex-box #result-list .result-image img {
+.flex-box #result-list .result-image img{
 	width: 100%;
 	height: 100%;
 }
@@ -484,7 +485,7 @@ section.main .main-right .choose-img.flextoggle img {
 	display: none !important;
 }
 
-.flex-box .result-title:hover {
+.flex-box .list-body .result-title:hover {
 	color: rgb(191, 23, 23);
 }
 

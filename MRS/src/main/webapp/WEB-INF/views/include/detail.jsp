@@ -54,37 +54,21 @@
 		</div>
 
 		<!-- playlist -->
-
-		<div class="playList">
-			<%@ include file="comments.jsp"%>
-		</div>
+	
+		<div class="playlist">
+			<div id="comments-list" class="comments-list">
+	                <div class="comments-head flex-box">
+	                    <div class="comments-image">앨범 커버</div>
+	                    <div class="comments-title">곡명</div>
+	                    <div class="comments-artists">가수</div>
+	                </div>
+	                <ul class="comments-body"></ul>
+	        </div>
+	   </div>
 
 	</div>
 
 	<script>
-/*         document.getElementById('replyRegist').onclick = () => {
-            const reply = document.getElementById('reply').value;
-            console.log(`${pageContext.request.contextPath}`);
-            console.log("reply:"+reply);
 
-        //요청에 관련된 정보 객체
-        const reqObj = {
-                method: 'post',
-                headers: {
-                    'Content-Type':'application/json'
-                },
-                body:
-                    JSON.stringify({
-                    'reply-content' : reply
-                	})
-  
-            }; 
 
-            fetch(`${pageContext.request.contextPath}/regist`,reqObj)
-                .then(res => res.text())
-                   .then(data =>{
-                           console.log('통신 성공!: ' + data);
-
-                    });
-        } */
 </script>
