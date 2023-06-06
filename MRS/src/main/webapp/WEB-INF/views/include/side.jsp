@@ -279,6 +279,7 @@
 			player.nextTrack();
 		})
 
+		let previousTrackId = null;
 		//재생 상태 변경 감지
 		player.addListener('player_state_changed', ({
 			position,
@@ -290,6 +291,11 @@
 
 		}) => {
 			console.log('상태 변경 감지!');
+			const currentTrackId = current_track.id;
+
+        	if (currentTrackId !== previousTrackId) {
+            previousTrackId = currentTrackId;
+			
 			fetch('${pageContext.request.contextPath}/plus', {
 				method: 'POST',
 				headers: {
@@ -349,7 +355,9 @@
 			} else { //재생중이면
 				document.getElementById('togglePlay').textContent = 'Pause';
 			}
-		}); //end player.addListener('player_state_changed'
-
-	} //end window.onSpotifyWebPlaybackSDKReady
+		}
+	}); //end player.addListener('player_state_changed'
+		
+} //end window.onSpotifyWebPlaybackSDKReady
 </script>
+
