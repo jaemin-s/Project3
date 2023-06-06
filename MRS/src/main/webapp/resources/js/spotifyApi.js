@@ -160,18 +160,17 @@ async function getTheUsersQueue(){
 }
 
 //search
-function searchForItem(query){
+async function searchForItem(query){
     if(arguments.length===0){
         query="";
     }
-    let params = "?q="+query+"&type=tracks&market=KR&limit=10";
-    fetch('https://api.spotify.com/v1/search'+params,{
-        headers : header
-    }).then(res=>res.json())
-    .then(data => {
-        console.log(data);
-        return data;
-    });
+    let params = "?q="+query+"&type=track&market=KR&limit=10";
+    let res = await fetch('https://api.spotify.com/v1/search'+params,{
+        headers : header});
+    let data = await res.json();    
+    console.log(data);
+    
+    return data;
 }
 
 async function recommendations(seedArtists,seedTracks){

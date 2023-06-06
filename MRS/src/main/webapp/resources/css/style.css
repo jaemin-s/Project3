@@ -7,6 +7,10 @@ body {
 	user-select: none;
 }
 
+#searchResults{
+	color: #2980b9;
+}
+
 img, a {
 	-webkit-user-drag: none;
 }
