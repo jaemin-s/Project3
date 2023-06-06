@@ -9,7 +9,9 @@
 
 		<ul>
 			<!-- 검색 기능  -->
-			<li class="search"><a>search</a></li>
+			<h1>Search</h1>
+    		<input type="text" id="searchQuery" placeholder="Enter search query">
+    		<button id="searchBtn">Search</button>
 
 			<!-- 로고 이미지 -->
 			<div class="main-logo-img">
@@ -304,5 +306,29 @@ let sky,pty; //하늘상태, 강수형태
 							});
 					}
 		 }
+	//검색 기능	 
+	 let search = document.getElementById('searchQuery');
+	 let $sbtn = document.getElementById('searchBtn');
+		
+		document.getElementById('searchBtn').addEventListener('click', e => {
+			document.querySelector('#choose-imgs').classList.add('flextoggle');
+			document.querySelector('#result-list').classList.remove('hidden');
+			  searchForItem(search.value).then(data => {
+			    [...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
+				[...data.tracks.items].forEach(item => {
+					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
+						`<li class="flex">
+	                        <div class="result-image" data-url="`+item.album.images[0].url+`"><img src="`+item.album.images[0].url+`"></img></div>
+	                        <div class="result-title" data-track-id="`+item.id+`" data-track-uri="`+item.uri+`">`+item.name+`</div>
+	                        <div class="result-artists" data-artists-id="`+item.artists[0].id+`">`+item.artists[0].name+`</div>
+	                     </li>`);		
+				});
+			  });
+			});
+		search.addEventListener('keydown', e => {
+	        if(e.keyCode === 13) {            
+	            $sbtn.click();
+	        }
+	    });
 	
 </script>

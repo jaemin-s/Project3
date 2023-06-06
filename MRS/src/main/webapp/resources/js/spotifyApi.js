@@ -160,18 +160,17 @@ async function getTheUsersQueue(){
 }
 
 //search
-function searchForItem(query){
+async function searchForItem(query){
     if(arguments.length===0){
         query="";
     }
-    let params = "?q="+query+"&type=tracks&market=KR&limit=10";
-    fetch('https://api.spotify.com/v1/search'+params,{
-        headers : header
-    }).then(res=>res.json())
-    .then(data => {
-        console.log(data);
-        return data;
-    });
+    let params = "?q="+query+"&type=track&market=KR&limit=10";
+    let res = await fetch('https://api.spotify.com/v1/search'+params,{
+        headers : header});
+    let data = await res.json();    
+    console.log(data);
+    
+    return data;
 }
 
 async function recommendations(seedArtists,seedTracks){
@@ -230,9 +229,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         //재생목록 디테일에 출력
         getTheUsersQueue().then(data =>{
             console.log("queue 가져오기");
-			console.log(data);
-            console.log(data.currently_playing.album.images[0].url);
-            console.log(document.querySelector('.playlist ul.comments-body'));
             [...document.querySelector('.playlist ul.comments-body').children].forEach(child =>child.remove());
             document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
             <li>
@@ -254,7 +250,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 		 });
 
         //컨트롤러 및 디테일 페이지 정보 넣기
-        console.log(current_track);
         document.querySelector('.cover-img').setAttribute('src',current_track.album.images[0].url);
         document.querySelector('.singer-name').textContent = current_track.artists[0].name;
         document.querySelector('.song-title').textContent = current_track.name;
@@ -263,13 +258,17 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     //재생버튼 변경
     if(paused){ //정지중이면
-        $contPlay.style.display = "block";
-        $contPause.style.display = "none";
-        $airImg.setAttribute('src', "./img/air.png");
+        document.getElementById("controller-play").style.display = "block";
+        document.getElementById("controller-pause").style.display = "none";
+        document.getElementById("airImg").setAttribute('src', "./img/air.png");
+        document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation3.png")';
+        document.querySelector(".side-back").style.backgroundSize = "260%";
+        document.querySelector(".side-back").style.backgroundPosition = "-340px";
     }else { //재생중이면
-        $contPlay.style.display = "none";
-        $contPause.style.display = "block";
-        $airImg.setAttribute('src', "./img/air2.png");
+        document.getElementById("controller-play").style.display = "none";
+        document.getElementById("controller-pause").style.display = "block";
+        document.getElementById("airImg").setAttribute('src', "./img/air2.png");
+        document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation2.gif")';
     }
     });//end player.addListener('player_state_changed'
 

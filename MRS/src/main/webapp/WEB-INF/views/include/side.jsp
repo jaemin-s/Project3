@@ -164,25 +164,7 @@ const $testCl = document.querySelector(".testCl");
         	alert('노래를 먼저 선택해주세요');
 			return;
         }
-
-		/* 노래 재생 시 */
-		if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air.png") {
-			console.log('열렸따!');
-			$airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
-	        $contPlay.style.display = "none";
-	        $contPause.style.display = "block";
-	        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation2.gif")';
-	        $sideBack.style.backgroundSize = "260%";
-	        $sideBack.style.backgroundPosition = "-340px";
-		} 
-		/* 노래 멈춤 */
-		else if ($airImg.getAttribute('src') === "${pageContext.request.contextPath}/img/air2.png") {
-			console.log('닫혔따!');
-			$airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air.png");
-	        $contPlay.style.display = "block";
-	        $contPause.style.display = "none";
-	        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation3.png")';
-		}
+		player.togglePlay();
 	}
 	
 
@@ -195,20 +177,9 @@ const $testCl = document.querySelector(".testCl");
         	alert('노래를 먼저 선택해주세요');
 			return;
         }
-        $contPlay.style.display = "none";
-        $contPause.style.display = "block";
-        $airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air2.png");
-        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation2.gif")';
-        $sideBack.style.backgroundSize = "260%";
-        $sideBack.style.backgroundPosition = "-340px";
     }
 	
-    $contPause.onclick = function() {
-        $contPlay.style.display = "block";
-        $contPause.style.display = "none";
-        $airImg.setAttribute('src', "${pageContext.request.contextPath}/img/air.png");
-        $sideBack.style.backgroundImage = 'url("${pageContext.request.contextPath}/img/animation3.png")';
-    }
+
 	
     /* 의열 작성 마감 */
     

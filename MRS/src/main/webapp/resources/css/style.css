@@ -568,3 +568,8 @@ ul.play-lists li {
 .top-btn:hover {
 	opacity: 1;
 }
+
+/* 검색 창*/
+#searchResults{
+	color: #2980b9;
+}
