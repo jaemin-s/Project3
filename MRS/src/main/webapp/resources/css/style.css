@@ -511,7 +511,3 @@ section.main .video-right .playList {
 ul.play-lists p {
 	font-size: 2px;
 }
-
-ul.play-lists li {
-	display: inline-block;
-}

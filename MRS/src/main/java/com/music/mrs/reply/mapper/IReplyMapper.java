@@ -1,19 +1,22 @@
-package com.music.mrs.reply.service;
+package com.music.mrs.reply.mapper;
 
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
+
 import com.music.mrs.command.ReplyVO;
 import com.music.mrs.command.UserVO;
 
-public interface IReplyService {
-
+public interface IReplyMapper {
+	
 	// 댓글 등록
-    void replyRegist(int mno,ReplyVO vo,UserVO uservo);
+    void replyRegist(@Param("rmno") int rmno,@Param("vo") ReplyVO vo,@Param("uservo") UserVO uservo);
     
     // 목록 요청
-    List<ReplyVO> getList(int rmno,int pageNum);
-    //댓글 총합
+    List<ReplyVO> getList(Map<String, Object> data);
+    
     int getTotal(int bno);
     
     //댓글 번호 얻어오기
@@ -24,7 +27,4 @@ public interface IReplyService {
     
     // 댓글 삭제
     void delete(int rno);
-
-    
-	
 }

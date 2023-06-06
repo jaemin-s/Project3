@@ -1,6 +1,9 @@
 package com.music.mrs;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +24,18 @@ public class UserinfoController {
 	private IUserService service;
 	
 	@PostMapping("/userinfo")
-	public void userinfo(@RequestBody UserVO data) {
+	public ResponseEntity<Void> userinfo(@RequestBody UserVO data, HttpSession session) {
 		
 		System.out.println(data.getDisplayName());
 		System.out.println(data.getEmail());
 		service.insert(data);
+		
+		data.setUsersId(service.usersIdCall(data));
+//		System.out.println(data.getUsersId());
+		session.setAttribute("userinfo", data);
+		return ResponseEntity.ok().build();
 	}
+	
+	
 	
 }

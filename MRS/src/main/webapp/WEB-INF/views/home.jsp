@@ -27,6 +27,9 @@
 							src="${pageContext.request.contextPath }/img/행복한.png" alt="#">
 						<img data-keyword="wantSing" 
 							src="${pageContext.request.contextPath }/img/불러볼래.png" alt="#">
+							src="${pageContext.request.contextPath }/img/행복한.png" alt="#">
+						<img data-keyword="wantSing" 
+							src="${pageContext.request.contextPath }/img/불러볼래.png" alt="#">
 						<img data-keyword="love" 
 							src="${pageContext.request.contextPath }/img/사랑스러운.png" alt="#">
 						<img data-keyword="fresh" 
