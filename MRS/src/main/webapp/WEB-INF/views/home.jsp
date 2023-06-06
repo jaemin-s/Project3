@@ -74,7 +74,9 @@
 	document.getElementById('choose-imgs').addEventListener('click',e=>{
 		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
 		document.querySelector('#result-list').classList.toggle('hidden');
-		
+		if(document.querySelector('#result-list').classList.contains('hidden')) {
+			return;
+		}
 		 let MyUrl = "";
 	        if(e.target.dataset.keyword === "happy"){ 
 	        	// 행복
@@ -148,11 +150,33 @@
                             <div class="result-image" data-url="`+track.album.images[0].url+`"><img src="`+track.album.images[0].url+`"></img></div>
                             <div class="result-title" data-track-id="`+track.id+`" data-track-uri="`+track.uri+`">`+track.name+`</div>
                             <div class="result-artists" data-artists-id="`+track.artists[0].id+`">`+track.artists[0].name+`</div>
-                         </li>`);		
+                         </li>`);
 				});
 			});
 
 	});//이미지 클릭 끝
+	
+	/* 노래 선택 시 컨트롤러, 댓글페이지에 제목, 가수명 넣어주기 */
+	document.getElementById('result-list').addEventListener('click', e => {
+	        if (e.target.classList.contains('result-title')) {
+	            document.querySelector('.cover-img').setAttribute('src',
+	                e.target.parentNode.querySelector('.result-image').dataset.url);
+				document.querySelector('.teamTitle').textContent = (e.target.parentNode.querySelector('.result-artists').textContent) + " - " + (e.target.textContent);
+				document.querySelector('.song-title').textContent = (e.target.textContent);
+				document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
+	        }
+	    });
+	
+	/* play list page */
+	document.getElementById('comments-list').addEventListener('click', e => {
+        if (e.target.classList.contains('comments-title')) {
+            document.querySelector('.cover-img').setAttribute('src',
+                e.target.parentNode.querySelector('.comments-image').dataset.url);
+			document.querySelector('.teamTitle').textContent = (e.target.parentNode.querySelector('.result-artists').textContent) + " - " + (e.target.textContent);
+			document.querySelector('.song-title').textContent = (e.target.textContent);
+			document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
+        }
+    });
 	    
 	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{

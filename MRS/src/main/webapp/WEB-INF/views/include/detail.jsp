@@ -66,21 +66,43 @@
 		</div>
 
 		<!-- playlist -->
+	
+		<div class="playList">
+			<div id="comments-list" class="comments-list">
+	                <div class="comments-head flex-box">
+	                    <div class="comments-image">앨범 커버</div>
+	                    <div class="comments-title">곡명</div>
+	                    <div class="comments-artists">가수</div>
+	                </div>
+	                <ul class="comments-body"></ul>
+	        </div>
+			<a id="top-btn" class="top-btn">top</a>
+	   </div>
 
-		<div id="playlist" class="hidden result-list">
-			<div class="list-head flex-box">
-				<div class="result-image">앨범 커버</div>
-				<div class="result-title">곡명</div>
-				<div class="result-artists">가수</div>
-			</div>
-			<ul class="list-body"></ul>
-		</div>
 
 	</div>
 	<!-- SweetAlert2 CDN -->
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-	
+	var backToTop = () => {
+		  // Scroll | button show/hide
+		  window.addEventListener('scroll', () => {
+		    if (document.querySelector('.main').scrollTop > 500) {
+		    	console.log("스크롤");
+		      document.getElementById('top-btn').style.display = "block";
+		    } else {
+		      document.getElementById('top-btn').style.display = "none";
+		    }
+		  });
+		  // back to top
+		  document.getElementById('top-btn').addEventListener('click', () => {
+		    window.scrollTo({
+		      top: 0,
+		      left: 0,
+		      behavior: 'smooth'
+		    });
+		  })
+	};	
 	
 	document.getElementById('replyRegist').onclick = () => {
 
