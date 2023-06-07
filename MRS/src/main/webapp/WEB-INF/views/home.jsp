@@ -9,10 +9,10 @@
 
 		<ul>
 			<!-- 검색 기능  -->
-			<h1>Search</h1>
-    		<input type="text" id="searchQuery" placeholder="Enter search query">
-    		<button id="searchBtn">Search</button>
-
+			<div class="search">
+	    		<input type="text" id="searchQuery" placeholder="Enter search query">
+	    		<button id="searchBtn">Search</button>
+			</div>
 			<!-- 로고 이미지 -->
 			<div class="main-logo-img">
 				<img id=""
@@ -207,7 +207,7 @@ let sky,pty; //하늘상태, 강수형태
 			const rsRow = [...document.querySelectorAll('#resultRow *')];
 			//현재 날짜를 받아오는 함수
 			//const getCurrentDateTime = () =>  {
-				const now = new Date();	
+			/* 	const now = new Date();	
 				const year = now.getFullYear();
 				let month = now.getMonth() + 1;
 				let day = now.getDate();
@@ -281,7 +281,7 @@ let sky,pty; //하늘상태, 강수형태
 						
 						 // MyUrl 변수를 기반으로 음악을 재생하는 로직 작성
 			  
-						/*  const playButton = document.querySelector('#play-button');
+						  const playButton = document.querySelector('#play-button');
 						 if (playButton) {
 								playButton.addEventListener('click', () => {
 								const audio = new Audio(MyUrl);
@@ -289,8 +289,8 @@ let sky,pty; //하늘상태, 강수형태
 								});
 							} else {
 								console.log('x');
-							} */
-					}
+							}
+					} */
 				if(${accessToken != null}) {
 					console.log("닉넴 받아옴")
 					/* 닉네임 받아와서 사용 */

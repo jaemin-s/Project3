@@ -225,6 +225,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         track_window: { current_track }
 
     }) => {
+    	document.getElementId("range-val").max =  (duration)/1000;
+    	document.getElementId("range-val").value =  (position)/1000;
+		
 
         //재생목록 디테일에 출력
         getTheUsersQueue().then(data =>{
@@ -258,13 +261,13 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     //재생버튼 변경
     if(paused){ //정지중이면
+    	stopTime();
         document.getElementById("controller-play").style.display = "block";
         document.getElementById("controller-pause").style.display = "none";
         document.getElementById("airImg").setAttribute('src', "./img/air.png");
         document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation3.png")';
-        document.querySelector(".side-back").style.backgroundSize = "260%";
-        document.querySelector(".side-back").style.backgroundPosition = "-340px";
     }else { //재생중이면
+    	goTime();
         document.getElementById("controller-play").style.display = "none";
         document.getElementById("controller-pause").style.display = "block";
         document.getElementById("airImg").setAttribute('src', "./img/air2.png");
@@ -274,5 +277,48 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
 }//end window.onSpotifyWebPlaybackSDKReady
 
-
+	//재생 위치 변경
+	const $rangeVal = document.getElementById("range-val");
+	$rangeVal.mouseup = seekToPosition(($rangeVal.value)*1000);
+	
+	//시간 지나가게 만들기
+	function goTime() {
+		 const going = setInterval(() => {
+		 	if($rangeVal.value == $rangeVal.max) {
+				clearInterval(going);
+				$rangeVal.value = 0;
+				return;
+			}
+			$rangeVal.value = ($rangeVal.value)+1;
+	        }
+		  }, 1000);
+	}
+	
+	//시간 멈추기
+	function stopTime() {
+		clearInterval(going);
+	}
+	
+	//현재 시간 변경
+	const $timeP = document.querySelector("#time p");
+	
+	$rangeVal.addEventListener("input", function() {
+	    let value = $rangeVal.value;
+	    let minutes = Math.floor(value / 60);
+	    let seconds = value % 60;
+	    let formattedTime = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+	
+	    $timeP.textContent = formattedTime;
+	});
+	
+	const $totalTimeP = document.querySelector("#total-time p");
+	
+	$rangeVal.addEventListener("input", function() {
+	    let mValue = $rangeVal.max;
+	    let mMinutes = Math.floor(mValue / 60);
+	    let mSeconds = mValue % 60;
+	    let mFormattedTime = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+	
+	    $totalTimeP.textContent = mFormattedTime;
+	});
 
