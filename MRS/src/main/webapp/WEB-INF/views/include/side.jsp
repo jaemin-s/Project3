@@ -152,7 +152,7 @@ const $testCl = document.querySelector(".testCl");
 	/* 로그인 안하고 다른거 눌렀을 시 */
 	const $main = document.querySelector(".main");
 	
-	if(`${accessToken}` == null) {
+	if(${accessToken == null}) {
 	$main.onclick = function(e) {
 		console.log(e.target);
 		if(!e.target.parentNode.classList.contains('spotify-login-button')) {
@@ -162,7 +162,7 @@ const $testCl = document.querySelector(".testCl");
 		}
 	}
 	
-	if(`${accessToken}` != null) {
+	if(${accessToken != null}) {
 		
 		let isExecuted = false;
 	

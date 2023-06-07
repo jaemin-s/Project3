@@ -50,8 +50,6 @@
 
 		<div class="playList">
 
-			<%@ include file="list.jsp"%>
-
 		</div>
 
 	</div>

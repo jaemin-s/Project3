@@ -76,7 +76,7 @@
 
             $videoBtn.onclick = function() {
                 console.log("비디오페이지 클릭");
-                if($videoImg.src == '') {
+                if($videoImg.getAttribute('src') === '') {
                 	alert('노래를 먼저 선택해주세요');
 					return;
                 }

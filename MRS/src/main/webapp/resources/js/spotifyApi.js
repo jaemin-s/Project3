@@ -354,52 +354,5 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
 }//end window.onSpotifyWebPlaybackSDKReady
 
-<<<<<<< HEAD
-	//재생 위치 변경
-	const $rangeVal = document.getElementById("range-val");
-	$rangeVal.mouseup = seekToPosition(($rangeVal.value)*1000);
-	
-	//시간 지나가게 만들기
-	function goTime() {
-		 const going = setInterval(() => {
-		 	if($rangeVal.value == $rangeVal.max) {
-				clearInterval(going);
-				$rangeVal.value = 0;
-				return;
-			}
-			$rangeVal.value = ($rangeVal.value)+1;
-	        
-		  }, 1000);
-	}
-	
-	//시간 멈추기
-	function stopTime() {
-		clearInterval(going);
-	}
-	
-	//현재 시간 변경
-	const $timeP = document.querySelector("#time p");
-	
-	$rangeVal.addEventListener("input", function() {
-	    let value = $rangeVal.value;
-	    let minutes = Math.floor(value / 60);
-	    let seconds = value % 60;
-	    let formattedTime = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
-	
-	    $timeP.textContent = formattedTime;
-	});
-	
-	const $totalTimeP = document.querySelector("#total-time p");
-	
-	$rangeVal.addEventListener("input", function() {
-	    let mValue = $rangeVal.max;
-	    let mMinutes = Math.floor(mValue / 60);
-	    let mSeconds = mValue % 60;
-	    let mFormattedTime = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
-	
-	    $totalTimeP.textContent = mFormattedTime;
-	});
-=======
 
->>>>>>> 9e96f80da9f2c865b4878e81ff27b8c9d996a5ab
 
