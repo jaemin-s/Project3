@@ -47,19 +47,7 @@
 			<div class="commentList">
 				<!--여기에 접근 반복-->
 				<div id="replyList">
-
-					<!--  자바스크립트 단에서 반복문을 이용해서 댓글의 개수만큼 반복 표현.  -->
-					<!-- <div class='reply-wrap'>
-                         <div class='reply-content'>
-                            <div class='reply-group'>
-                                <strong class='left'>honggildong</strong>
-                                <small class='left'>2019/12/10</small>
-                                <a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a>
-                                <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
-                            </div>
-                            <p class='clearfix'>여기는 댓글영역</p>
-                        </div> 
-                    </div> -->
+					
 				</div>
 			</div>
 
@@ -128,6 +116,27 @@
 		    });
 		  })
 	};	
+	
+	/* top 버튼 */
+	window.addEventListener('scroll', function() {
+		  var topButton = document.querySelector('.top-btn');
+		  var scrollPosition = window.pageYOffset;
+
+		  // 요소가 일정 위치로 스크롤되었을 때 버튼 보이기
+		  if (scrollPosition > 1100) {
+		    topButton.style.display = 'block';
+		  } else {
+		    topButton.style.display = 'none';
+		  }
+		});
+
+		// 버튼 클릭 시 상단으로 스크롤
+		document.querySelector('.top-btn').addEventListener('click', function() {
+		  window.scrollTo({
+		    top: 0,
+		    behavior: 'smooth'
+		  });
+		});
 	
 	document.getElementById('replyRegist').onclick = () => {
 
@@ -242,6 +251,7 @@
 
 					});
 			} //end getList();
+
 
 		/////////////////////
 		//file2Function  end

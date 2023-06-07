@@ -1,5 +1,13 @@
 /* 기본 */
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 body {
+	    font-family: 'TheJamsil5Bold';
 	overflow-y: scroll;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -130,19 +138,140 @@ img, a {
 	padding-bottom: 10px;
 }
 
-#controller-slider {
-	width: 85%;
-	height: 1%;
-	background: #151518;
-	border-radius: 2px;
+#content {
+	width: 100%;
 }
 
-#controller-slider div {
-	width: 4px;
-	height: 4px;
-	margin-top: 1px;
-	background: #ef6dbc;
-	border-radius: 2px;
+input[type=range] {
+	-webkit-appearance: none;
+	width: 100%;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+}
+
+input[type=range]:focus {
+	outline: none;
+}
+
+input[type=range]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 10px;
+	width: 10px;
+	border-radius: 50px;
+	background: #ffffff;
+	cursor: pointer;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+	height: 15px;
+	width: 15px;
+	margin-top: -3px;
+}
+
+input[type=range]::-moz-slider-thumb:active {
+	height: 15px;
+	width: 15px;
+	margin-top: -3px;
+}
+
+input[type=range]::-ms-slider-thumb:active {
+	height: 15px;
+	width: 15px;
+	margin-top: -3px;
+}
+
+input[type=range]::-moz-range-thumb {
+	height: 10px;
+	width: 10px;
+	border-radius: 50px;
+	background: #ffffff;
+	cursor: pointer;
+}
+
+input[type=range]::-ms-thumb {
+	height: 15px;
+	width: 15px;
+	border-radius: 50px;
+	background: #ffffff;
+	cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 8px;
+	cursor: pointer;
+	background: #666666;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #666666;
+}
+
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 8px;
+	cursor: pointer;
+	background: #666666;
+}
+
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 8px;
+	cursor: pointer;
+	background: #666666;
+}
+
+input[type=range]::-ms-fill-lower {
+	width: 100%;
+	height: 8px;
+	cursor: pointer;
+	background: #666666;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: #666666;
+}
+
+input[type=range]::-ms-fill-upper {
+	width: 100%;
+	height: 8px;
+	cursor: pointer;
+	background: #666666;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+	background: #666666;
+}
+
+#content .now-time {
+	display: flex;
+}
+
+#content #time p {
+	font-family: Roboto;
+	font-weight: normal;
+}
+
+#content #total-time {
+	margin-left: 75%;
+}
+
+#content #total-time p {
+	font-family: Roboto;
+	font-weight: normal;
 }
 
 #controller-timer {
@@ -272,7 +401,29 @@ section.main .main-right .search {
 	font-size: 50px;
 	margin-left: 86px;
 	margin-top: 100px;
+	display:flex;
 }
+
+.search #searchQuery {
+	width: 200px;
+	height: 30px;
+	border-radius: 15px 0 0 15px;
+	border: none;
+	text-align: center;
+	outline:none;
+}
+
+.search #searchBtn {
+	margin-left: 6px;
+	border: none;
+	border-radius: 0 15px 15px 0;
+	background: #ffffffa3;
+}
+
+.search #searchBtn:hover {
+	background: white;
+}
+
 
 /* 메인페이지 로고 */
 section.main .main-right .main-logo-img {
@@ -492,18 +643,20 @@ section.main .main-right .choose-img.flextoggle img {
 /* 댓글페이지에 있는 리스트 */
 section.main .video-right .playList {
 	width: 35%;
+	height: 900px;
 	text-align: center;
 	padding: 20px 0;
+	position: sticky;
+	top: -1000px;
 }
 
 .playList #comments-list {
 	color: white;
 	text-align: center;
 	width: 90%;
-	position: sticky;
-	top: 20px;
-	border-top: 1px solid white;
+	height: 1700px;
 	border-bottom: 1px solid white;
+	border-top: 1px solid white;
 }
 
 .playList #comments-list .comments-body li, .playList #comments-list .comments-head
@@ -542,34 +695,34 @@ section.main .video-right .playList {
 	cursor: pointer;
 }
 
-ul.play-lists p {
+ul.playLists p {
 	font-size: 2px;
 }
 
-ul.play-lists li {
+ul.playLists li {
 	display: inline-block;
 }
 
-.top-btn {
-	width: 120px;
-	height: 120px;
+.playList a.top-btn {
+	width: 60px;
+	height: 60px;
 	color: black;
 	background: white;
-	text-align:center;
-	line-height: 107px;
+	text-align: center;
+	line-height: 54px;
 	font-weight: 800;
-	font-size: 60;
+	font-size: 30PX;
 	border-radius: 50%;
-	position: fixed;
-	bottom: 50px;
 	opacity: 0.7;
+	display: none;
+	margin: 70px 167px 30px ;
 }
 
-.top-btn:hover {
+.playList a.top-btn:hover {
 	opacity: 1;
 }
 
 /* 검색 창*/
-#searchResults{
+#searchResults {
 	color: #2980b9;
 }

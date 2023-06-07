@@ -5,14 +5,18 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
-	<!-- css 가져오기 -->
-	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
-	<!-- reset css -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- css 가져오기 -->
+<link href="${pageContext.request.contextPath}/css/style.css"
+	rel="stylesheet">
+<!-- reset css -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	rel="stylesheet">
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/commons.js" defer></script>
@@ -22,12 +26,12 @@
 </head>
 
 <body>
-	
+
 	<!-- 왼쪽 고정 menu, controller -->
 	<div class="side">
-		
+
 		<ul class="side-back"></ul>
-		
+
 		<!-- 페이지 넘어갈 곳 -->
 		<div class="menu">
 			<!-- 로그아웃상태에선 로그인, 회원가입 넣기 -->
@@ -54,7 +58,8 @@
 
 		<!-- 에어팟 이미지 -->
 		<div class="imgDiv">
-			<img id="airImg" src="${pageContext.request.contextPath }/img/air.png" alt="#">
+			<img id="airImg"
+				src="${pageContext.request.contextPath }/img/air.png" alt="#">
 		</div>
 
 
@@ -72,12 +77,19 @@
 				<!-- 우측 하단 버튼 -->
 				<div class="controller-button-items">
 					<!-- 진행시간 바 -->
-					<div id="controller-slider">
-						<div id="controller-elapsed"></div>
-						<!-- 진행중인 바 -->
+					<div id="content">
+						<div id="range">
+							<input type="range" id="range-val" value="0" min="0" max="143">
+						</div>
+						<div class="now-time">
+							<div id="time">
+								<p>0:00</p>
+							</div>
+							<div id="total-time">
+								<p>2:23</p>
+							</div>
+						</div>
 					</div>
-					<p id="controller-timer">0:00</p>
-					<!-- 타이머 -->
 
 
 

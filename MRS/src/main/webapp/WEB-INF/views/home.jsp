@@ -9,10 +9,10 @@
 
 		<ul>
 			<!-- 검색 기능  -->
-			<h1>Search</h1>
-    		<input type="text" id="searchQuery" placeholder="Enter search query">
-    		<button id="searchBtn">Search</button>
-
+			<div class="search">
+	    		<input type="text" id="searchQuery" placeholder="Enter search query">
+	    		<button id="searchBtn">Search</button>
+			</div>
 			<!-- 로고 이미지 -->
 			<div class="main-logo-img">
 				<img id=""
@@ -157,28 +157,6 @@
 			});
 
 	});//이미지 클릭 끝
-	
-	/* 노래 선택 시 컨트롤러, 댓글페이지에 제목, 가수명 넣어주기 */
-/* 	document.getElementById('result-list').addEventListener('click', e => {
-	        if (e.target.classList.contains('result-title')) {
-	            document.querySelector('.cover-img').setAttribute('src',
-	                e.target.parentNode.querySelector('.result-image').dataset.url);
-				document.querySelector('.teamTitle').textContent = (e.target.parentNode.querySelector('.result-artists').textContent) + " - " + (e.target.textContent);
-				document.querySelector('.song-title').textContent = (e.target.textContent);
-				document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
-	        }
-	    }); */
-	
-	/* play list page */
-/* 	document.getElementById('comments-list').addEventListener('click', e => {
-        if (e.target.classList.contains('comments-title')) {
-            document.querySelector('.cover-img').setAttribute('src',
-                e.target.parentNode.querySelector('.comments-image').dataset.url);
-			document.querySelector('.teamTitle').textContent = (e.target.parentNode.querySelector('.result-artists').textContent) + " - " + (e.target.textContent);
-			document.querySelector('.song-title').textContent = (e.target.textContent);
-			document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
-        }
-    }); */
 	    
 	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{
@@ -207,7 +185,7 @@ let sky,pty; //하늘상태, 강수형태
 			const rsRow = [...document.querySelectorAll('#resultRow *')];
 			//현재 날짜를 받아오는 함수
 			//const getCurrentDateTime = () =>  {
-				const now = new Date();	
+			 	const now = new Date();	
 				const year = now.getFullYear();
 				let month = now.getMonth() + 1;
 				let day = now.getDate();
@@ -235,7 +213,7 @@ let sky,pty; //하늘상태, 강수형태
 			
 			
 			let url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst`;
-  			let queryParams = `?serviceKey=`+key+`&pageNo=1&numOfRows=25&dataType=JSON&base_date=`+currentDate+`&base_time=`+currentTime+`&nx=`+nX+`&ny=`+nY;
+  			let queryParams = `?serviceKey=`+key+`&pageNo=1&numOfRows=25&dataType=JSON&base_date=`+currentDate+`&base_time=1200&nx=`+nX+`&ny=`+nY;
 			console.log(url);
 			console.log(queryParams);
 					fetch(url+queryParams).then(res => res.json())
@@ -278,20 +256,9 @@ let sky,pty; //하늘상태, 강수형태
 						console.log(sky);
 						console.log(pty);
 						
-						
-						 // MyUrl 변수를 기반으로 음악을 재생하는 로직 작성
-			  
-						/*  const playButton = document.querySelector('#play-button');
-						 if (playButton) {
-								playButton.addEventListener('click', () => {
-								const audio = new Audio(MyUrl);
-								audio.play();
-								});
-							} else {
-								console.log('x');
-							} */
-					}
-				if(${accessToken != null}) {
+					} 
+				
+				if(`${accessToken}` != null) {
 					console.log("닉넴 받아옴")
 					/* 닉네임 받아와서 사용 */
 						fetch('https://api.spotify.com/v1/me', {headers : {"Authorization" : `Bearer ${accessToken}`}})
@@ -304,7 +271,7 @@ let sky,pty; //하늘상태, 강수형태
 								document.querySelector('.menu>h1').name = display_name;
 								tokenChe =2;
 							});
-					}
+				}
 		 }
 	//검색 기능	 
 	 let search = document.getElementById('searchQuery');
