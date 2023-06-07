@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.extern.slf4j.Slf4j;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
@@ -83,7 +84,7 @@ public class SpotifyAuthController {
 	@GetMapping("/logOut")
 	public String logOut(HttpSession session) {
 		session.invalidate();
-		return "redirect: http://localhost/mrs/";
+		return "redirect: http://localhost:8181/mrs/";
 	}
 
 	@GetMapping("/callback")
@@ -120,6 +121,17 @@ public class SpotifyAuthController {
             session.setAttribute("accessToken", accessToken);
             session.setAttribute("refreshToken", refreshToken);
             session.setAttribute("expiresIn", expiresIn);
+            
+            // Refresh Token을 사용하여 새로운 액세스 토큰을 요청합니다.
+            AuthorizationCodeRefreshRequest refreshRequest = spotifyApi.authorizationCodeRefresh()
+                    .refresh_token(refreshToken)
+                    .build();
+
+            AuthorizationCodeCredentials refreshedCredentials = refreshRequest.execute();
+            String newAccessToken = refreshedCredentials.getAccessToken();
+
+            // 새로 받은 액세스 토큰을 세션에 저장합니다.
+            session.setAttribute("accessToken", newAccessToken);
             
             // 처리 결과를 ModelAndView에 담아 리다이렉트합니다.
             ModelAndView modelAndView = new ModelAndView("redirect:/success");

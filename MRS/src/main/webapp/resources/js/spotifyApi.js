@@ -194,6 +194,28 @@ async function recommendations(seedArtists,seedTracks){
     return trackList;
 }
 
+//현재 시간 변경
+const $timeP = document.querySelector("#time p"); //현재 시간 p
+const $totalTimeP = document.querySelector("#total-time p"); //트랙 길이 p
+let currentTime = 0;
+let isStop = true;
+let setTime = setInterval(function(){
+		if(!isStop){
+			currentTime++;
+			$timeP.textContent = addZero(Math.floor(currentTime/60))+":"+addZero(Math.floor(currentTime%60));
+			document.getElementById('range-val').value = Math.floor(currentTime);
+		}
+	},1000);
+	
+document.getElementById('range-val').addEventListener('mouseup',()=>{
+	console.log(document.getElementById('range-val').value);
+	seekToPosition((document.getElementById('range-val').value)*1000);
+});
+	
+function addZero(i){//0더해주는 함수
+	if(i<10) return "0"+i;
+	else return i;
+}
 //SDK준비
 window.onSpotifyWebPlaybackSDKReady = () => {
     const token = accessToken;
@@ -215,8 +237,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     });
     
     player.connect();
-    player.activateElement();        
-
+    player.activateElement();    
+        
+	let previousTrackId = null;
     //재생 상태 변경 감지
     player.addListener('player_state_changed', ({
         position,
@@ -225,13 +248,10 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         track_window: { current_track }
 
     }) => {
-    	document.getElementId("range-val").max =  (duration)/1000;
-    	document.getElementId("range-val").value =  (position)/1000;
-		
-
         //재생목록 디테일에 출력
         getTheUsersQueue().then(data =>{
             console.log("queue 가져오기");
+  			//현재 재생목록 출력
             [...document.querySelector('.playlist ul.comments-body').children].forEach(child =>child.remove());
             document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
             <li>
@@ -240,6 +260,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 <div class="comments-artists" data-artists-id="`+data.currently_playing.artists[0].id+`">`+data.currently_playing.artists[0].name+`</div>
             </li>
             `);
+            //대기열 목록 출력
             [...data.queue].forEach(track=>{
                 document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
             <li>
@@ -249,8 +270,80 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             </li>
             `);
             })
-            
+            //컨트롤러 및 디테일 페이지 정보 넣기
+            document.querySelector('.cover-img').setAttribute('src', data.currently_playing.album.images[0].url);
+            document.querySelector('.singer-name').textContent = data.currently_playing.artists[0].name;
+            document.querySelector('.song-title').textContent = data.currently_playing.name;
+            document.querySelector('.teamTitle').textContent =
+            data.currently_playing.artists[0].name+" - "+data.currently_playing.name;
 		 });
+
+	//컨트롤러 시간 표시
+    $timeP.textContent = addZero(Math.floor((position/1000)/60)) +":"+addZero(Math.floor((position/1000)%60));
+    $totalTimeP.textContent = addZero(Math.floor((duration/1000)/60))+":"+addZero(Math.floor((duration/1000)%60));
+
+	currentTime = position/1000;
+	document.getElementById('range-val').max = Math.floor(duration/1000);
+	
+    //재생버튼 변경
+    if(paused){ //정지중이면
+    	isStop = true;
+        document.getElementById("controller-play").style.display = "block";
+        document.getElementById("controller-pause").style.display = "none";
+        document.getElementById("airImg").setAttribute('src', "./img/air.png");
+        document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation3.png")';
+    }else { //재생중이면
+    	isStop = false;
+        document.getElementById("controller-play").style.display = "none";
+        document.getElementById("controller-pause").style.display = "block";
+        document.getElementById("airImg").setAttribute('src', "./img/air2.png");
+        document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation2.gif")';
+    }
+
+    });//end player.addListener('player_state_changed'	
+    
+         const currentTrackId = current_track.id;
+
+         if (currentTrackId !== previousTrackId) {
+         previousTrackId = currentTrackId;
+         
+         fetch('/mrs/plus', {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify({
+
+                 'currentTrack': current_track.id
+
+             })
+
+         }).then((response) => {
+             console.log('current_track 전송 성공');
+             fetch('/mrs/getrmno', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({
+                     'currentTrack': current_track.id
+                 })
+             }).then(response => response.json())
+             .then(data => {
+                 const rmno = data.rmno;
+                 // 브라우저 저장소에 rmno 데이터를 저장하고, detail.jsp 페이지를 엽니다.
+                 localStorage.setItem('rmno', rmno);
+                 
+                 /* console.log('이거 되는지 확인'+getList(1,true)); */
+                     
+                 getList(1,true);
+                  
+                 
+             }).catch(error => {
+                 console.error('Error:', error);
+             });
+         })
+        }
 
         //컨트롤러 및 디테일 페이지 정보 넣기
         document.querySelector('.cover-img').setAttribute('src',current_track.album.images[0].url);
@@ -259,24 +352,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         document.querySelector('.teamTitle').textContent =
         current_track.artists[0].name+" - "+current_track.name;
 
-    //재생버튼 변경
-    if(paused){ //정지중이면
-    	stopTime();
-        document.getElementById("controller-play").style.display = "block";
-        document.getElementById("controller-pause").style.display = "none";
-        document.getElementById("airImg").setAttribute('src', "./img/air.png");
-        document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation3.png")';
-    }else { //재생중이면
-    	goTime();
-        document.getElementById("controller-play").style.display = "none";
-        document.getElementById("controller-pause").style.display = "block";
-        document.getElementById("airImg").setAttribute('src', "./img/air2.png");
-        document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation2.gif")';
-    }
-    });//end player.addListener('player_state_changed'
-
 }//end window.onSpotifyWebPlaybackSDKReady
 
+<<<<<<< HEAD
 	//재생 위치 변경
 	const $rangeVal = document.getElementById("range-val");
 	$rangeVal.mouseup = seekToPosition(($rangeVal.value)*1000);
@@ -321,4 +399,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 	
 	    $totalTimeP.textContent = mFormattedTime;
 	});
+=======
+
+>>>>>>> 9e96f80da9f2c865b4878e81ff27b8c9d996a5ab
 

@@ -8,16 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- css 가져오기 -->
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="stylesheet">
-<!-- reset css -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-	rel="stylesheet">
-
+	<!-- css 가져오기 -->
+	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
+	<!-- reset css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/commons.js" defer></script>
 <script type="text/javascript"
@@ -156,7 +152,7 @@ const $testCl = document.querySelector(".testCl");
 	/* 로그인 안하고 다른거 눌렀을 시 */
 	const $main = document.querySelector(".main");
 	
-	if(${accessToken == null}) {
+	if(`${accessToken}` == null) {
 	$main.onclick = function(e) {
 		console.log(e.target);
 		if(!e.target.parentNode.classList.contains('spotify-login-button')) {
@@ -166,7 +162,7 @@ const $testCl = document.querySelector(".testCl");
 		}
 	}
 	
-	if(${accessToken != null}) {
+	if(`${accessToken}` != null) {
 		
 		let isExecuted = false;
 	
@@ -252,7 +248,72 @@ const $testCl = document.querySelector(".testCl");
     	player.togglePlay();
     });
     
+	//token
+	$(document).ready(function() {
+    var refreshToken = "${refreshToken}";
+    var accessToken = "${accessToken}";
 
+    // 액세스 토큰 갱신을 위한 함수
+    function refreshAccessToken() {
+        $.ajax({
+            url: "/refreshToken", // 토큰 갱신을 처리하는 REST API 엔드포인트 경로
+            method: "POST",
+            data: {
+                refreshToken: refreshToken
+            },
+            success: function(response) {
+                var newAccessToken = response.accessToken;
+                var newRefreshToken = response.refreshToken;
+                var newExpiresIn = response.expiresIn;
+
+                // 갱신된 액세스 토큰 및 관련 정보로 변수 값을 업데이트
+                accessToken = newAccessToken;
+                refreshToken = newRefreshToken;
+
+                // 액세스 토큰의 만료 시간을 계산
+                var expirationTime = new Date().getTime() + newExpiresIn * 1000;
+                localStorage.setItem("tokenExpiration", expirationTime);
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+
+    // 액세스 토큰이 만료되었는지 확인하는 함수
+    function isAccessTokenExpired() {
+        // 액세스 토큰의 만료 시간과 현재 시간을 비교하여 확인
+        var tokenExpirationTime = new Date(localStorage.getItem("tokenExpiration"));
+        var currentTime = new Date();
+        return currentTime >= tokenExpirationTime;
+    }
+
+    // 페이지 로드 시 로컬 스토리지에서 토큰 확인
+    var storedAccessToken = localStorage.getItem("accessToken");
+    var storedTokenExpiration = localStorage.getItem("tokenExpiration");
+    if (storedAccessToken && storedTokenExpiration) {
+        accessToken = storedAccessToken;
+        if (!isAccessTokenExpired()) {
+            // 토큰이 만료되지 않았으면 저장된 토큰 사용
+            var expiresIn = Math.floor((storedTokenExpiration - new Date().getTime()) / 1000);
+            setTimeout(function() {
+                if (isAccessTokenExpired()) {
+                    refreshAccessToken();
+                }
+            }, expiresIn * 1000);
+        } else {
+            // 토큰이 만료되었으면 갱신
+            refreshAccessToken();
+        }
+    }
+
+    // 페이지 전환 시에도 토큰 유지
+    $(window).on("beforeunload", function() {
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("tokenExpiration", localStorage.getItem("tokenExpiration"));
+    });
+
+});
     
 
     

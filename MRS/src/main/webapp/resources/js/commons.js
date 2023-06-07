@@ -47,6 +47,17 @@
 
 		} */
 		
+		/* document.getElementById('happy-btn').addEventListener('click',function(){
+			let rn = Math.floor(Math.random()*2)+1;
+			console.log('rn: '+rn);
+			if(rn===1){
+				player.loadPlaylist(["v6_GwXU1lkg","Dbxzh078jr4","jeqdYqsrsA0"]);
+				player.setLoop(true);
+			}else{
+				player.loadPlaylist(["EiVmQZwJhsA","vecSVX1QYbQ","JFgv8bKfxEs"]);
+				player.setLoop(true);
+			}
+		}) */
 	      
 	      //  클릭시 페이지 넘어가는것처럼 보이게 하기
             const $mainBtn = document.querySelector(".mainBtn");
@@ -57,20 +68,15 @@
 
             $mainBtn.onclick = function() {
                 console.log("메인페이지 클릭");
+                console.log("메인: " + $mainPage.style.dispaly);
+                console.log($videoPage.style.dispaly);
                 $mainPage.style.display = "block";
                 $videoPage.style.display = "none";
             }
 
             $videoBtn.onclick = function() {
                 console.log("비디오페이지 클릭");
-                
-                if(document.querySelector('input[name=product]').getAttribute('value') != 'premium') {
-                	alert('프리미엄사용자만 가능한 기능입니다.');
-                	window.open("https://www.spotify.com/kr-ko/premium/#plans");
-                	retunr;
-                }
-                
-                if($videoImg.getAttribute('src') === '') {
+                if($videoImg.src == '') {
                 	alert('노래를 먼저 선택해주세요');
 					return;
                 }
