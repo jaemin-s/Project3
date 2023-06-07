@@ -237,8 +237,9 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     });
     
     player.connect();
-    player.activateElement();        
-
+    player.activateElement();    
+        
+	let previousTrackId = null;
     //재생 상태 변경 감지
     player.addListener('player_state_changed', ({
         position,
@@ -301,6 +302,56 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 
     });//end player.addListener('player_state_changed'	
     
+         const currentTrackId = current_track.id;
+
+         if (currentTrackId !== previousTrackId) {
+         previousTrackId = currentTrackId;
+         
+         fetch('/mrs/plus', {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify({
+
+                 'currentTrack': current_track.id
+
+             })
+
+         }).then((response) => {
+             console.log('current_track 전송 성공');
+             fetch('/mrs/getrmno', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json'
+                 },
+                 body: JSON.stringify({
+                     'currentTrack': current_track.id
+                 })
+             }).then(response => response.json())
+             .then(data => {
+                 const rmno = data.rmno;
+                 // 브라우저 저장소에 rmno 데이터를 저장하고, detail.jsp 페이지를 엽니다.
+                 localStorage.setItem('rmno', rmno);
+                 
+                 /* console.log('이거 되는지 확인'+getList(1,true)); */
+                     
+                 getList(1,true);
+                  
+                 
+             }).catch(error => {
+                 console.error('Error:', error);
+             });
+         })
+        }
+
+        //컨트롤러 및 디테일 페이지 정보 넣기
+        document.querySelector('.cover-img').setAttribute('src',current_track.album.images[0].url);
+        document.querySelector('.singer-name').textContent = current_track.artists[0].name;
+        document.querySelector('.song-title').textContent = current_track.name;
+        document.querySelector('.teamTitle').textContent =
+        current_track.artists[0].name+" - "+current_track.name;
+
 }//end window.onSpotifyWebPlaybackSDKReady
 
 
