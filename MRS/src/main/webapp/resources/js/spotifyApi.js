@@ -194,6 +194,28 @@ async function recommendations(seedArtists,seedTracks){
     return trackList;
 }
 
+//현재 시간 변경
+const $timeP = document.querySelector("#time p"); //현재 시간 p
+const $totalTimeP = document.querySelector("#total-time p"); //트랙 길이 p
+let currentTime = 0;
+let isStop = true;
+let setTime = setInterval(function(){
+		if(!isStop){
+			currentTime++;
+			$timeP.textContent = addZero(Math.floor(currentTime/60))+":"+addZero(Math.floor(currentTime%60));
+			document.getElementById('range-val').value = Math.floor(currentTime);
+		}
+	},1000);
+	
+document.getElementById('range-val').addEventListener('mouseup',()=>{
+	console.log(document.getElementById('range-val').value);
+	seekToPosition((document.getElementById('range-val').value)*1000);
+});
+	
+function addZero(i){//0더해주는 함수
+	if(i<10) return "0"+i;
+	else return i;
+}
 //SDK준비
 window.onSpotifyWebPlaybackSDKReady = () => {
     const token = accessToken;
@@ -225,10 +247,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         track_window: { current_track }
 
     }) => {
-    	document.getElementById("range-val").max =  (duration)/1000;
-    	document.getElementById("range-val").value =  (position)/1000;
-		
-
         //재생목록 디테일에 출력
         getTheUsersQueue().then(data =>{
             console.log("queue 가져오기");
@@ -259,72 +277,31 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             data.currently_playing.artists[0].name+" - "+data.currently_playing.name;
 		 });
 
+	//컨트롤러 시간 표시
+    $timeP.textContent = addZero(Math.floor((position/1000)/60)) +":"+addZero(Math.floor((position/1000)%60));
+    $totalTimeP.textContent = addZero(Math.floor((duration/1000)/60))+":"+addZero(Math.floor((duration/1000)%60));
 
+	currentTime = position/1000;
+	document.getElementById('range-val').max = Math.floor(duration/1000);
+	
     //재생버튼 변경
     if(paused){ //정지중이면
-    	stopTime();
+    	isStop = true;
         document.getElementById("controller-play").style.display = "block";
         document.getElementById("controller-pause").style.display = "none";
         document.getElementById("airImg").setAttribute('src', "./img/air.png");
         document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation3.png")';
     }else { //재생중이면
-    	goTime();
+    	isStop = false;
         document.getElementById("controller-play").style.display = "none";
         document.getElementById("controller-pause").style.display = "block";
         document.getElementById("airImg").setAttribute('src', "./img/air2.png");
         document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation2.gif")';
     }
-    });//end player.addListener('player_state_changed'
 
+    });//end player.addListener('player_state_changed'	
+    
 }//end window.onSpotifyWebPlaybackSDKReady
 
-	//재생 위치 변경
-	const $rangeVal = document.getElementById("range-val");
-	$rangeVal.mouseup = seekToPosition(($rangeVal.value)*1000);
-	
-	//시간 지나가게 만들기
-    let isStop = false;
-	function goTime() {
-		 const going = setInterval(() => {
-            if(!isStop){
-                if($rangeVal.value == $rangeVal.max) {
-                    clearInterval(going);
-                    $rangeVal.value = 0;
-                    return;
-                }
-                console.log($rangeVal.value);
-				$rangeVal.value = ($rangeVal.value)+1;
-            }else{
-                clearInterval(going);
-            }
-	        }, 1000);
-	}
-	
-	//시간 멈추기
-	function stopTime() {
-        isStop = true;
-	}
-	
-	//현재 시간 변경
-	const $timeP = document.querySelector("#time p");
-	
-	$rangeVal.addEventListener("input", function() {
-	    let value = $rangeVal.value;
-	    let minutes = Math.floor(value / 60);
-	    let seconds = value % 60;
-	    let formattedTime = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
-	
-	    $timeP.textContent = formattedTime;
-	});
-	
-	const $totalTimeP = document.querySelector("#total-time p");
-	
-	$rangeVal.addEventListener("input", function() {
-	    let mValue = $rangeVal.max;
-	    let mMinutes = Math.floor(mValue / 60);
-	    let mSeconds = mValue % 60;
-	    let mFormattedTime = minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
-	
-	    $totalTimeP.textContent = mFormattedTime;
-	});
+
 
