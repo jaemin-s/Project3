@@ -104,6 +104,17 @@
 		  })
 	};	
 	
+	document.getElementById('reply').addEventListener('keydown', function(event) {
+		  if (event.keyCode === 13) { // Enter 키의 keyCode는 13입니다.
+		    event.preventDefault(); // 기본 동작인 줄바꿈을 방지합니다.
+		    document.getElementById('replyRegist').click(); // 댓글 등록 버튼을 클릭합니다.
+		    document.getElementById('reply').focus();
+		  }
+		});
+
+		document.getElementById('reply').focus();
+	
+	
 	document.getElementById('replyRegist').onclick = () => {
 
 /* const playno = '${article.bno}'; */ //플레이 재생변화에 따른 곡 번호
@@ -131,7 +142,7 @@ fetch('${pageContext.request.contextPath}/regist', reqObj)
 		console.log('통신 성공!: ' + data);
 		document.getElementById('reply').value = '';
 		getList(1,true);
-
+		document.getElementById('reply').focus();
 	});
 
 }
@@ -248,41 +259,53 @@ replyGroup.insertAdjacentHTML('afterend', `
 		   <button class="edit-save">저장</button>
 	   </div>
    `);
+const editInput = replyGroup.nextElementSibling.querySelector('.edit-input');
+editInput.focus();
+editInput.selectionStart = editInput.value.length;
+editInput.selectionEnd = editInput.value.length;
 
-replyGroup.nextElementSibling.querySelector('.edit-save').addEventListener('click', e => {
-   e.preventDefault();
-   const editedContent = replyGroup.nextElementSibling.querySelector('.edit-input').value;
-   // 서버로 변경된 댓글 전송 (PUT 요청 등)
-   fetch('${pageContext.request.contextPath}/update'+'/'+rno, {
-	   method: 'PUT',
-	   headers: {
-		   'Content-Type': 'application/json',
-	   },
-	   body: JSON.stringify({
-		   replyContent: editedContent,
-		  
-	   }),
-   })
-   .then(response => {
-	if (response.ok) { // 수정이 성공하면 response.ok가 true입니다.
-	contentElem.textContent = editedContent;
-	contentElem.style.display = 'block';
-	replyGroup.nextElementSibling.remove();
-	getList(1,true);
-	} else {
-	console.error('Error: 수정 요청이 실패했습니다.');
-	getList(1,true);
-	}
-})
-   .catch(error => {
-	   console.error('Error:', error);
-	getList(1,true);
-   });
+
+const editSaveButton = replyGroup.nextElementSibling.querySelector('.edit-save');
+editSaveButton.addEventListener('click', saveEdit);
+
+editInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    saveEdit();
+  }
 });
+
+function saveEdit() {
+  const editedContent = editInput.value;
+
+  // 서버로 변경된 댓글 전송 (PUT 요청 등)
+  fetch('${pageContext.request.contextPath}/update'+'/'+rno, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      replyContent: editedContent,
+    }),
+  })
+    .then(response => {
+      if (response.ok) {
+        contentElem.textContent = editedContent;
+        contentElem.style.display = 'block';
+        replyGroup.nextElementSibling.remove();
+        getList(1, true);
+        document.getElementById('reply').focus();
+      } else {
+        console.error('Error: 수정 요청이 실패했습니다.');
+        getList(1, true);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      getList(1, true);
+    });
 }
-
-
-
+}
 });
 
 
