@@ -229,6 +229,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         //재생목록 디테일에 출력
         getTheUsersQueue().then(data =>{
             console.log("queue 가져오기");
+  			//현재 재생목록 출력
             [...document.querySelector('.playlist ul.comments-body').children].forEach(child =>child.remove());
             document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
             <li>
@@ -237,6 +238,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                 <div class="comments-artists" data-artists-id="`+data.currently_playing.artists[0].id+`">`+data.currently_playing.artists[0].name+`</div>
             </li>
             `);
+            //대기열 목록 출력
             [...data.queue].forEach(track=>{
                 document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
             <li>
@@ -246,15 +248,14 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             </li>
             `);
             })
-            
+            //컨트롤러 및 디테일 페이지 정보 넣기
+            document.querySelector('.cover-img').setAttribute('src', data.currently_playing.album.images[0].url);
+            document.querySelector('.singer-name').textContent = data.currently_playing.artists[0].name;
+            document.querySelector('.song-title').textContent = data.currently_playing.name;
+            document.querySelector('.teamTitle').textContent =
+            data.currently_playing.artists[0].name+" - "+data.currently_playing.name;
 		 });
 
-        //컨트롤러 및 디테일 페이지 정보 넣기
-        document.querySelector('.cover-img').setAttribute('src',current_track.album.images[0].url);
-        document.querySelector('.singer-name').textContent = current_track.artists[0].name;
-        document.querySelector('.song-title').textContent = current_track.name;
-        document.querySelector('.teamTitle').textContent =
-        current_track.artists[0].name+" - "+current_track.name;
 
     //재생버튼 변경
     if(paused){ //정지중이면

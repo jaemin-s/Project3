@@ -159,7 +159,7 @@
 	});//이미지 클릭 끝
 	
 	/* 노래 선택 시 컨트롤러, 댓글페이지에 제목, 가수명 넣어주기 */
-	document.getElementById('result-list').addEventListener('click', e => {
+/* 	document.getElementById('result-list').addEventListener('click', e => {
 	        if (e.target.classList.contains('result-title')) {
 	            document.querySelector('.cover-img').setAttribute('src',
 	                e.target.parentNode.querySelector('.result-image').dataset.url);
@@ -167,10 +167,10 @@
 				document.querySelector('.song-title').textContent = (e.target.textContent);
 				document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
 	        }
-	    });
+	    }); */
 	
 	/* play list page */
-	document.getElementById('comments-list').addEventListener('click', e => {
+/* 	document.getElementById('comments-list').addEventListener('click', e => {
         if (e.target.classList.contains('comments-title')) {
             document.querySelector('.cover-img').setAttribute('src',
                 e.target.parentNode.querySelector('.comments-image').dataset.url);
@@ -178,7 +178,7 @@
 			document.querySelector('.song-title').textContent = (e.target.textContent);
 			document.querySelector('.singer-name').textContent = (e.target.parentNode.querySelector('.result-artists').textContent);
         }
-    });
+    }); */
 	    
 	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{

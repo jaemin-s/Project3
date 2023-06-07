@@ -84,6 +84,31 @@
 	<!-- SweetAlert2 CDN -->
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
+	
+	document.querySelector('#comments-list ul.comments-body').addEventListener('click',e=>{
+		if(e.target.parentNode.matches('li')){
+			let lis = [...e.target.parentNode.parentNode.children];
+			let idx = 0;
+			let array = [];
+			for(let i=0;i<lis.length;i++){
+				if(e.target.parentNode===lis[i]){
+					idx = i;
+					break;
+				}
+			}
+			for(let i=0;i<lis.length;i++){
+				array.push(lis[idx++].querySelector('.comments-title').dataset.trackUri);
+				if(idx===lis.length){
+					idx=0;
+				}
+				
+			}
+			startResumePlayback(array);
+		}	
+	});
+	
+	
+	
 	var backToTop = () => {
 		  // Scroll | button show/hide
 		  window.addEventListener('scroll', () => {
@@ -207,12 +232,7 @@
 					</div>
                         
             					`;
-
-
 						}
-
-
-
 
 						if (!reset) {
 							document.getElementById('replyList').insertAdjacentHTML('beforeend', strAdd);
@@ -223,9 +243,6 @@
 					});
 			} //end getList();
 
-			
-
-		
 		/////////////////////
 		//file2Function  end
 		/////////////////////////
