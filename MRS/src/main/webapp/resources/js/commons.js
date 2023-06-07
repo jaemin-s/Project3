@@ -63,7 +63,14 @@
 
             $videoBtn.onclick = function() {
                 console.log("비디오페이지 클릭");
-                if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
+                
+                if(document.querySelector('input[name=product]').getAttribute('value') != 'premium') {
+                	alert('프리미엄사용자만 가능한 기능입니다.');
+                	window.open("https://www.spotify.com/kr-ko/premium/#plans");
+                	retunr;
+                }
+                
+                if($videoImg.getAttribute('src') === '') {
                 	alert('노래를 먼저 선택해주세요');
 					return;
                 }

@@ -47,18 +47,6 @@
 			<div class="commentList">
 				<!--여기에 접근 반복-->
 				<div id="replyList">
-
-					<c:forEach var="i" begin="1" end="50">
-				<div class='reply-content'>
-					<div class='reply-group'>
-						<strong>honggildong</strong> <small>2019/12/10</small>
-						<a href='#' class='right reply-update'><span
-							class='glyphicon glyphicon-pencil'></span>수정</a> 
-						<a href='#' class='right reply-delete'><span class='glyphicon glyphicon-remove'></span>삭제</a>
-					</div>
-					<p class='clearfix'>여기는 댓글영역</p>
-				</div>
-			</c:forEach>
 					
 				</div>
 			</div>
@@ -84,6 +72,7 @@
 	<!-- SweetAlert2 CDN -->
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
+	console.log(document.querySelector('.cover-img').src);
 	
 	/* top 버튼 */
 	window.addEventListener('scroll', function() {

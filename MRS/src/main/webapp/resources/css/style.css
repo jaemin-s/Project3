@@ -1,13 +1,13 @@
 /* 기본 */
 @font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'Tenada';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
 
 body {
-	    font-family: 'TheJamsil5Bold';
+	font-family: 'Tenada';
 	overflow-y: scroll;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -424,7 +424,6 @@ section.main .main-right .search {
 	background: white;
 }
 
-
 /* 메인페이지 로고 */
 section.main .main-right .main-logo-img {
 	width: 20%;
@@ -468,6 +467,7 @@ section.main .main-right .choose-img img:hover {
 /* 댓글 페이지 */
 section.main .video-right {
 	width: 75%;
+	min-height: 1750px;
 	background: black;
 	position: relative;
 	display: none;
@@ -573,6 +573,19 @@ section.main .video-right .detail-ng .teamTitle {
 }
 
 /* 메인페이지에 있는 list */
+.hidden-button {
+	position: absolute;
+	top: 5px;
+	right: 2;
+	color: white;
+	background: black;
+	border: 1px solid white;
+}
+
+.hidden-button:hover {
+	background: #ffffff5e;
+}
+
 .flextoggle {
 	display: flex;
 	flex-wrap: wrap;
@@ -709,7 +722,7 @@ ul.playLists li {
 	color: black;
 	background: white;
 	text-align: center;
-	line-height: 54px;
+	line-height: 63px;
 	font-weight: 800;
 	font-size: 30PX;
 	border-radius: 50%;

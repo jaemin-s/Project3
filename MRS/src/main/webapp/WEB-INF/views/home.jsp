@@ -51,6 +51,7 @@
 							src="${pageContext.request.contextPath }/img/화창한.png" alt="#">
 					</div>
 					<div id="result-list" class="hidden result-list">
+						<button class="hidden-button">X</button>
 		                <div class="list-head flex">
 		                    <div class="result-image">앨범 커버</div>
 		                    <div class="result-title">곡명</div>
@@ -73,12 +74,20 @@
 	let title = '';
 	let artist = '';
 	
-	document.getElementById('choose-imgs').addEventListener('click',e=>{
-		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
+	document.querySelector('.hidden-button').onclick = function() {
 		document.querySelector('#result-list').classList.toggle('hidden');
-		if(document.querySelector('#result-list').classList.contains('hidden')) {
-			return;
+		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
+	}
+	
+	document.getElementById('choose-imgs').addEventListener('click',e=>{
+		
+		if (!document.querySelector('#choose-imgs').classList.contains('flextoggle')) {
+			document.querySelector('#choose-imgs').classList.toggle('flextoggle');
 		}
+		if (document.querySelector('#result-list').classList.contains('hidden')) {
+			document.querySelector('#result-list').classList.toggle('hidden');
+		}
+
 		 let MyUrl = "";
 	        if(e.target.dataset.keyword === "happy"){ 
 	        	// 행복
@@ -300,9 +309,10 @@ let sky,pty; //하늘상태, 강수형태
 								console.log(data);
 								display_name = data.display_name;
 								display_email = data.email;
+								product = data.product
 								document.querySelector('.menu>h1').textContent = display_name + ' 님';
 								document.querySelector('.menu>h1').name = display_name;
-								tokenChe =2;
+								document.querySelector('input[name=product]').value = product;
 							});
 					}
 		 }
@@ -311,6 +321,10 @@ let sky,pty; //하늘상태, 강수형태
 	 let $sbtn = document.getElementById('searchBtn');
 		
 		document.getElementById('searchBtn').addEventListener('click', e => {
+			if (search.value.trim() === '') {
+			    alert("검색어를 작성해주세요.");
+			    return;
+			}
 			document.querySelector('#choose-imgs').classList.add('flextoggle');
 			document.querySelector('#result-list').classList.remove('hidden');
 			  searchForItem(search.value).then(data => {

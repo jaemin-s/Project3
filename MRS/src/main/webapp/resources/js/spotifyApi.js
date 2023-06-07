@@ -290,7 +290,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
 				return;
 			}
 			$rangeVal.value = ($rangeVal.value)+1;
-	        }
+	        
 		  }, 1000);
 	}
 	

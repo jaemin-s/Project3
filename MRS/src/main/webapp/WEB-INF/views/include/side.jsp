@@ -141,6 +141,7 @@
 			</ul>
 		</div>
 		<input type="hidden" value="${accessToken}" name="token">
+		<input type="hidden" value="${product}" name="product">
 	</div>
 </body>
 
@@ -165,14 +166,46 @@ const $testCl = document.querySelector(".testCl");
 		}
 	}
 	
+	if(${accessToken != null}) {
+		
+		let isExecuted = false;
+	
+		function handleClick() {
+		    if (!isExecuted && document.querySelector('input[name=product]').getAttribute('value') != 'premium') {
+		        isExecuted = true; // 실행 여부 업데이트
+	
+		        if (confirm("free모드는 노래 추천만 가능합니다.\n3개월 무료 premium을 사용하시겠습니까?\n취소시 노래 추천만 작동합니다.")) {
+		            window.open("https://www.spotify.com/kr-ko/premium/#plans");
+		        } else {
+		            // 취소
+		            document.querySelector(".side").style.pointerEvents = "none";
+		            document.querySelector('#result-list .list-body').style.pointerEvents = "none";
+		            isExecuted = true;
+		        }
+		    }
+		}
+	
+		$main.addEventListener('click', handleClick);
+	}
+
+	
+	
 	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
 
 	const $airImg = document.getElementById("airImg");
-	const $sideBack = document.querySelector(".side-back");
+	const $sideBack = document.querySelector(".side-back");	
+	
 	/* 에어팟 이미지 클릭 시 */
 	$airImg.onclick = function() {
+		
+		if(document.querySelector('input[name=product]').getAttribute('value') != 'premium') {
+        	alert('프리미엄사용자만 가능한 기능입니다.');
+        	window.open("https://www.spotify.com/kr-ko/premium/#plans");
+        	retunr;
+        }
+		
 		/* 노래선택 안하면 선택해달라고 부탁하기 */
-		if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
+		if($videoImg.getAttribute('src') === '') {
         	alert('노래를 먼저 선택해주세요');
 			return;
         }
@@ -185,7 +218,14 @@ const $testCl = document.querySelector(".testCl");
     const $contPause = document.getElementById("controller-pause");
 	/* 노래 재생 */
     $contPlay.onclick = function() {
-    	if($videoImg.src == 'http://localhost/mrs/success?message=Authentication+successful%21') {
+		
+    	if(document.querySelector('input[name=product]').getAttribute('value') != 'premium') {
+        	alert('프리미엄사용자만 가능한 기능입니다.');
+        	window.open("https://www.spotify.com/kr-ko/premium/#plans");
+        	retunr;
+        }
+		
+    	if($videoImg.getAttribute('src') === '') {
         	alert('노래를 먼저 선택해주세요');
 			return;
         }
