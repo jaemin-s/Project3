@@ -235,7 +235,7 @@ let sky,pty; //하늘상태, 강수형태
 			
 			
 			let url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst`;
-  			let queryParams = `?serviceKey=`+key+`&pageNo=1&numOfRows=25&dataType=JSON&base_date=`+currentDate+`&base_time=`+currentTime+`&nx=`+nX+`&ny=`+nY;
+  			let queryParams = `?serviceKey=`+key+`&pageNo=1&numOfRows=25&dataType=JSON&base_date=`+currentDate+`&base_time=1000&nx=`+nX+`&ny=`+nY;
 			console.log(url);
 			console.log(queryParams);
 					fetch(url+queryParams).then(res => res.json())
@@ -303,6 +303,16 @@ let sky,pty; //하늘상태, 강수형태
 								document.querySelector('.menu>h1').textContent = display_name + ' 님';
 								document.querySelector('.menu>h1').name = display_name;
 								tokenChe =2;
+								const jsonData = JSON.stringify(data);
+
+								fetch('${pageContext.request.contextPath}/userinfo', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json'
+									},
+									body: jsonData
+								})
+								
 							});
 					}
 		 }
