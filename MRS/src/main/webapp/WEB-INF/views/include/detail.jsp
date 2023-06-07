@@ -210,8 +210,7 @@ fetch('${pageContext.request.contextPath}/regist', reqObj)
 			  } else {
 				document.getElementById('replyList').insertAdjacentHTML('afterbegin', strAdd);
 			  }
-			  
-			  isFetching = false;
+			
 			});
 		} // end getList();
 	
