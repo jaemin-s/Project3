@@ -30,15 +30,17 @@
 		WHERE rno = #{rno}
 	</select>
 	
-	<update id="update">
+	<update id="update" parameterType="map">
 		UPDATE reply SET
-		reply_content = #{replyContent}, rdisplay_name=#{rdisplayName}
-		WHERE rno = #{rno}
+		reply_content = #{reply.replyContent}, rdisplay_name=#{reply.rdisplayName}
+		WHERE rno = #{reply.rno}
+		AND urno = #{urno}
 	</update>
 
-	<delete id="delete">
+	<delete id="delete" parameterType="map">
 		DELETE FROM reply
 		WHERE rno = #{rno}
+		AND urno = #{urno}
 	
 	</delete>
 	

@@ -301,35 +301,37 @@
 				function saveEdit() {
 					const editedContent = editInput.value;
 
-					// 서버로 변경된 댓글 전송 (PUT 요청 등)
-					fetch('${pageContext.request.contextPath}/update' + '/' + rno, {
-							method: 'PUT',
-							headers: {
-								'Content-Type': 'application/json',
-							},
-							body: JSON.stringify({
-								replyContent: editedContent,
-							}),
-						})
-						.then(response => {
-							if (response.ok) {
-								contentElem.textContent = editedContent;
-								contentElem.style.display = 'block';
-								replyGroup.nextElementSibling.remove();
-								getList(1, true);
-								document.getElementById('reply').focus();
-							} else {
-								console.error('Error: 수정 요청이 실패했습니다.');
-								getList(1, true);
-							}
-						})
-						.catch(error => {
-							console.error('Error:', error);
-							getList(1, true);
-						});
-				}
-			}
-		});
+  // 서버로 변경된 댓글 전송 (PUT 요청 등)
+  fetch('${pageContext.request.contextPath}/update'+'/'+rno, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      replyContent: editedContent,
+    }),
+  })
+    .then(response => {
+      if (response.ok) {
+        contentElem.textContent = editedContent;
+        contentElem.style.display = 'block';
+        replyGroup.nextElementSibling.remove();
+        getList(1, true);
+        document.getElementById('reply').focus();
+      } else {
+        console.error('Error: 수정 요청이 실패했습니다.');
+        alert('댓글 수정 실패!');
+        getList(1, true);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('댓글 수정 실패!');
+      getList(1, true);
+    });
+}
+}
+});
 
 		document.getElementById('replyList').addEventListener('click', async (e) => {
 			e.preventDefault();
@@ -347,27 +349,29 @@
 				cancelButtonText: '취소',
 			});
 
-			if (result.isConfirmed) {
-				const rno = e.target.getAttribute('href');
-				// 삭제 코드 작성
-				fetch('${pageContext.request.contextPath}/delete' + '/' + rno, {
-						method: 'DELETE',
-					})
-					.then(response => {
-						if (response.ok) {
-							replyGroup.parentNode.remove();
-							getList(1, true);
-						} else {
-							console.error('Error: 삭제 요청이 실패했습니다.');
-							getList(1, true);
-						}
-					})
-					.catch(error => {
-						console.error('Error:', error);
-						getList(1, true);
-					});
-			}
-		});
+if (result.isConfirmed) {
+const rno = e.target.getAttribute('href');
+// 삭제 코드 작성
+fetch('${pageContext.request.contextPath}/delete' + '/' + rno, {
+	method: 'DELETE',
+})
+.then(response => {
+	if (response.ok) {
+		replyGroup.parentNode.remove();
+		getList(1,true);
+	} else {
+		console.error('Error: 삭제 요청이 실패했습니다.');
+		alert('댓글 삭제 실패!');
+		getList(1,true);
+	}
+})
+.catch(error => {
+	console.error('Error:', error);
+	alert('댓글 삭제 실패!');
+	getList(1,true);
+});
+}
+});
 
 		//댓글 날짜 변환 함수
 		function parseTime(regDateTime) {

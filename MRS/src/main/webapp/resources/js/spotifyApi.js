@@ -334,8 +334,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
                  // 브라우저 저장소에 rmno 데이터를 저장하고, detail.jsp 페이지를 엽니다.
                  localStorage.setItem('rmno', rmno);
                  
-                 /* console.log('이거 되는지 확인'+getList(1,true)); */
-                     
                  getList(1,true);
                   
                  

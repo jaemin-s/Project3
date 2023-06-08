@@ -145,7 +145,8 @@
 
 
 <script>
-
+var accessTokenInput = document.querySelector("input[name='token']");
+console.log('토큰 테스트 ㄱㄱ'+accessTokenInput.value);
 /* 의열 작성 시작 */
 const $testCl = document.querySelector(".testCl");
 
@@ -252,7 +253,19 @@ const $testCl = document.querySelector(".testCl");
 	$(document).ready(function() {
     var refreshToken = "${refreshToken}";
     var accessToken = "${accessToken}";
-
+	
+  /*   console.log('refreshToken 테스트' + refreshToken);
+    console.log('accessToken 테스트' + accessToken); */
+    
+    // 액세스 토큰 값을 업데이트하는 함수
+    function updateAccessTokenValue() {
+        $("input[name='token']").val(refreshToken);
+        console.log('작동!!!')
+        accessTokenInput = document.querySelector("input[name='token']");
+        console.log('토큰 테스트 ㄱㄱ'+accessTokenInput.value);
+    }
+    
+    
     // 액세스 토큰 갱신을 위한 함수
     function refreshAccessToken() {
         $.ajax({
@@ -273,6 +286,10 @@ const $testCl = document.querySelector(".testCl");
                 // 액세스 토큰의 만료 시간을 계산
                 var expirationTime = new Date().getTime() + newExpiresIn * 1000;
                 localStorage.setItem("tokenExpiration", expirationTime);
+                
+                // 액세스 토큰 값 업데이트
+                updateAccessTokenValue();
+             	
             },
             error: function(xhr, status, error) {
                 console.log(error);
@@ -313,6 +330,17 @@ const $testCl = document.querySelector(".testCl");
         localStorage.setItem("tokenExpiration", localStorage.getItem("tokenExpiration"));
     });
 
+    
+    // 액세스 토큰 값 업데이트
+    updateAccessTokenValue();
+    
+ // 30분 간격으로 토큰 갱신
+    setInterval(function() {
+        if (isAccessTokenExpired()) {
+            refreshAccessToken();
+        }
+    }, 30 * 60 * 1000);
+    
 });
     
 

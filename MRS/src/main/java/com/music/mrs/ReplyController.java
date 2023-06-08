@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import com.music.mrs.command.ReplyVO;
 import com.music.mrs.command.UserVO;
 import com.music.mrs.plus.service.IMusicplusService;
 import com.music.mrs.reply.service.IReplyService;
+import com.music.mrs.user.mapper.IUserMapper;
 
 /*CREATE TABLE reply (
 		   rno INT PRIMARY KEY AUTO_INCREMENT,
@@ -79,19 +81,30 @@ public class ReplyController {
 	}
 	
 	@PutMapping("/update/{rno}")
-	public ResponseEntity<String> update(@PathVariable int rno, @RequestBody ReplyVO replyContent ) {
+	public ResponseEntity<String> update(@PathVariable int rno, @RequestBody ReplyVO replyContent,HttpSession session) {
+		int urno = (int) session.getAttribute("urno");
 		ReplyVO reply = service.getrno(rno);
+		System.out.println("urno 테스트" + urno);
 		System.out.println("replyContent 테스트" + replyContent);
 		reply.setReplyContent(replyContent.getReplyContent());
-		service.update(reply);
-		return ResponseEntity.ok("success");
+		try {
+		service.update(reply,urno);
+			return ResponseEntity.ok("success");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Update failed");
+		}
 	}
 	
 	@DeleteMapping("/delete/{rno}")
-	public ResponseEntity<String> update(@PathVariable int rno) {
-		
-		service.delete(rno);
+	public ResponseEntity<String> delete(@PathVariable int rno,HttpSession session) {
+		int urno = (int) session.getAttribute("urno");
+		System.out.println("urno 테스트" + urno);
+		try {
+		service.delete(rno,urno);
 		return ResponseEntity.ok("success");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Delete failed");
+		}
 	}
 	
 }

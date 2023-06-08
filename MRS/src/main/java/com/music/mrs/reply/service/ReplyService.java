@@ -48,14 +48,20 @@ public class ReplyService implements IReplyService {
 	}
 
 	@Override
-	public void update(ReplyVO reply) {
-		mapper.update(reply);
+	public void update(ReplyVO reply,int urno) {
+		int updatedRows = mapper.update(reply,urno);
+		if (updatedRows == 0) {
+	        throw new RuntimeException("Update failed");
+	    }
 
 	}
 
 	@Override
-	public void delete(int rno) {
-		mapper.delete(rno);
+	public void delete(int rno,int urno) {
+		 int deletedRows = mapper.delete(rno, urno);
+		 if (deletedRows == 0) {
+		        throw new RuntimeException("Delete failed");
+		    }
 	}
 
 }

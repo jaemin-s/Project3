@@ -23,8 +23,8 @@ public interface IReplyMapper {
     ReplyVO getrno(int rno);
     
     // 댓글 수정
-    void update(ReplyVO reply);
+    int update(@Param("reply") ReplyVO reply,@Param("urno") int urno);
     
     // 댓글 삭제
-    void delete(int rno);
+    int delete(@Param("rno") int rno,@Param("urno") int urno);
 }
