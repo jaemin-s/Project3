@@ -39,8 +39,8 @@
 			
 			<!-- 댓글작성칸 -->
 			<div class="video-comment">
-					<textarea></textarea>
-					<button class="commentbtn">등록</button>
+				<textarea id="reply" placeholder="댓글 추가..." spellcheck="false"></textarea>
+				<button id="replyRegist" class="commentbtn">등록</button>
 			</div>
 
 			<!-- 저장 댓글 보여주는 칸 -->
