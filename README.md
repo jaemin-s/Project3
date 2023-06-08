@@ -1,13 +1,13 @@
-스포티파이 api를 활용한 음악추천서비스 
+<h1>스포티파이 api를 활용한 음악추천서비스 
 <p>사용자의 정보에 따라 음악을 추천하는 서비스를 제공합니다.</p>
 <p>Premium 구독시 스트리밍 및 댓글 작성 가능합니다.</P>
-# 구성
-## API
+<h2> 구성
+<h3> API
 - 초단기예보(공공데이터) : 날씨 정보
 - Spotify Data Api : 노래 정보 및 재생상태 컨트롤
 - Spotify SDK Api : 음악 재생 기능
 
-## function
+<h3> function
 getPlaybackState() : 재생상태 받아오기, return playerbackState
 getAvailableDevices() : diveces 받아오기, return divece_id(String)
 startResumePlayback(urisArray) : 특정 곡들 재생 준비, void, player/play
