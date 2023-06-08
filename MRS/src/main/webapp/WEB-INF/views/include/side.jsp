@@ -12,6 +12,7 @@
 	<!-- reset css -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/commons.js" defer></script>

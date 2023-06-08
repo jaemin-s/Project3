@@ -245,6 +245,8 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         //재생목록 디테일에 출력
         getTheUsersQueue().then(data =>{
   			//현재 재생목록 출력
+  			console.log(data);
+  			if(data.currently_playing!=null){
             [...document.querySelector('.playlist ul.comments-body').children].forEach(child =>child.remove());
             document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
             <li>
@@ -269,6 +271,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
             document.querySelector('.song-title').textContent = data.currently_playing.name;
             document.querySelector('.teamTitle').textContent =
             data.currently_playing.artists[0].name+" - "+data.currently_playing.name;
+            }
 		 });
 
 	//컨트롤러 시간 표시

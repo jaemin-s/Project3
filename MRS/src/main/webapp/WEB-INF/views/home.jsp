@@ -186,7 +186,8 @@
 					uris.push(trackList[i].uri);
 				}
 				startResumePlayback(uris);
-			})
+				player.togglePlay();
+			});
 		}
 	});
 	
