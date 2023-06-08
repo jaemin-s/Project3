@@ -10,18 +10,20 @@
 </ul>
 
 <h3> function </h3>
-getPlaybackState() : 재생상태 받아오기, return playerbackState
-getAvailableDevices() : diveces 받아오기, return divece_id(String)
-startResumePlayback(urisArray) : 특정 곡들 재생 준비, void, player/play
-skipToNext() : 다음 곡 재생, void
-skipToPrevious() : 이전 곡 재생, void
-seekToPosition(position) : 재생 시간 이동, void, default : 0ms
-playerRepeat() : 반복 재생모드 순환 track >> context >> off >> track
-setPlaybackVolum(vol) : 볼륨 설정, void, default : 0
-togglePlaybackShuffle() : 랜덤 모드 토글, void
-getTheUsersQueue() : 재생중인 목록 확인, currntly_playing,queue
-searchForItem(query) : 검색, return data
-recommendations(seedArtists,seedTracks) : 곡과 가수로 추천곡 받기
+<ul>
+<li>getPlaybackState() : 재생상태 받아오기, return playerbackState</li>
+<li>getAvailableDevices() : diveces 받아오기, return divece_id(String)</li>
+<li>startResumePlayback(urisArray) : 특정 곡들 재생 준비, void, player/play</li>
+<li>skipToNext() : 다음 곡 재생, void</li>
+<li>skipToPrevious() : 이전 곡 재생, void</li>
+<li>seekToPosition(position) : 재생 시간 이동, void, default : 0ms</li>
+<li>playerRepeat() : 반복 재생모드 순환 track >> context >> off >> track</li>
+<li>setPlaybackVolum(vol) : 볼륨 설정, void, default : 0</li>
+<li>togglePlaybackShuffle() : 랜덤 모드 토글, void</li>
+<li>getTheUsersQueue() : 재생중인 목록 확인, currntly_playing,queue</li>
+<li>searchForItem(query) : 검색, return data</li>
+<li>recommendations(seedArtists,seedTracks) : 곡과 가수로 추천곡 받기</li>
+</ul>
 
 
   
