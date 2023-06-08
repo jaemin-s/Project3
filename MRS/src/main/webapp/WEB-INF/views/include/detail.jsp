@@ -229,8 +229,8 @@
 				  <div class='reply-wrap'>
 					<div class='reply-content'>
 					  <div class='reply-group'>
-						<strong class='left' style="margin-right: 15px; color: #555;">` + replyList[i].rdisplayName + `</strong>
-						<small class='left' style="color: #555;">
+						<strong class='left' style="margin-right: 15px;">` + replyList[i].rdisplayName + `</strong>
+						<small class='left'>
 						  ` + (parseTime(replyList[i].regDate)) + `
 						</small>
 						<a href='` + replyList[i].rno + `' class='right btn-edit'><span class='glyphicon glyphicon-pencil'></span>수정</a>
@@ -400,7 +400,7 @@ fetch('${pageContext.request.contextPath}/delete' + '/' + rno, {
 			} else if (gap < 60 * 60 * 24 * 30 * 1000) {
 				time = parseInt(gap / (1000 * 60 * 60 * 24)) + '일 전';
 			} else {
-				time = `${regTime.getFullYear()}년 ${regTime.getMonth()-1}월 ${regTime.getDate()}일`;
+				time = ``+regTime.getFullYear()+`년 `+(regTime.getMonth()-1)+`월 `+regTime.getDate()+`일`;
 			}
 
 			return time;

@@ -585,10 +585,12 @@ button.edit-save:hover{
 
 .reply-content strong {
 	font-weight: 800;
+	color :#e8e8e8;
 }
 
 .reply-content small {
 	margin-left: 10px;
+	color :#e8e8e8;
 }
 
 .reply-content a {
