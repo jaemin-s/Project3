@@ -1,12 +1,12 @@
-<h1>스포티파이 api를 활용한 음악추천서비스</h1> 
+<h1>Spotify API를 활용한 음악추천서비스</h1> 
 <p>사용자의 정보에 따라 음악을 추천하는 서비스를 제공합니다.</p>
 <p>Premium 구독시 스트리밍 및 댓글 작성 가능합니다.</P>
 <h2> 구성</h2>
 <h3> API</h3>
 <ul>
 <li>초단기예보(공공데이터) : 날씨 정보</li>
-<li>Spotify Data Api : 노래 정보 및 재생상태 컨트롤</li>
-<li>Spotify SDK Api : 음악 재생 기능</li>
+<li>Spotify Data API : 노래 정보 및 재생상태 컨트롤</li>
+<li>Spotify SDK API : 음악 재생 기능</li>
 </ul>
 
 <h3> function </h3>
