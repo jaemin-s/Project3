@@ -15,8 +15,8 @@
 			</div>
 			<!-- 사용 설명 -->
 			<div class="manual">
-				<button class="manual-btn">사용 메뉴얼 ⬆</button>
-				<p>1. 노래 추천을 받으려면 아래 그림을 클릭하세요.<br>2. 클릭 후, 추천 목록이 표시될 것입니다.<br>3. 원하는
+				<button class="manual-btn">사용 메뉴얼 ⬇</button>
+				<p class="hidden-manual">1. 노래 추천을 받으려면 아래 그림을 클릭하세요.<br>2. 클릭 후, 추천 목록이 표시될 것입니다.<br>3. 원하는
 					곡의 제목을 클릭하면 해당 곡과 관련된 곡들이 재생됩니다.<br>4. 프리미엄 구독을 하시면 댓글 페이지에 접속할 수
 					있습니다.<br><br>즐거운 음악 청취 시간 되세요!</p>
 			</div>
@@ -186,7 +186,12 @@
 					uris.push(trackList[i].uri);
 				}
 				startResumePlayback(uris);
-				player.togglePlay();
+				player.getCurrentState().then(state=>{
+					console.log(state.paused);
+					if(state.paused){
+						player.togglePlay();
+					}
+				});
 			});
 		}
 	});
