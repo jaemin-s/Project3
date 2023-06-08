@@ -26,31 +26,32 @@
 				<div class="flex-box">
 					<div id="choose-imgs" class="choose-img">
 						<img data-keyword="happy" 
-							src="${pageContext.request.contextPath }/img/행복한.png" alt="#">
+							src="${pageContext.request.contextPath }/img/happy.png" alt="#">
 						<img data-keyword="wantSing" 
-							src="${pageContext.request.contextPath }/img/불러볼래.png" alt="#">
+							src="${pageContext.request.contextPath }/img/sing.png" alt="#">
 						<img data-keyword="love" 
-							src="${pageContext.request.contextPath }/img/사랑스러운.png" alt="#">
+							src="${pageContext.request.contextPath }/img/love.png" alt="#">
 						<img data-keyword="fresh" 
-							src="${pageContext.request.contextPath }/img/상큼한.png"	alt="#">
+							src="${pageContext.request.contextPath }/img/refresh.png"	alt="#">
 						<img data-keyword="sad" 
-							src="${pageContext.request.contextPath }/img/슬픈.png" alt="#">
+							src="${pageContext.request.contextPath }/img/sad.png" alt="#">
 						<img data-keyword="rest" 
-							src="${pageContext.request.contextPath }/img/여행갈래.png" alt="#">
+							src="${pageContext.request.contextPath }/img/trip.png" alt="#">
 						<img data-keyword="solo" 
-							src="${pageContext.request.contextPath }/img/외로운.png" alt="#">
+							src="${pageContext.request.contextPath }/img/lonely.png" alt="#">
 						<img data-keyword="exercise" 
-							src="${pageContext.request.contextPath }/img/운동할떄.png" alt="#">
+							src="${pageContext.request.contextPath }/img/exercise.png" alt="#">
 						<img data-keyword="nowHot" 
-							src="${pageContext.request.contextPath }/img/인기있는.png" alt="#">
+							src="${pageContext.request.contextPath }/img/popular.png" alt="#">
 						<img data-keyword="calmness"
-							src="${pageContext.request.contextPath }/img/잔잔한.png" alt="#"> 
+							src="${pageContext.request.contextPath }/img/windless.png" alt="#"> 
 						<img data-keyword="party" 
-							src="${pageContext.request.contextPath }/img/파티.png" alt="#"> 
+							src="${pageContext.request.contextPath }/img/party.png" alt="#"> 
 						<img class="weather" data-keyword="sunny" 
-							src="${pageContext.request.contextPath }/img/화창한.png" alt="#">
+							src="${pageContext.request.contextPath }/img/sunny.png" alt="#">
 					</div>
 					<div id="result-list" class="hidden result-list">
+						<button class="hidden-button">X</button>
 		                <div class="list-head flex">
 		                    <div class="result-image">앨범 커버</div>
 		                    <div class="result-title">곡명</div>
@@ -73,12 +74,20 @@
 	let title = '';
 	let artist = '';
 	
-	document.getElementById('choose-imgs').addEventListener('click',e=>{
-		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
+	document.querySelector('.hidden-button').onclick = function() {
 		document.querySelector('#result-list').classList.toggle('hidden');
-		if(document.querySelector('#result-list').classList.contains('hidden')) {
-			return;
+		document.querySelector('#choose-imgs').classList.toggle('flextoggle');
+	}
+	
+	document.getElementById('choose-imgs').addEventListener('click',e=>{
+		
+		if (!document.querySelector('#choose-imgs').classList.contains('flextoggle')) {
+			document.querySelector('#choose-imgs').classList.toggle('flextoggle');
 		}
+		if (document.querySelector('#result-list').classList.contains('hidden')) {
+			document.querySelector('#result-list').classList.toggle('hidden');
+		}
+
 		 let MyUrl = "";
 	        if(e.target.dataset.keyword === "happy"){ 
 	        	// 행복
@@ -251,7 +260,7 @@ let sky,pty; //하늘상태, 강수형태
 							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/cloudy.png"
 						}else if(pty === "3"){
 							document.querySelector(".weather").dataset.keyword = "snow";
-							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/snow.png"
+							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/winter.png"
 						}
 						console.log(sky);
 						console.log(pty);
@@ -267,9 +276,10 @@ let sky,pty; //하늘상태, 강수형태
 								console.log(data);
 								display_name = data.display_name;
 								display_email = data.email;
+								product = data.product
 								document.querySelector('.menu>h1').textContent = display_name + ' 님';
 								document.querySelector('.menu>h1').name = display_name;
-								tokenChe =2;
+								document.querySelector('input[name=product]').value = product;
 								const jsonData = JSON.stringify(data);
 
 								fetch('${pageContext.request.contextPath}/userinfo', {
@@ -288,6 +298,10 @@ let sky,pty; //하늘상태, 강수형태
 	 let $sbtn = document.getElementById('searchBtn');
 		
 		document.getElementById('searchBtn').addEventListener('click', e => {
+			if (search.value.trim() === '') {
+			    alert("검색어를 작성해주세요.");
+			    return;
+			}
 			document.querySelector('#choose-imgs').classList.add('flextoggle');
 			document.querySelector('#result-list').classList.remove('hidden');
 			  searchForItem(search.value).then(data => {

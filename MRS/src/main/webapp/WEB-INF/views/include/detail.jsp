@@ -6,19 +6,17 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
 
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Rcmd Service</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rcmd Service</title>
 
-	<link href="${pageContext.request.contextPath }/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/style.css"
+	rel="stylesheet">
 
 </head>
-
 <body>
 
 	<!-- 
@@ -35,12 +33,14 @@
 				<img class="cover-img" alt="" src="">
 			</div>
 			<!-- 가수명, 팀명 -->
-			<div class="teamTitle"></div>
-
+			<div class="teamTitle">
+				
+			</div>
+			
 			<!-- 댓글작성칸 -->
 			<div class="video-comment">
-				<textarea id="reply" placeholder="댓글 추가..." spellcheck="false"></textarea>
-				<button id="replyRegist" class="commentbtn">등록</button>
+					<textarea></textarea>
+					<button class="commentbtn">등록</button>
 			</div>
 
 			<!-- 저장 댓글 보여주는 칸 -->
