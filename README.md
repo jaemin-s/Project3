@@ -3,9 +3,11 @@
 <p>Premium 구독시 스트리밍 및 댓글 작성 가능합니다.</P>
 <h2> 구성</h2>
 <h3> API</h3>
-- 초단기예보(공공데이터) : 날씨 정보
-- Spotify Data Api : 노래 정보 및 재생상태 컨트롤
-- Spotify SDK Api : 음악 재생 기능
+<ul>
+<li>초단기예보(공공데이터) : 날씨 정보</li>
+<li>Spotify Data Api : 노래 정보 및 재생상태 컨트롤</li>
+<li>Spotify SDK Api : 음악 재생 기능</li>
+</ul>
 
 <h3> function </h3>
 getPlaybackState() : 재생상태 받아오기, return playerbackState
