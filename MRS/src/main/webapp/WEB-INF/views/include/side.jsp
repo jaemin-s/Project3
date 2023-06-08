@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Sim Sound Music</title>
-	<!-- 파비콘 -->
-	<link rel="favicon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<!-- css 가져오기 -->
 	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 	<!-- reset css -->
