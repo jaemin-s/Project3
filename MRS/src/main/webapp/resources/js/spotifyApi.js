@@ -300,7 +300,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
         document.querySelector(".side-back").style.backgroundImage = 'url("./img/animation2.gif")';
     }
 
-    });//end player.addListener('player_state_changed'	
+    	
     
          const currentTrackId = current_track.id;
 
@@ -344,13 +344,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
              });
          })
         }
-
-        //컨트롤러 및 디테일 페이지 정보 넣기
-        document.querySelector('.cover-img').setAttribute('src',current_track.album.images[0].url);
-        document.querySelector('.singer-name').textContent = current_track.artists[0].name;
-        document.querySelector('.song-title').textContent = current_track.name;
-        document.querySelector('.teamTitle').textContent =
-        current_track.artists[0].name+" - "+current_track.name;
+	});//end player.addListener('player_state_changed'
 
 }//end window.onSpotifyWebPlaybackSDKReady
 
