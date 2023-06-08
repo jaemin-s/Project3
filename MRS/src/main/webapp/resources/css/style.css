@@ -37,7 +37,7 @@ img, a {
 	background-image: url("../img/animation3.png");
 	background-size: 260%;
 	background-position: -340px;
-	opacity: 0.7;
+	opacity: 0.65;
 }
 
 .side>div {
@@ -92,6 +92,9 @@ img, a {
 	color: rgb(191, 23, 23);
 }
 
+.side .menu .mainBtn {
+    color: rgb(191, 23, 23);
+}
 /* 사이드 에어팟 이미지 */
 .side .imgDiv {
 	width: 170px;
@@ -103,6 +106,7 @@ img, a {
 
 .side img {
 	width: 100%;
+	cursor: pointer;
 }
 
 /* 사이드에 있는 컨트롤러 */
@@ -405,8 +409,8 @@ section.main .main-right .search {
 }
 
 .search #searchQuery {
-	width: 200px;
-	height: 30px;
+	width: 400px;
+	height: 50px;
 	border-radius: 15px 0 0 15px;
 	border: none;
 	text-align: center;
@@ -418,6 +422,7 @@ section.main .main-right .search {
 	border: none;
 	border-radius: 0 15px 15px 0;
 	background: #ffffffa3;
+	cursor: pointer;
 	spellcheck: false;
 }
 
@@ -463,6 +468,7 @@ section.main .main-right .choose-img img {
 section.main .main-right .choose-img img:hover {
 	border: 3px solid rgb(191, 23, 23);
 	border-radius: 30px;
+	cursor: pointer;
 }
 
 /* 댓글 페이지 */
@@ -522,8 +528,35 @@ section.main .video-right .detail-ng .teamTitle {
 	line-height: 33px;
 }
 
+input.edit-input {
+	background: none;
+	border : 0;
+	border-bottom: 1px solid #666;
+	outline : 0;
+	color : white;
+}
+input.edit-input:focus{
+	border-bottom: 2px solid white;
+}
+
 .video-right .video-comment textarea:focus {
 	outline: none;
+}
+
+button.edit-save {
+  background-color: #777;
+  border-radius: 8px;
+  border-width: 0;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+}
+button.edit-save:hover{
+	background-color:#999;
 }
 
 .video-right .video-comment .commentbtn {
@@ -535,6 +568,7 @@ section.main .video-right .detail-ng .teamTitle {
 
 .video-right .video-comment .commentbtn:hover {
 	opacity: 1;
+	cursor: pointer;
 }
 
 /* 댓글 보여주는 칸 */
@@ -581,6 +615,7 @@ section.main .video-right .detail-ng .teamTitle {
 	color: white;
 	background: black;
 	border: 1px solid white;
+	cursor : pointer;
 }
 
 .hidden-button:hover {
@@ -621,6 +656,8 @@ section.main .main-right .choose-img.flextoggle img {
 	{
 	display: flex;
 	margin: 20 0;
+	justify-content : space-between;
+	align-items : center;
 }
 
 .flex-box #result-list .list-head {
@@ -641,9 +678,14 @@ section.main .main-right .choose-img.flextoggle img {
 	height: 100%;
 }
 
-.flex-box #result-list .result-title, .flex-box #result-list .result-artists
-	{
-	width: 43%;
+.flex-box #result-list .result-title{
+	width: 56%;
+}
+.flex-box #result-list .result-title:hover{
+	cursor: pointer;
+}
+.flex-box #result-list .result-artists{
+	width: 24%;
 }
 
 .flex-box .hidden {
@@ -677,6 +719,9 @@ section.main .video-right .playList {
 	{
 	display: flex;
 	margin: 26 0;
+	justify-content: space-between;
+	align-items: center;
+	text-overflow: ellipsis;
 }
 
 .playList #comments-list .comments-head {
@@ -696,9 +741,13 @@ section.main .video-right .playList {
 	width: 100%;
 }
 
-.playList #comments-list .comments-title, .playList #rcomments-list .comments-artists
-	{
-	width: 40%;
+.playList #comments-list .comments-title{
+	width: 56%;
+	text-overflow: ellipsis;
+}
+.playList #comments-list .comments-artists{
+	width: 24%;
+	text-overflow: ellipsis;
 }
 
 .playList .comments-title:hover {

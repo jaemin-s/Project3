@@ -45,11 +45,11 @@
 			<c:if test="${accessToken != null}">
 				<h1></h1>
 				<h3 class="testCl">환영합니다.</h3>
-				<a href="/mrs/logOut" class="logOut">log out</a>
+				<a href="/mrs/logOut" class="logOut">💿 log out</a>
 			</c:if>
 
-			<a class="mainBtn" href="#">Main Page</a> <a class="videoBtn"
-				href="#">Play List</a>
+			<a class="mainBtn" href="#">💿 Main Page</a> <a class="videoBtn"
+				href="#">💿 Play List</a>
 		</div>
 
 		<!-- 에어팟 이미지 -->
@@ -66,23 +66,23 @@
 				<!-- 왼쪽 커버이미지 -->
 
 				<!-- 팀명 -->
-				<h1 class="singer-name">singer</h1>
+				<h1 class="singer-name">노래를 선택해주세요</h1>
 				<!-- 노래 제목 -->
-				<h2 class="song-title">title</h2>
+				<h2 class="song-title"></h2>
 
 				<!-- 우측 하단 버튼 -->
 				<div class="controller-button-items">
 					<!-- 진행시간 바 -->
 					<div id="content">
 						<div id="range">
-							<input type="range" id="range-val" value="0" min="0" max="143">
+							<input type="range" id="range-val" value="0" min="0" max="-">
 						</div>
 						<div class="now-time">
 							<div id="time">
 								<p>0:00</p>
 							</div>
 							<div id="total-time">
-								<p>2:23</p>
+								<p>0:00</p>
 							</div>
 						</div>
 					</div>

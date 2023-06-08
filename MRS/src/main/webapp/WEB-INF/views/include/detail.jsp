@@ -58,7 +58,7 @@
 		<div class="playList">
 			<div id="comments-list" class="comments-list">
 				<div class="comments-head flex-box">
-					<div class="comments-image">앨범 커버</div>
+					<div class="comments-image">앨범</div>
 					<div class="comments-title">곡명</div>
 					<div class="comments-artists">가수</div>
 				</div>

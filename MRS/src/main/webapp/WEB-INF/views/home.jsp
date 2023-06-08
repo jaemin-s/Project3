@@ -53,7 +53,7 @@
 					<div id="result-list" class="hidden result-list">
 						<button class="hidden-button">X</button>
 		                <div class="list-head flex">
-		                    <div class="result-image">앨범 커버</div>
+		                    <div class="result-image">앨범</div>
 		                    <div class="result-title">곡명</div>
 		                    <div class="result-artists">가수</div>
 		                </div>
@@ -110,7 +110,7 @@
 	        	
 	        }else if(e.target.dataset.keyword === "solo"){ 
 	        	// 외로운
-	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=4dB2XmMpzPxsMRnt62TbF5&seed_genres=ballad&seed_tracks=10if3nqm7OS7qrV45v9GOg";
+	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=50&market=KR&seed_artists=4dB2XmMpzPxsMRnt62TbF5&seed_genres=ballad&seed_tracks=10if3nqm7OS7qrV45v9GOg";
 	        	
 	        }else if(e.target.dataset.keyword === "calmness"){ 
 	        	// 잔잔한
@@ -138,7 +138,7 @@
 	        		        		
 	        } else if (e.target.dataset.keyword === "cloudy") {
 	        	// 흐린 날
-	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=80&market=KR&seed_artists=50Zu2bK9y5UAtD0jcqk5VX&seed_genres=우울한&발라드&seed_tracks=5xX7oEKHN0H9VOjezo2ZaA";
+	        	MyUrl = "https://api.spotify.com/v1/recommendations?limit=10&min_popularity=60&market=KR&seed_artists=50Zu2bK9y5UAtD0jcqk5VX&seed_genres=우울한&발라드&seed_tracks=5xX7oEKHN0H9VOjezo2ZaA";
 	        		        		
 	        } else if (e.target.dataset.keyword === "rain") {
 	        	// 비 오는 날
