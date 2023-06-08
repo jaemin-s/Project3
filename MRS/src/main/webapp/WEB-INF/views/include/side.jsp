@@ -6,8 +6,9 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>Sim Sound Music</title>
+	<!-- 파비콘 -->
+	<link rel="favicon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<!-- css 가져오기 -->
 	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 	<!-- reset css -->
@@ -48,8 +49,9 @@
 				<a href="/mrs/logOut" class="logOut">💿 log out</a>
 			</c:if>
 
-			<a class="mainBtn" href="#">💿 Main Page</a> <a class="videoBtn"
-				href="#">💿 Play List</a>
+			<a class="mainBtn" href="#">💿 Main Page</a>
+			<a class="videoBtn" href="#">💿 Play List</a>
+		    <a class="premium-btn" href="#">💿 premium 구독</a>
 		</div>
 
 		<!-- 에어팟 이미지 -->
@@ -162,30 +164,6 @@ const $testCl = document.querySelector(".testCl");
 			}
 		}
 	}
-	
-	if(${accessToken != null}) {
-		
-		let isExecuted = false;
-	
-		function handleClick() {
-		    if (!isExecuted && document.querySelector('input[name=product]').getAttribute('value') != 'premium') {
-		        isExecuted = true; // 실행 여부 업데이트
-	
-		        if (confirm("free모드는 노래 추천만 가능합니다.\n3개월 무료 premium을 사용하시겠습니까?\n취소시 노래 추천만 작동합니다.")) {
-		            window.open("https://www.spotify.com/kr-ko/premium/#plans");
-		        } else {
-		            // 취소
-		            document.querySelector(".side").style.pointerEvents = "none";
-		            document.querySelector('#result-list .list-body').style.pointerEvents = "none";
-		            isExecuted = true;
-		        }
-		    }
-		}
-	
-		$main.addEventListener('click', handleClick);
-	}
-
-	
 	
 	// 에어팟 클릭시 이미지 변경 및 컨트롤러 변경${pageContext.request.contextPath }
 
@@ -343,7 +321,9 @@ const $testCl = document.querySelector(".testCl");
     
 });
     
-
+	document.querySelector(".premium-btn").onclick = function() {
+		window.open("https://www.spotify.com/kr-ko/premium/#plans");
+	}
     
 
 

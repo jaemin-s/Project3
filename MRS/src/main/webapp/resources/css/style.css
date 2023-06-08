@@ -404,7 +404,8 @@ section.main .main-right .search {
 	color: white;
 	font-size: 50px;
 	margin-left: 86px;
-	margin-top: 100px;
+	margin-top: 70px;
+	margin-bottom: 120px;
 	display:flex;
 }
 
@@ -788,4 +789,31 @@ ul.playLists li {
 /* 검색 창*/
 #searchResults {
 	color: #2980b9;
+}
+
+/* 사용 설명 */
+.main .manual {
+	position: absolute;
+	left: 45%;
+	top: 70px;
+	font-size: 15;
+}
+
+.main .manual button {
+	background: black;
+	color: white;
+	border: 1px solid white;
+	padding: 1px, 3px;
+}
+
+.main .manual button:hover {
+	background: #ffffff73;
+}
+
+.main .manual p {
+	padding: 8px 0 0 0;
+}
+
+.main .manual p.hidden-manual {
+	display: none;
 }

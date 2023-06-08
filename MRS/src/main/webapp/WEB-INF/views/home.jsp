@@ -13,6 +13,13 @@
 	    		<input type="text" id="searchQuery" placeholder="Enter search query">
 	    		<button id="searchBtn">Search</button>
 			</div>
+			<!-- 사용 설명 -->
+			<div class="manual">
+				<button class="manual-btn">사용 메뉴얼 ⬆</button>
+				<p>1. 노래 추천을 받으려면 아래 그림을 클릭하세요.<br>2. 클릭 후, 추천 목록이 표시될 것입니다.<br>3. 원하는
+					곡의 제목을 클릭하면 해당 곡과 관련된 곡들이 재생됩니다.<br>4. 프리미엄 구독을 하시면 댓글 페이지에 접속할 수
+					있습니다.<br><br>즐거운 음악 청취 시간 되세요!</p>
+			</div>
 			<!-- 로고 이미지 -->
 			<div class="main-logo-img">
 				<img id=""
@@ -153,7 +160,6 @@
 		fetch( MyUrl , {headers : {"Authorization" : `Bearer ${accessToken}`}
 			}).then(res => res.json())
 			.then(data => {
-				console.log(data);
 				[...document.querySelector('#result-list .list-body').children].forEach(child => child.remove());
 				[...data.tracks].forEach(track => {
 					document.querySelector('#result-list .list-body').insertAdjacentHTML('beforeend',
@@ -169,7 +175,6 @@
 	    
 	//검색 결과 선택시 
 	document.querySelector('ul.list-body').addEventListener('click',e=>{
-		console.log('결과 리스트 클릭');
 		if(e.target.classList.contains('result-title')){
 			let targetId = e.target.dataset.trackId;
 			let uris = [e.target.dataset.trackUri];
@@ -180,7 +185,6 @@
 					if(trackList.length<i) break;
 					uris.push(trackList[i].uri);
 				}
-				console.log(uris);
 				startResumePlayback(uris);
 			})
 		}
@@ -213,7 +217,6 @@ let sky,pty; //하늘상태, 강수형태
 			}
 			let currentDate = year + month + day;
 			let currentTime = hour +""+ minute;
-			console.log(currentTime);
 			// let date = new date();
 			// 현재 날짜와 시간
 			let key = 'g4G7rydHK7S6Nlfpzy%2F7pdkQrtYexqJA3K%2FYEzlsVbzhB00JsplN4%2F1JcIi%2F1GVcGFNDehAgvKYqsHky7QDp4w%3D%3D';
@@ -223,20 +226,14 @@ let sky,pty; //하늘상태, 강수형태
 			
 			let url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst`;
   			let queryParams = `?serviceKey=`+key+`&pageNo=1&numOfRows=25&dataType=JSON&base_date=`+currentDate+`&base_time=1000&nx=`+nX+`&ny=`+nY;
-			console.log(url);
-			console.log(queryParams);
 					fetch(url+queryParams).then(res => res.json())
 				.then(data => {
-					console.log(data);
 					let rs = data.response.body.items.item;
 					
-					console.log(rs[6].fcstValue); //강수 형태
 					pty=rs[6].fcstValue; //강수 형태
-					console.log(rs[18].fcstValue); //하늘 형태
 					sky=rs[18].fcstValue;
 					if(rsRow.length >= 5) {
 						rsRow[0].textContent=currentDate;
-						console.log(currentDate);
 						rsRow[1].textContent=currentTime;
 						rsRow[2].textContent=sky;
 						rsRow[3].textContent=pty;
@@ -248,7 +245,6 @@ let sky,pty; //하늘상태, 강수형태
 					
 					function playMusic(sky, pty) {   
 						let MyUrl = "";
-						console.log(document.querySelector(".weather").src);
 						if (pty === "1" || pty === "2" || pty === "5" || pty === "6") {
 							document.querySelector(".weather").dataset.keyword = "rain";
 							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/rain.png"
@@ -262,18 +258,14 @@ let sky,pty; //하늘상태, 강수형태
 							document.querySelector(".weather").dataset.keyword = "snow";
 							document.querySelector(".weather").src = "${pageContext.request.contextPath }/img/winter.png"
 						}
-						console.log(sky);
-						console.log(pty);
 						
 					} 
 				
-				if(`${accessToken}` != null) {
-					console.log("닉넴 받아옴")
+				if(${accessToken != null}) {
 					/* 닉네임 받아와서 사용 */
 						fetch('https://api.spotify.com/v1/me', {headers : {"Authorization" : `Bearer ${accessToken}`}})
 							.then(res => res.json())
 							.then(data => {
-								console.log(data);
 								display_name = data.display_name;
 								display_email = data.email;
 								product = data.product
@@ -288,10 +280,26 @@ let sky,pty; //하늘상태, 강수형태
 										'Content-Type': 'application/json'
 									},
 									body: jsonData
-								})
+								}).then(e=>{
+									if(${accessToken != null}) {
+										console.log(document.querySelector('input[name=product]').value);
+										if (document.querySelector('input[name=product]').value != 'premium') {
+											alert("free모드는 노래 추천만 가능합니다.\npremium사용 시 모든 기능 작동합니다.");
+											document.querySelector(".videoBtn").style.display = "none";
+											document.querySelector(".controller-controls").style.pointerEvents = "none";
+											document.querySelector(".imgDiv").style.pointerEvents = "none";
+											document.querySelector('#result-list .list-body').style.pointerEvents = "none";
+											document.querySelector(".premium-btn").style.display = "block";
+										}else{
+											document.querySelector(".premium-btn").style.display = "none";
+										}
+									}
+								});
 								
 							});
 				}
+				
+
 		 }
 	//검색 기능	 
 	 let search = document.getElementById('searchQuery');
@@ -321,5 +329,14 @@ let sky,pty; //하늘상태, 강수형태
 	            $sbtn.click();
 	        }
 	    });
+
+	document.querySelector('.manual-btn').onclick = function() {
+	document.querySelector('.manual p').classList.toggle('hidden-manual');
+	if(document.querySelector('.manual p').classList.contains('hidden-manual')) {
+		document.querySelector('.manual-btn').textContent = '사용 메뉴얼 ⬇';
+	}else if(!document.querySelector('.manual p').classList.contains('hidden-manual')) {
+		document.querySelector('.manual-btn').textContent = '사용 메뉴얼 ⬆';
+	}
+}
 	
 </script>

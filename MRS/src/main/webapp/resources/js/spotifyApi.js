@@ -31,14 +31,12 @@ function getPlaybackState(){
         headers : header
     }).then(res=>res.json())
     .then(data=>{
-        console.log(data);
         return data;
     });
 }
 
 //player [put] : device 변경
 async function transferPlayback(deviceId){
-	console.log(deviceId);
     fetch('https://api.spotify.com/v1/me/player',{
     	method : "put",
         headers : header,
@@ -55,7 +53,6 @@ function getAvailableDevices(){
         .then(data => {
             data.devices.forEach(device => {
                 if(device.name === "Sim Player"){
-                    console.log("device id : "+device.id);
                     return device.id;
                 }
             });
@@ -155,7 +152,6 @@ async function getTheUsersQueue(){
         headers : header
     });
     const data = await res.json();
-        console.log(data);
         return data;
 }
 
@@ -168,7 +164,6 @@ async function searchForItem(query){
     let res = await fetch('https://api.spotify.com/v1/search'+params,{
         headers : header});
     let data = await res.json();    
-    console.log(data);
     
     return data;
 }
@@ -208,7 +203,6 @@ let setTime = setInterval(function(){
 	},1000);
 	
 document.getElementById('range-val').addEventListener('mouseup',()=>{
-	console.log(document.getElementById('range-val').value);
 	seekToPosition((document.getElementById('range-val').value)*1000);
 });
 	
@@ -250,7 +244,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     }) => {
         //재생목록 디테일에 출력
         getTheUsersQueue().then(data =>{
-            console.log("queue 가져오기");
   			//현재 재생목록 출력
             [...document.querySelector('.playlist ul.comments-body').children].forEach(child =>child.remove());
             document.querySelector('.playlist ul.comments-body').insertAdjacentHTML('beforeend',`
