@@ -418,6 +418,7 @@ section.main .main-right .search {
 	border: none;
 	border-radius: 0 15px 15px 0;
 	background: #ffffffa3;
+	spellcheck: false;
 }
 
 .search #searchBtn:hover {
