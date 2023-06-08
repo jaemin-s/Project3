@@ -32,7 +32,9 @@ public class UserinfoController {
 		
 		data.setUsersId(service.usersIdCall(data));
 //		System.out.println(data.getUsersId());
+		session.setAttribute("urno", service.usersIdCall(data));
 		session.setAttribute("userinfo", data);
+		
 		return ResponseEntity.ok().build();
 	}
 	

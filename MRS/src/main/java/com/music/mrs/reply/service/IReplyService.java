@@ -20,10 +20,10 @@ public interface IReplyService {
     ReplyVO getrno(int rno);
     
     // 댓글 수정
-    void update(ReplyVO reply);
+    void update(ReplyVO reply,int urno);
     
     // 댓글 삭제
-    void delete(int rno);
+    void delete(int rno,int urno);
 
     
 	

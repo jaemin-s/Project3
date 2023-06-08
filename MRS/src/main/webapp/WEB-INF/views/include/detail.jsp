@@ -297,11 +297,13 @@ function saveEdit() {
         document.getElementById('reply').focus();
       } else {
         console.error('Error: 수정 요청이 실패했습니다.');
+        alert('댓글 수정 실패!');
         getList(1, true);
       }
     })
     .catch(error => {
       console.error('Error:', error);
+      alert('댓글 수정 실패!');
       getList(1, true);
     });
 }
@@ -340,11 +342,13 @@ fetch('${pageContext.request.contextPath}/delete' + '/' + rno, {
 		getList(1,true);
 	} else {
 		console.error('Error: 삭제 요청이 실패했습니다.');
+		alert('댓글 삭제 실패!');
 		getList(1,true);
 	}
 })
 .catch(error => {
 	console.error('Error:', error);
+	alert('댓글 삭제 실패!');
 	getList(1,true);
 });
 }

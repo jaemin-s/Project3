@@ -104,8 +104,6 @@ public class SpotifyAuthController {
 //            System.out.println(authorizationCodeCredentials);
 
 
-
-
             // 받은 액세스 토큰을 처리합니다.
             String accessToken = authorizationCodeCredentials.getAccessToken();
             System.out.println(accessToken);
