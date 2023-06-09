@@ -157,7 +157,7 @@ const $testCl = document.querySelector(".testCl");
 	if(${accessToken == null}) {
 	$main.onclick = function(e) {
 		console.log(e.target);
-		if(!e.target.parentNode.classList.contains('spotify-login-button')) {
+		if(!e.target.parentNode.classList.contains('spotify-login-button')&&!e.target.mathes('button.manual-btn')) {
 				alert('로그인은 필수 입니다.');
 				return location.href="${pageContext.request.contextPath}/login";
 			}
